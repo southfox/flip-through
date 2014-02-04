@@ -7,8 +7,14 @@
 //
 
 #import "FTAppDelegate.h"
+#import "Reachability+FT.h"
+#import "FTAlert.h"
 
 @implementation FTAppDelegate
+{
+    Reachability *_reachability;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,5 +48,40 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark -
+#pragma mark private methods: Networking
+
+- (void)handleNetworkStatusChangedNotification:(NSNotification *)notification
+{
+    if ([Reachability isNetworkAvailable])
+    {
+        FTLog(@"network is available now");
+
+        // TODO: add the refresh here
+    }
+    else
+    {
+        [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+    }
+}
+
+
+- (BOOL)setupNetwork
+{
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(handleNetworkStatusChangedNotification:) name:kReachabilityChangedNotification object: nil];
+    
+    _reachability = [Reachability reachabilityForInternetConnection];
+    [_reachability startNotifier];
+    
+    if (![Reachability isNetworkAvailable])
+    {
+        [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+        return NO;
+    }
+    return YES;
+}
+
 
 @end

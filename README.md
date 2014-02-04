@@ -34,3 +34,31 @@ Stick your code up on Github and point me to the repo when you're ready. When yo
 
 Good luck!
 
+
+--------------------------------------------------------------------------------
+Looking for cars & format is json
+    http://api.flickr.com/services/feeds/photos_public.gne?tags=cars&format=json&nojsoncallback=1
+
+    http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1#
+
+Example:
+			"title": "000DC5D81A42(Front Door) motion alarm at 20140204055903",
+			"link": "http://www.flickr.com/photos/33523016@N02/12304756856/",
+			"media": {"m":"http://farm4.staticflickr.com/3687/12304756856_eae15c1bf5_m.jpg"},
+			"date_taken": "2014-02-04T04:59:22-08:00",
+			"description": " <p><a href=\"http://www.flickr.com/people/33523016@N02/\">wdlojai<\/a> posted a photo:<\/p> <p><a href=\"http://www.flickr.com/photos/33523016@N02/12304756856/\" title=\"000DC5D81A42(Front Door) motion alarm at 20140204055903\"><img src=\"http://farm4.staticflickr.com/3687/12304756856_eae15c1bf5_m.jpg\" width=\"240\" height=\"180\" alt=\"000DC5D81A42(Front Door) motion alarm at 20140204055903\" /><\/a><\/p> ",
+			"published": "2014-02-04T12:59:22Z",
+			"author": "nobody@flickr.com (wdlojai)",
+			"author_id": "33523016@N02",
+			"tags": "front porch"
+    
+Items model:
+title               title
+link                linkUrl
+media               mediaUrl
+date_taken          dateTaken
+description         htmlDescription
+published           publishedAt
+author              author
+author_id           author
+tags                tags
