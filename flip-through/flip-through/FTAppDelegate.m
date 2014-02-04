@@ -9,6 +9,8 @@
 #import "FTAppDelegate.h"
 #import "Reachability+FT.h"
 #import "FTAlert.h"
+#import "FTFlickrManager.h"
+
 
 @implementation FTAppDelegate
 {
@@ -18,7 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    if ([self setupNetwork])
+    {
+        [self setupFlikrManager];
+        // if network
+        // make the calls here
+    }
     return YES;
 }
 							
@@ -42,6 +49,11 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    if ([Reachability isNetworkAvailable])
+    {
+        // TODO: get the flickr feed here
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -63,7 +75,7 @@
     }
     else
     {
-        [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+        [self showNoNetworkAlert];
     }
 }
 
@@ -77,10 +89,23 @@
     
     if (![Reachability isNetworkAvailable])
     {
-        [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+        [self showNoNetworkAlert];
         return NO;
     }
     return YES;
+}
+
+- (void)showNoNetworkAlert;
+{
+    [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+}
+
+#pragma mark -
+#pragma mark Flickr service
+
+- (void)setupFlikrManager;
+{
+    [[FTFlickrManager sharedInstance] setup];
 }
 
 

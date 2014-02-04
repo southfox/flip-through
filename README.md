@@ -62,3 +62,10 @@ published           publishedAt
 author              author
 author_id           author
 tags                tags
+
+--------------------------------------------------------------------------------
+Settings
+Help
+My Favorites
+Search
+Tags
