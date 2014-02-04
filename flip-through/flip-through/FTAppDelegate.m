@@ -10,6 +10,7 @@
 #import "Reachability+FT.h"
 #import "FTAlert.h"
 #import "FTFlickrManager.h"
+#import "FTViewController.h"
 
 
 @implementation FTAppDelegate
@@ -20,12 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     if ([self setupNetwork])
     {
         [self setupFlikrManager];
         // if network
         // make the calls here
     }
+    
+    [self setupWindow];
+
     return YES;
 }
 							
@@ -107,6 +112,20 @@
 {
     [[FTFlickrManager sharedInstance] setup];
 }
+
+#pragma mark -
+#pragma mark window
+
+- (void)setupWindow
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    FTViewController *viewController = [[FTViewController alloc] initWithNibName:@"FTViewController" bundle:nil];
+    self.window.rootViewController = viewController;
+    
+    [self.window makeKeyAndVisible];
+}
+
 
 
 @end

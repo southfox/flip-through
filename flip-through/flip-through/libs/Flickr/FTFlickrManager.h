@@ -15,6 +15,9 @@
 + (FTFlickrManager *)sharedInstance;
 
 - (void)setup;
-- (NSArray *)getAllFeeds;
+
+- (void)getAllFeeds:(void (^)(NSString* errorMessage))notFoundBlock
+updateBlock:(void (^)(NSString* updateMessage))updateBlock
+successBlock:(void (^)(NSArray* rows))successBlock;
 
 @end

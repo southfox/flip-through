@@ -13,7 +13,6 @@
 #import <RestKit/RestKit.h>
 
 @interface FTFlickrManager()
-@property (nonatomic, strong) NSMutableArray *data;
 @end
 
 
@@ -42,48 +41,35 @@
 
 - (void)setup
 {
-    [self all:^(NSString *errorMessage) {
-        FTLog(@"error = %@", errorMessage);
-    } updateBlock:^(NSString *updateMessage) {
-        FTLog(@"update = %@", updateMessage);
-    } successBlock:^(NSArray *rows) {
-        FTLog(@"success = %@", rows);
-    }];
+    
+    NSURL *baseURL = [NSURL URLWithString:@"http://api.flickr.com/services/feeds"];
+    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:baseURL];
+    
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"application/x-javascript"];
+    
+    RKResponseDescriptor *responseDescriptor = [self configureResponseDescriptor];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager setRequestSerializationMIMEType:@"text/plain"];
+    [objectManager setAcceptHeaderWithMIMEType:@"application/x-javascript"];
+    
 }
 
-- (NSArray *)getAllFeeds;
-{
-    return self.data;
-}
 
 
-- (void)all:(void (^)(NSString* errorMessage))notFoundBlock
+- (void)getAllFeeds:(void (^)(NSString* errorMessage))notFoundBlock
         updateBlock:(void (^)(NSString* updateMessage))updateBlock
        successBlock:(void (^)(NSArray* rows))successBlock;
 {
-    
-    
     NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"json", @"format",
-                                 @"1", @"jsoncallback",
-                                 
+                                 @"1", @"nojsoncallback",
                                  nil];
-    
-    __block RKResponseDescriptor *responseDescriptor = [self configureResponseDescriptor];
-    NSURL *baseURL = [NSURL URLWithString:@"http://api.flickr.com/services/feeds/"];
-    __block RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:baseURL];
 
-    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:RKMIMETypeJSON];
-//    [objectManager setAcceptHeaderWithMIMEType:@"application/x-javascript"];
-//    [objectManager setAcceptHeaderWithMIMEType:@"text/xml"];
-
-    [objectManager addResponseDescriptor:responseDescriptor];
+    __block RKObjectManager * objectManager = [RKObjectManager sharedManager];
     
     updateBlock(@"Searching...");
     [objectManager getObjectsAtPath:@"photos_public.gne" parameters:queryParams success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         FTLog(@"We object mapped the response with the following result: %@", mappingResult);
-        
-        [objectManager removeResponseDescriptor:responseDescriptor];
         
         if (mappingResult.count)
         {
@@ -95,8 +81,6 @@
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         FTLog(@"Error: %@", error);
-        
-        [objectManager removeResponseDescriptor:responseDescriptor];
         
         notFoundBlock(error.localizedDescription);
     }];
@@ -143,6 +127,7 @@
     [itemMapping addAttributeMappingsFromDictionary:@{
                                                              @"title": @"title",
                                                              @"link": @"link",
+                                                             @"media": @"media",
                                                              @"date_taken": @"date_taken",
                                                              @"description": @"description1",
                                                              @"published": @"published",
@@ -152,14 +137,15 @@
                                                              }];
 
 
-    // media inside feed
-    RKObjectMapping* mediaMapping = [RKObjectMapping mappingForClass:[FTMedia class]];
-    [mediaMapping addAttributeMappingsFromDictionary:@{
-                                                      @"m": @"m"
-                                                      }];
-    
-    [itemMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"media" toKeyPath:@"media" withMapping:mediaMapping]];
-    
+//    // media inside feed
+//    RKObjectMapping* mediaMapping = [RKObjectMapping mappingForClass:[FTMedia class]];
+//    [mediaMapping addAttributeMappingsFromDictionary:@{
+//                                                      @"m": @"m"
+//                                                      }];
+//    
+//    [itemMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"media" toKeyPath:@"media" withMapping:mediaMapping]];
+//    
+
     // items
     [objectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items" toKeyPath:@"items" withMapping:itemMapping]];
     

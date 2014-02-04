@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FTViewController : UIViewController
+@interface FTViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) IBOutlet UIView *fullImageContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *fullImage;
+
+- (IBAction)reload:(id)sender;
 
 @end

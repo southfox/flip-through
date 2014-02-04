@@ -16,13 +16,15 @@
 		985D31CE18A171E200320F87 /* FTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C918A171E200320F87 /* FTItem.m */; };
 		985D31D618A1765F00320F87 /* FTFlickrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrManager.m */; };
 		985D31D918A178ED00320F87 /* FTMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D818A178ED00320F87 /* FTMedia.m */; };
+		985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31DA18A18E7800320F87 /* FTViewController.xib */; };
+		985D31E718A18FC700320F87 /* FTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31E218A18FC700320F87 /* FTCell.m */; };
+		985D31E818A18FC700320F87 /* FTCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31E318A18FC700320F87 /* FTCell.xib */; };
 		98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
 		98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */; };
 		98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
 		98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C6C18A105A000C2EDF7 /* InfoPlist.strings */; };
 		98BF6C7018A105A000C2EDF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C6F18A105A000C2EDF7 /* main.m */; };
 		98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */; };
-		98BF6C7718A105A000C2EDF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C7518A105A000C2EDF7 /* Main.storyboard */; };
 		98BF6C7A18A105A000C2EDF7 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C7918A105A000C2EDF7 /* FTViewController.m */; };
 		98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C7B18A105A000C2EDF7 /* Images.xcassets */; };
 		98BF6C8318A105A000C2EDF7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C8218A105A000C2EDF7 /* XCTest.framework */; };
@@ -65,6 +67,10 @@
 		985D31D318A1765F00320F87 /* FTFlickrManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFlickrManager.m; sourceTree = "<group>"; };
 		985D31D718A178ED00320F87 /* FTMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTMedia.h; sourceTree = "<group>"; };
 		985D31D818A178ED00320F87 /* FTMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTMedia.m; sourceTree = "<group>"; };
+		985D31DB18A18E7800320F87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTViewController.xib; sourceTree = "<group>"; };
+		985D31E118A18FC700320F87 /* FTCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCell.h; sourceTree = "<group>"; };
+		985D31E218A18FC700320F87 /* FTCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCell.m; sourceTree = "<group>"; };
+		985D31E318A18FC700320F87 /* FTCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FTCell.xib; sourceTree = "<group>"; };
 		98BF6C6018A105A000C2EDF7 /* flip-through.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flip-through.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BF6C6318A105A000C2EDF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,7 +81,6 @@
 		98BF6C7118A105A000C2EDF7 /* flip-through-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flip-through-Prefix.pch"; sourceTree = "<group>"; };
 		98BF6C7218A105A000C2EDF7 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
 		98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
-		98BF6C7618A105A000C2EDF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98BF6C7818A105A000C2EDF7 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
 		98BF6C7918A105A000C2EDF7 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
 		98BF6C7B18A105A000C2EDF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -185,6 +190,16 @@
 			path = Flickr;
 			sourceTree = "<group>";
 		};
+		985D31DD18A18FC700320F87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				985D31E118A18FC700320F87 /* FTCell.h */,
+				985D31E218A18FC700320F87 /* FTCell.m */,
+				985D31E318A18FC700320F87 /* FTCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		98BF6C5718A105A000C2EDF7 = {
 			isa = PBXGroup;
 			children = (
@@ -222,9 +237,10 @@
 			children = (
 				985D318718A11FC200320F87 /* Common */,
 				985D317C18A11D3200320F87 /* App */,
-				98BF6C7518A105A000C2EDF7 /* Main.storyboard */,
+				985D31DD18A18FC700320F87 /* Cell */,
 				98BF6C7818A105A000C2EDF7 /* FTViewController.h */,
 				98BF6C7918A105A000C2EDF7 /* FTViewController.m */,
+				985D31DA18A18E7800320F87 /* FTViewController.xib */,
 				98BF6C7B18A105A000C2EDF7 /* Images.xcassets */,
 				985D31A618A12F7300320F87 /* libs */,
 				98BF6C6A18A105A000C2EDF7 /* Supporting Files */,
@@ -341,8 +357,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */,
+				985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */,
 				98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */,
-				98BF6C7718A105A000C2EDF7 /* Main.storyboard in Resources */,
+				985D31E818A18FC700320F87 /* FTCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				985D31E718A18FC700320F87 /* FTCell.m in Sources */,
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
 				985D31C018A12F7300320F87 /* FTDataManager.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
@@ -428,20 +446,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		985D31DA18A18E7800320F87 /* FTViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				985D31DB18A18E7800320F87 /* en */,
+			);
+			name = FTViewController.xib;
+			sourceTree = "<group>";
+		};
 		98BF6C6C18A105A000C2EDF7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				98BF6C6D18A105A000C2EDF7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		98BF6C7518A105A000C2EDF7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				98BF6C7618A105A000C2EDF7 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		98BF6C8B18A105A000C2EDF7 /* InfoPlist.strings */ = {

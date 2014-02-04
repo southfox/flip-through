@@ -23,13 +23,16 @@
 
 @property (nonatomic, copy) NSString *objectId;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) FTMedia *media;
+@property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSArray *media;
 @property (nonatomic, copy) NSDate *date_taken;
 @property (nonatomic, copy) NSString *description1;
 @property (nonatomic, copy) NSDate *published;
 @property (nonatomic, copy) NSString *author;
 @property (nonatomic, copy) NSString *author_id;
 @property (nonatomic, copy) NSString *tags;
+
+- (NSString *)mediaUrl;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)serialize;

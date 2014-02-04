@@ -36,7 +36,12 @@
         {
             return nil;
         }
-        _media = [[FTMedia alloc] initWithDictionary:[dict objectForKey:@"media"]];
+        _link = [dict objectForKey:@"link"];
+        if (!_link)
+        {
+            return nil;
+        }
+        _media = [dict objectForKey:@"media"];
         if (!_media)
         {
             return nil;
@@ -80,7 +85,7 @@
 
 - (NSDictionary *)serialize;
 {
-    NSDictionary * dictionary = [self dictionaryWithValuesForKeys:@[@"objectId", @"title", @"media", @"date_taken", @"description1", @"published", @"author", @"author_id", @"tags"]];
+    NSDictionary * dictionary = [self dictionaryWithValuesForKeys:@[@"objectId", @"title", @"link", @"media", @"date_taken", @"description1", @"published", @"author", @"author_id", @"tags"]];
     FTAssert(dictionary);
     
     NSMutableDictionary* serialized = [NSMutableDictionary dictionaryWithDictionary:dictionary];
@@ -88,7 +93,8 @@
     
     [serialized setObject:self.objectId forKey:@"objectId"];
     [serialized setObject:self.title forKey:@"title"];
-    [serialized setObject:[self.media serialize] forKey:@"media"];
+    [serialized setObject:self.link forKey:@"link"];
+    [serialized setObject:self.media forKey:@"media"];
     [serialized setObject:[NSNumber numberWithDouble:[self.date_taken timeIntervalSince1970]] forKey:@"date_taken"];
     [serialized setObject:self.description1 forKey:@"description1"];
     [serialized setObject:[NSNumber numberWithDouble:[self.published timeIntervalSince1970]] forKey:@"published"];
@@ -98,6 +104,17 @@
 
     return serialized;
 
+}
+
+- (NSString *)mediaUrl;
+{
+    FTAssert(self.media && [self.media isKindOfClass:[NSArray class]] && self.media.count);
+    
+    NSDictionary *mdict = [self.media firstObject];
+    FTAssert([mdict isKindOfClass:[NSDictionary class]]);
+    NSString *m = [mdict objectForKey:@"m"];
+    FTAssert([m isKindOfClass:[NSString class]]);
+    return [mdict objectForKey:@"m"];
 }
 
 @end
