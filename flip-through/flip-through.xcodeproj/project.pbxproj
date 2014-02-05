@@ -19,6 +19,14 @@
 		985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31DA18A18E7800320F87 /* FTViewController.xib */; };
 		985D31E718A18FC700320F87 /* FTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31E218A18FC700320F87 /* FTCell.m */; };
 		985D31E818A18FC700320F87 /* FTCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31E318A18FC700320F87 /* FTCell.xib */; };
+		985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31E918A1BFE500320F87 /* Button-Close-icon.png */; };
+		985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */; };
+		985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */; };
+		985D31F118A1C71C00320F87 /* button-round-reload-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F018A1C71C00320F87 /* button-round-reload-icon.png */; };
+		985D31F618A1C7DB00320F87 /* button-round-reload-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F218A1C7DB00320F87 /* button-round-reload-icon@2x.png */; };
+		985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */; };
+		985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */; };
+		985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */; };
 		98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
 		98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */; };
 		98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
@@ -71,6 +79,14 @@
 		985D31E118A18FC700320F87 /* FTCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCell.h; sourceTree = "<group>"; };
 		985D31E218A18FC700320F87 /* FTCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCell.m; sourceTree = "<group>"; };
 		985D31E318A18FC700320F87 /* FTCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FTCell.xib; sourceTree = "<group>"; };
+		985D31E918A1BFE500320F87 /* Button-Close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Close-icon.png"; path = "../../assets/Button-Close-icon.png"; sourceTree = "<group>"; };
+		985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Refresh-icon.png"; path = "../../assets/Button-Refresh-icon.png"; sourceTree = "<group>"; };
+		985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon.png"; path = "../../assets/Button-Reload-icon.png"; sourceTree = "<group>"; };
+		985D31F018A1C71C00320F87 /* button-round-reload-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-round-reload-icon.png"; path = "../../assets/button-round-reload-icon.png"; sourceTree = "<group>"; };
+		985D31F218A1C7DB00320F87 /* button-round-reload-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-round-reload-icon@2x.png"; path = "../../assets/button-round-reload-icon@2x.png"; sourceTree = "<group>"; };
+		985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Close-icon@2x.png"; path = "../../assets/Button-Close-icon@2x.png"; sourceTree = "<group>"; };
+		985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Refresh-icon@2x.png"; path = "../../assets/Button-Refresh-icon@2x.png"; sourceTree = "<group>"; };
+		985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon@2x.png"; path = "../../assets/Button-Reload-icon@2x.png"; sourceTree = "<group>"; };
 		98BF6C6018A105A000C2EDF7 /* flip-through.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flip-through.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BF6C6318A105A000C2EDF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +216,21 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		985D31EF18A1BFEE00320F87 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				985D31F218A1C7DB00320F87 /* button-round-reload-icon@2x.png */,
+				985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */,
+				985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */,
+				985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */,
+				985D31F018A1C71C00320F87 /* button-round-reload-icon.png */,
+				985D31E918A1BFE500320F87 /* Button-Close-icon.png */,
+				985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */,
+				985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		98BF6C5718A105A000C2EDF7 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +272,7 @@
 				98BF6C7818A105A000C2EDF7 /* FTViewController.h */,
 				98BF6C7918A105A000C2EDF7 /* FTViewController.m */,
 				985D31DA18A18E7800320F87 /* FTViewController.xib */,
+				985D31EF18A1BFEE00320F87 /* img */,
 				98BF6C7B18A105A000C2EDF7 /* Images.xcassets */,
 				985D31A618A12F7300320F87 /* libs */,
 				98BF6C6A18A105A000C2EDF7 /* Supporting Files */,
@@ -358,7 +390,15 @@
 			files = (
 				98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */,
 				985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */,
+				985D31F618A1C7DB00320F87 /* button-round-reload-icon@2x.png in Resources */,
+				985D31F118A1C71C00320F87 /* button-round-reload-icon.png in Resources */,
+				985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */,
+				985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */,
+				985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */,
+				985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */,
 				98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */,
+				985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */,
+				985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */,
 				985D31E818A18FC700320F87 /* FTCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,6 +33,7 @@
 @property (nonatomic, copy) NSString *tags;
 
 - (NSString *)mediaUrl;
+- (NSString *)mediaBigUrl;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)serialize;

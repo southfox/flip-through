@@ -117,4 +117,17 @@
     return [mdict objectForKey:@"m"];
 }
 
+- (NSString *)mediaBigUrl;
+{
+    FTAssert(self.media && [self.media isKindOfClass:[NSArray class]] && self.media.count);
+    
+    NSDictionary *mdict = [self.media firstObject];
+    FTAssert([mdict isKindOfClass:[NSDictionary class]]);
+    NSString *m = [mdict objectForKey:@"m"];
+    FTAssert([m isKindOfClass:[NSString class]]);
+    // "media": {"m":"http://farm8.staticflickr.com/7321/12304161865_20caed8434_m.jpg"},
+    NSString *bigM = [m stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"jpg"];
+    return bigM;
+}
+
 @end

@@ -41,7 +41,6 @@
 
 - (void)setup
 {
-    
     NSURL *baseURL = [NSURL URLWithString:@"http://api.flickr.com/services/feeds"];
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:baseURL];
     

@@ -52,15 +52,16 @@
 
 - (void)layoutSubviews
 {
+    NSString *imageUrl = [self.item mediaUrl];
+    NSURL *url = [NSURL URLWithString:imageUrl];
+    [self.imageView setImageWithURL:url placeholderImage:kImagePlaceholder];
 }
 
 
 
 - (void)configureWithItem:(FTItem *)item;
 {
-    NSString *imageUrl = [item mediaUrl];
-    NSURL *url = [NSURL URLWithString:imageUrl];
-    [self.imageView setImageWithURL:url];
+    _item = item;
     [self setNeedsLayout];
 }
 

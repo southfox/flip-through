@@ -32,6 +32,7 @@
 #define FTAssert(condition) {};
 #endif
 
+#define kImagePlaceholder [UIImage imageNamed:@"button-round-reload-icon"]
 
 
 
