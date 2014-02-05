@@ -259,7 +259,7 @@ static CGPoint kFooterViewHidden;
 #pragma mark - UIScroll
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
-    int h = scrollView.contentOffset.y + scrollView.h - (_feeds.count*4 * kCellHeight + 86 + 58);
+    int h = scrollView.contentOffset.y + scrollView.h - (_feeds.count*4 * kCellHeight + 144);
     if (h >= 0) {
         [self showFooter];
     }
@@ -291,7 +291,6 @@ static CGPoint kFooterViewHidden;
         wself.footerView.center = kFooterViewHidden;
         wself.footerView.center = kFooterViewVisible;
     } completion:^(BOOL finished) {
-        wself.view.userInteractionEnabled = NO;
     }];
 }
 
@@ -309,18 +308,20 @@ static CGPoint kFooterViewHidden;
         wself.footerView.center = kFooterViewHidden;
     } completion:^(BOOL finished) {
         wself.isShowingFooter = NO;
-
-    	// update the scroll view to the last page
-        CGPoint co = wself.collectionView.contentOffset;
-        co.y += kCellHeight*4;
-        CGRect bounds = wself.collectionView.bounds;
-        bounds.origin = co;
-        [wself.collectionView scrollRectToVisible:bounds animated:YES];
-        wself.view.userInteractionEnabled = YES;
+        [wself goToBottom];
     }];
     
 }
 
+- (void)goToBottom;
+{
+    // update the scroll view to the last page
+    CGPoint co = self.collectionView.contentOffset;
+    co.y += kCellHeight*2;
+    CGRect bounds = self.collectionView.bounds;
+    bounds.origin = co;
+    [self.collectionView scrollRectToVisible:bounds animated:YES];
+}
 
 
 @end

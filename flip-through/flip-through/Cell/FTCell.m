@@ -44,7 +44,6 @@
 - (void)awakeFromNib
 {
     [self makeRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) corner:8.0];
-    [self.imageView makeRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) corner:8.0];
 
 }
 
