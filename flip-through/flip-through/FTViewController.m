@@ -60,6 +60,7 @@ static CGPoint kFooterViewHidden;
     self.footerView.center = kFooterViewHidden;
     
     [self hideFooter];
+    self.view.userInteractionEnabled = YES;
 
     [self.view startSpinnerWithString:@"Updating..." tag:1];
 
@@ -159,6 +160,8 @@ static CGPoint kFooterViewHidden;
     [self hideFooter];
 
     self.isRequestingOffset = NO;
+    
+    [self.collectionView flashScrollIndicators];
 
 }
 
@@ -256,8 +259,6 @@ static CGPoint kFooterViewHidden;
 #pragma mark - UIScroll
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
-//    int total = _feeds.count * 20;
-    
     int h = scrollView.contentOffset.y + scrollView.h - (_feeds.count*4 * kCellHeight + 86 + 58);
     if (h >= 0) {
         [self showFooter];
@@ -290,6 +291,7 @@ static CGPoint kFooterViewHidden;
         wself.footerView.center = kFooterViewHidden;
         wself.footerView.center = kFooterViewVisible;
     } completion:^(BOOL finished) {
+        wself.view.userInteractionEnabled = NO;
     }];
 }
 
@@ -300,7 +302,6 @@ static CGPoint kFooterViewHidden;
         return;
     }
     
-
     __weak typeof(self) wself = self;
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -308,6 +309,14 @@ static CGPoint kFooterViewHidden;
         wself.footerView.center = kFooterViewHidden;
     } completion:^(BOOL finished) {
         wself.isShowingFooter = NO;
+
+    	// update the scroll view to the last page
+        CGPoint co = wself.collectionView.contentOffset;
+        co.y += kCellHeight;
+        CGRect bounds = wself.collectionView.bounds;
+        bounds.origin = co;
+        [wself.collectionView scrollRectToVisible:bounds animated:YES];
+        wself.view.userInteractionEnabled = YES;
     }];
     
 }

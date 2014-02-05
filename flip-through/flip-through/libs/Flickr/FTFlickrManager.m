@@ -43,14 +43,10 @@
 {
     NSURL *baseURL = [NSURL URLWithString:@"http://api.flickr.com/services/feeds"];
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:baseURL];
-//    objectManager.HTTPClient.stringEncoding = NSUTF16StringEncoding;
     [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"application/x-javascript"];
-//    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/javascript"];
 
     RKResponseDescriptor *responseDescriptor = [self configureResponseDescriptor];
     [objectManager addResponseDescriptor:responseDescriptor];
-//    [objectManager setRequestSerializationMIMEType:@"text/plain"];
-//    [objectManager setAcceptHeaderWithMIMEType:@"application/x-javascript"];
     
 }
 
@@ -102,11 +98,11 @@
      */
     RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[FTFeed class]];
     [objectMapping addAttributeMappingsFromDictionary:@{
-//                                                        @"title": @"title",
+                                                        @"title": @"title",
                                                         @"link": @"link",
-//                                                        @"description": @"description1",
-//                                                        @"modified": @"modified",
-//                                                        @"generator": @"generator"
+                                                        @"description": @"description1",
+                                                        @"modified": @"modified",
+                                                        @"generator": @"generator"
                                                         }];
     
     /*
@@ -125,15 +121,15 @@
     // Now configure the items mapping inside feed
     RKObjectMapping* itemMapping = [RKObjectMapping mappingForClass:[FTItem class]];
     [itemMapping addAttributeMappingsFromDictionary:@{
-//                                                             @"title": @"title",
-//                                                             @"link": @"link",
+                                                             @"title": @"title",
+                                                             @"link": @"link",
                                                              @"media": @"media",
-//                                                             @"date_taken": @"date_taken",
-//                                                             @"description": @"description1",
-//                                                             @"published": @"published",
-//                                                             @"author": @"author",
-//                                                             @"author_id": @"author_id",
-//                                                             @"tags": @"tags",
+                                                             @"date_taken": @"date_taken",
+                                                             @"description": @"description1",
+                                                             @"published": @"published",
+                                                             @"author": @"author",
+                                                             @"author_id": @"author_id",
+                                                             @"tags": @"tags",
                                                              }];
 
 
