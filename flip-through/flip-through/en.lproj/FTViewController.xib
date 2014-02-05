@@ -35,17 +35,6 @@
                         <outlet property="delegate" destination="-1" id="Q2T-kD-oJe"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2BR-n2-olz">
-                    <rect key="frame" x="954" y="10" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="Button-Reload-icon.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="reload:" destination="-1" eventType="touchUpInside" id="p5M-Px-ZU8"/>
-                    </connections>
-                </button>
                 <view alpha="0.0" contentMode="scaleToFill" id="w5O-jw-3VU" userLabel="View - full image container">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -91,7 +80,4 @@
             </connections>
         </searchDisplayController>
     </objects>
-    <resources>
-        <image name="Button-Reload-icon.png" width="128" height="128"/>
-    </resources>
 </document>

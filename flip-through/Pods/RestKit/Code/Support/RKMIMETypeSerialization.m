@@ -148,6 +148,9 @@
 {
     NSParameterAssert(data);
     NSParameterAssert(MIMEType);
+    
+//    NSLog(@"data = [%@]", [NSString stringWithUTF8String:[data bytes]]);
+    NSLog(@"mimetype = [%@]", MIMEType);
 
     Class<RKSerialization> serializationClass = [self serializationClassForMIMEType:MIMEType];
     if (!serializationClass) {

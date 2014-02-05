@@ -24,7 +24,21 @@
 
 + (id)objectFromData:(NSData *)data error:(NSError **)error
 {
-    return [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+    if (!object)
+    {
+        NSLog(@"data = [%@]", [NSString stringWithUTF8String:[data bytes]]);
+        NSString* escapedString = [NSString stringWithUTF8String:[data bytes]];
+        escapedString = [escapedString stringByReplacingOccurrencesOfString:@"\\'" withString:@" "];
+        NSData* data1 = [escapedString dataUsingEncoding:NSUTF8StringEncoding];
+        id object2 = [NSJSONSerialization JSONObjectWithData:data1 options:0 error:error];
+        if (object2)
+        {
+            return object2;
+        }
+
+    }
+    return object;
 }
 
 + (NSData *)dataFromObject:(id)object error:(NSError **)error

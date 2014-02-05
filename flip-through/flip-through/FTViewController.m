@@ -18,6 +18,9 @@
 static CGPoint kFooterViewVisible;
 static CGPoint kFooterViewHidden;
 
+#define kCellWidth 150
+#define kCellHeight 150
+
 @interface FTViewController ()
 @property (nonatomic) BOOL isShowingFullScreenImage;
 @property (nonatomic) BOOL isShowingFooter;
@@ -52,16 +55,21 @@ static CGPoint kFooterViewHidden;
 
     [self registerCells];
     
-    self.collectionView.scrollEnabled = YES;
-    
-    
     kFooterViewVisible = kFooterViewHidden = self.footerView.center;
     kFooterViewHidden.y += self.footerView.h;
     self.footerView.center = kFooterViewHidden;
     
     [self hideFooter];
 
+    [self.view startSpinnerWithString:@"Updating..." tag:1];
 
+    __weak typeof(self) wself = self;
+    [self queryFlickr:^{
+        [wself.view stopSpinner:1];
+        [wself queryFlickr:^{
+            FTLog(@"finished the 2 first querys");
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,11 +82,7 @@ static CGPoint kFooterViewHidden;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
-    [self.view startSpinnerWithString:@"Updating..." tag:1];
 
-    [self queryFlickr];
 }
 
 #pragma mark - UICollectionView Datasource
@@ -136,34 +140,13 @@ static CGPoint kFooterViewHidden;
     [self showFullScreenItem:cell.item];
 }
 
-//- (void)selectCollageAtIndexPath:(NSIndexPath *)indexPath;
-//{
-//    _currentCollageIndex = indexPath;
-//    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:indexPath];
-//    
-//    [cell setSelected:YES];
-//    
-//    [self.collageView setImage:[UIImage imageNamed:[cell imageName]]];
-//    
-//    [self reloadData];
-//    
-//}
-
 
 
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.collectionView)
-    {
-        return CGSizeMake(150.0, 150.0);
-    }
-    else
-    {
-        FTAssert(NO);
-    }
-    return CGSizeZero;
+    return CGSizeMake(kCellWidth, kCellHeight);
 }
 
 
@@ -179,26 +162,43 @@ static CGPoint kFooterViewHidden;
 
 }
 
-- (void)queryFlickr
-{
-    self.isRequestingOffset = YES;
 
+- (void)queryFlickr:(void (^)())successBlock
+{
+    if (self.isRequestingOffset)
+    {
+        return;
+    }
+    self.isRequestingOffset = YES;
+    
+    __block void(^bSuccessBlock)() = successBlock;
+    
     __weak typeof(self) wself = self;
     
     [[FTFlickrManager sharedInstance] getAllFeeds:^(NSString *errorMessage) {
-        [wself performSelector:@selector(queryFlickr) withObject:nil afterDelay:0.5];
-
+        [self performSelector:@selector(performQuery:) withObject:bSuccessBlock afterDelay:0.5];
+        
     } updateBlock:^(NSString *updateMessage) {
         
     } successBlock:^(NSArray *rows) {
-        
-        [wself.view stopSpinner:1];
 
         [_feeds addObjectsFromArray:rows];
+        
+        [wself reloadData];
+        
+        bSuccessBlock();
         
     }];
     
 }
+
+- (void)performQuery:(void (^)())successBlock;
+{
+    self.isRequestingOffset = NO;
+    
+    [self queryFlickr:successBlock];
+}
+
 
 
 
@@ -233,6 +233,11 @@ static CGPoint kFooterViewHidden;
 
 - (void)dismissFullScreenImage;
 {
+    if (!self.isShowingFullScreenImage)
+    {
+        return;
+    }
+
     __weak typeof(self) wself = self;
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         wself.fullImageContainer.alpha = 0;
@@ -243,7 +248,7 @@ static CGPoint kFooterViewHidden;
 
 - (IBAction)reload:(id)sender;
 {
-    [self queryFlickr];
+//    [self queryFlickr];
 }
 
 
@@ -251,8 +256,9 @@ static CGPoint kFooterViewHidden;
 #pragma mark - UIScroll
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
-    int total = _feeds.count * 20;
-    int h = scrollView.contentOffset.y + scrollView.h - total;
+//    int total = _feeds.count * 20;
+    
+    int h = scrollView.contentOffset.y + scrollView.h - (_feeds.count*4 * kCellHeight + 86 + 58);
     if (h >= 0) {
         [self showFooter];
     }
@@ -262,13 +268,20 @@ static CGPoint kFooterViewHidden;
     
     
     if (self.isShowingFooter && !self.isRequestingOffset) {
-        [self queryFlickr];
+        [self queryFlickr:^{
+            
+        }];
     }
 }
 
 #pragma mark footer
 
 - (void)showFooter {
+    
+    if (self.isShowingFooter)
+    {
+        return;
+    }
     
     __weak typeof(self) wself = self;
     
@@ -282,6 +295,12 @@ static CGPoint kFooterViewHidden;
 
 - (void)hideFooter
 {
+    if (!self.isShowingFooter)
+    {
+        return;
+    }
+    
+
     __weak typeof(self) wself = self;
     
     [UIView animateWithDuration:0.3 animations:^{
