@@ -35,5 +35,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Aviary-API-Key</key>
+	<string>606fe2863169e1fc</string>
 </dict>
 </plist>

@@ -41,11 +41,19 @@
         {
             return nil;
         }
-        _media = [dict objectForKey:@"media"];
-        if (!_media)
+        
+        NSMutableArray* tmpArray = [NSMutableArray array];
+        NSArray *mediaArray = [dict objectForKey:@"media"];
+        FTAssert([mediaArray isKindOfClass:[NSArray class]] && mediaArray.count);
+        for (NSDictionary *dict in mediaArray)
         {
-            return nil;
+            FTAssert([dict isKindOfClass:[NSDictionary class]]);
+            FTMedia *media = [[FTMedia alloc] initWithDictionary:dict];
+            [tmpArray addObject:media];
         }
+        _media = [NSArray arrayWithArray:mediaArray];
+
+        
         _date_taken = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"date_taken"] doubleValue]];
         _description1 = [dict objectForKey:@"description1"];
         if (!_description1)
@@ -94,7 +102,15 @@
     [serialized setObject:self.objectId forKey:@"objectId"];
     [serialized setObject:self.title forKey:@"title"];
     [serialized setObject:self.link forKey:@"link"];
-    [serialized setObject:self.media forKey:@"media"];
+
+    NSMutableArray *mediaArray = [NSMutableArray array];
+    for (FTMedia *m in self.media)
+    {
+        NSDictionary *dict = [m serialize];
+        [mediaArray addObject:dict];
+    }
+    [serialized setObject:mediaArray forKey:@"media"];
+
     [serialized setObject:[NSNumber numberWithDouble:[self.date_taken timeIntervalSince1970]] forKey:@"date_taken"];
     [serialized setObject:self.description1 forKey:@"description1"];
     [serialized setObject:[NSNumber numberWithDouble:[self.published timeIntervalSince1970]] forKey:@"published"];
@@ -109,25 +125,20 @@
 - (NSString *)mediaUrl;
 {
     FTAssert(self.media && [self.media isKindOfClass:[NSArray class]] && self.media.count);
-    
-    NSDictionary *mdict = [self.media firstObject];
-    FTAssert([mdict isKindOfClass:[NSDictionary class]]);
-    NSString *m = [mdict objectForKey:@"m"];
-    FTAssert([m isKindOfClass:[NSString class]]);
-    return [mdict objectForKey:@"m"];
+
+    FTMedia *media = [self.media firstObject];
+    FTAssert([media isKindOfClass:[FTMedia class]]);
+    return [media mediaUrl];
 }
 
 - (NSString *)mediaBigUrl;
 {
     FTAssert(self.media && [self.media isKindOfClass:[NSArray class]] && self.media.count);
     
-    NSDictionary *mdict = [self.media firstObject];
-    FTAssert([mdict isKindOfClass:[NSDictionary class]]);
-    NSString *m = [mdict objectForKey:@"m"];
-    FTAssert([m isKindOfClass:[NSString class]]);
-    // "media": {"m":"http://farm8.staticflickr.com/7321/12304161865_20caed8434_m.jpg"},
-    NSString *z = [m stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
-    return z;
+    FTMedia *media = [self.media firstObject];
+    FTAssert([media isKindOfClass:[FTMedia class]]);
+    return [media mediaBigUrl];
 }
+
 
 @end

@@ -27,6 +27,9 @@
 		985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */; };
 		985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */; };
 		985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */; };
+		988699C118A30370006F1196 /* Button-Aviary.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699BF18A30370006F1196 /* Button-Aviary.png */; };
+		988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699C018A30370006F1196 /* Button-Aviary@2x.png */; };
+		988699CA18A31109006F1196 /* FTParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 988699C718A31109006F1196 /* FTParseManager.m */; };
 		98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
 		98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */; };
 		98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
@@ -87,6 +90,10 @@
 		985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Close-icon@2x.png"; path = "../../assets/Button-Close-icon@2x.png"; sourceTree = "<group>"; };
 		985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Refresh-icon@2x.png"; path = "../../assets/Button-Refresh-icon@2x.png"; sourceTree = "<group>"; };
 		985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon@2x.png"; path = "../../assets/Button-Reload-icon@2x.png"; sourceTree = "<group>"; };
+		988699BF18A30370006F1196 /* Button-Aviary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary.png"; path = "../../assets/Button-Aviary.png"; sourceTree = "<group>"; };
+		988699C018A30370006F1196 /* Button-Aviary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary@2x.png"; path = "../../assets/Button-Aviary@2x.png"; sourceTree = "<group>"; };
+		988699C618A31109006F1196 /* FTParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTParseManager.h; sourceTree = "<group>"; };
+		988699C718A31109006F1196 /* FTParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTParseManager.m; sourceTree = "<group>"; };
 		98BF6C6018A105A000C2EDF7 /* flip-through.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flip-through.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BF6C6318A105A000C2EDF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +176,7 @@
 		985D31A618A12F7300320F87 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
 			);
@@ -219,6 +227,8 @@
 		985D31EF18A1BFEE00320F87 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				988699BF18A30370006F1196 /* Button-Aviary.png */,
+				988699C018A30370006F1196 /* Button-Aviary@2x.png */,
 				985D31F218A1C7DB00320F87 /* button-round-reload-icon@2x.png */,
 				985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */,
 				985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */,
@@ -229,6 +239,15 @@
 				985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */,
 			);
 			name = img;
+			sourceTree = "<group>";
+		};
+		988699C318A31109006F1196 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				988699C618A31109006F1196 /* FTParseManager.h */,
+				988699C718A31109006F1196 /* FTParseManager.m */,
+			);
+			path = Parse;
 			sourceTree = "<group>";
 		};
 		98BF6C5718A105A000C2EDF7 = {
@@ -396,9 +415,11 @@
 				985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */,
 				985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */,
 				985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */,
+				988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */,
 				98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */,
 				985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */,
 				985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */,
+				988699C118A30370006F1196 /* Button-Aviary.png in Resources */,
 				985D31E818A18FC700320F87 /* FTCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +477,7 @@
 				985D31C018A12F7300320F87 /* FTDataManager.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
+				988699CA18A31109006F1196 /* FTParseManager.m in Sources */,
 				985D31D618A1765F00320F87 /* FTFlickrManager.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,

@@ -49,6 +49,19 @@
     return [NSString stringWithFormat:@"%@ %@", self.objectId, self.m];
 }
 
+- (NSString *)mediaUrl;
+{
+    return self.m;
+}
+
+- (NSString *)mediaBigUrl;
+{
+    NSString *z = [self.m stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
+    return z;
+}
+
+
+
 
 - (NSDictionary *)serialize;
 {

@@ -16,6 +16,8 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)serialize;
+- (NSString *)mediaUrl;
+- (NSString *)mediaBigUrl;
 
 @end
 

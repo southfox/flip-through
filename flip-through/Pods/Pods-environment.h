@@ -12,11 +12,41 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 3
 
+// AviarySDK
+#define COCOAPODS_POD_AVAILABLE_AviarySDK
+#define COCOAPODS_VERSION_MAJOR_AviarySDK 3
+#define COCOAPODS_VERSION_MINOR_AviarySDK 3
+#define COCOAPODS_VERSION_PATCH_AviarySDK 11
+
+// Facebook-iOS-SDK
+#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
+#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
+#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 12
+#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
+
+// FlurrySDK
+#define COCOAPODS_POD_AVAILABLE_FlurrySDK
+#define COCOAPODS_VERSION_MAJOR_FlurrySDK 4
+#define COCOAPODS_VERSION_MINOR_FlurrySDK 3
+#define COCOAPODS_VERSION_PATCH_FlurrySDK 1
+
 // ISO8601DateFormatterValueTransformer
 #define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatterValueTransformer
 #define COCOAPODS_VERSION_MAJOR_ISO8601DateFormatterValueTransformer 0
 #define COCOAPODS_VERSION_MINOR_ISO8601DateFormatterValueTransformer 5
 #define COCOAPODS_VERSION_PATCH_ISO8601DateFormatterValueTransformer 0
+
+// Parse-iOS-SDK
+#define COCOAPODS_POD_AVAILABLE_Parse_iOS_SDK
+#define COCOAPODS_VERSION_MAJOR_Parse_iOS_SDK 1
+#define COCOAPODS_VERSION_MINOR_Parse_iOS_SDK 2
+#define COCOAPODS_VERSION_PATCH_Parse_iOS_SDK 18
+
+// Pinterest-iOS
+#define COCOAPODS_POD_AVAILABLE_Pinterest_iOS
+#define COCOAPODS_VERSION_MAJOR_Pinterest_iOS 2
+#define COCOAPODS_VERSION_MINOR_Pinterest_iOS 3
+#define COCOAPODS_VERSION_PATCH_Pinterest_iOS 0
 
 // RKValueTransformers
 #define COCOAPODS_POD_AVAILABLE_RKValueTransformers
@@ -77,4 +107,10 @@
 #define COCOAPODS_VERSION_MAJOR_TransitionKit 2
 #define COCOAPODS_VERSION_MINOR_TransitionKit 0
 #define COCOAPODS_VERSION_PATCH_TransitionKit 0
+
+// google-plus-ios-sdk
+#define COCOAPODS_POD_AVAILABLE_google_plus_ios_sdk
+#define COCOAPODS_VERSION_MAJOR_google_plus_ios_sdk 1
+#define COCOAPODS_VERSION_MINOR_google_plus_ios_sdk 5
+#define COCOAPODS_VERSION_PATCH_google_plus_ios_sdk 0
 

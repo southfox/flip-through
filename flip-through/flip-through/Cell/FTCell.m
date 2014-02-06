@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+AFNetworking.h"
 #import "FTItem.h"
+#import "FTMedia.h"
 
 @interface FTCell()
 @end
@@ -41,17 +42,17 @@
     
 }
 
+
 - (void)awakeFromNib
 {
-    [self makeRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) corner:8.0];
-
+    [self makeRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomRight) corner:16.0];
 }
 
 
 
 - (void)layoutSubviews
 {
-    NSString *imageUrl = [self.item mediaUrl];
+    NSString *imageUrl = [self.item mediaUrl] ;
     NSURL *url = [NSURL URLWithString:imageUrl];
     [self.imageView setImageWithURL:url placeholderImage:kImagePlaceholder];
 }

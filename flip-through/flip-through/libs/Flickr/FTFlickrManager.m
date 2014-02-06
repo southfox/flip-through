@@ -123,7 +123,6 @@
     [itemMapping addAttributeMappingsFromDictionary:@{
                                                              @"title": @"title",
                                                              @"link": @"link",
-                                                             @"media": @"media",
                                                              @"date_taken": @"date_taken",
                                                              @"description": @"description1",
                                                              @"published": @"published",
@@ -133,14 +132,14 @@
                                                              }];
 
 
-//    // media inside feed
-//    RKObjectMapping* mediaMapping = [RKObjectMapping mappingForClass:[FTMedia class]];
-//    [mediaMapping addAttributeMappingsFromDictionary:@{
-//                                                      @"m": @"m"
-//                                                      }];
-//    
-//    [itemMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"media" toKeyPath:@"media" withMapping:mediaMapping]];
-//    
+    // media inside feed
+    RKObjectMapping* mediaMapping = [RKObjectMapping mappingForClass:[FTMedia class]];
+    [mediaMapping addAttributeMappingsFromDictionary:@{
+                                                      @"m": @"m"
+                                                      }];
+    
+    [itemMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"media" toKeyPath:@"media" withMapping:mediaMapping]];
+    
 
     // items
     [objectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items" toKeyPath:@"items" withMapping:itemMapping]];
