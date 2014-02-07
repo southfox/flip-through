@@ -22,14 +22,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    if ([self setupNetwork])
+    if ([self configureNetwork])
     {
-        [self setupFlikrManager];
         // if network
-        // make the calls here
+
+        [self configureFlikrManager];
     }
     
-    [self setupWindow];
+    [self configureWindow];
 
     return YES;
 }
@@ -85,7 +85,7 @@
 }
 
 
-- (BOOL)setupNetwork
+- (BOOL)configureNetwork
 {
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(handleNetworkStatusChangedNotification:) name:kReachabilityChangedNotification object: nil];
     
@@ -108,15 +108,15 @@
 #pragma mark -
 #pragma mark Flickr service
 
-- (void)setupFlikrManager;
+- (void)configureFlikrManager;
 {
-    [[FTFlickrService sharedInstance] setup];
+    [[FTFlickrService sharedInstance] configure];
 }
 
 #pragma mark -
 #pragma mark window
 
-- (void)setupWindow
+- (void)configureWindow
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
