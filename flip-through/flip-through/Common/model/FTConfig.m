@@ -1,9 +1,9 @@
 //
 //  FTConfig.m
-//  SportsChatPlace
+//  flip-through
 //
-//  Created by Javier Fuchs on 8/25/13.
-//  Copyright (c) 2013 Blue Whale Apps. All rights reserved.
+//  Created by Javier Fuchs on 2/7/14.
+//  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
 #import "FTConfig.h"
@@ -28,6 +28,7 @@ NSString* kConfigDownloaded = @"kConfigDownloaded";
 
 - (NSString *)description
 {
+    return @"";
 }
 
 

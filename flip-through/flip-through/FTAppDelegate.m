@@ -9,7 +9,7 @@
 #import "FTAppDelegate.h"
 #import "Reachability+FT.h"
 #import "FTAlert.h"
-#import "FTFlickrManager.h"
+#import "FTFlickrService.h"
 #import "FTViewController.h"
 
 
@@ -110,7 +110,7 @@
 
 - (void)setupFlikrManager;
 {
-    [[FTFlickrManager sharedInstance] setup];
+    [[FTFlickrService sharedInstance] setup];
 }
 
 #pragma mark -

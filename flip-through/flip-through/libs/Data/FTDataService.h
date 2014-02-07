@@ -1,5 +1,5 @@
 //
-//  FTDataManager.h
+//  FTDataService.h
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
@@ -10,9 +10,9 @@
 
 @class FTFeed;
 
-@interface FTDataManager : NSObject
+@interface FTDataService : NSObject
 
-+ (FTDataManager *)sharedInstance;
++ (FTDataService *)sharedInstance;
 
 - (void)setup;
 - (NSArray *)getAllFeeds;

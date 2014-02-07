@@ -1,5 +1,5 @@
 //
-//  FTParseManager.h
+//  FTParseService.h
 //  FT
 //
 //  Created by Javier Fuchs on 2/5/14.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const FTParseManagerQueryDidFinishNotification;
+extern NSString *const FTParseServiceQueryDidFinishNotification;
 
 @class FTConfig;
 
-@interface FTParseManager : NSObject 
+@interface FTParseService : NSObject 
 
 @property (nonatomic, strong, readonly) FTConfig *config;
 @property (nonatomic) BOOL isUpdating;
@@ -23,7 +23,7 @@ extern NSString *const FTParseManagerQueryDidFinishNotification;
 - (NSString *)username;
 - (BOOL)isAuthenticated;
 
-+ (FTParseManager *)sharedInstance;
++ (FTParseService *)sharedInstance;
 
 - (void)querysWithErrorBlock:(void (^)(NSString *errorMessage))errorBlock finishBlock:(void (^)())finishBlock;
 

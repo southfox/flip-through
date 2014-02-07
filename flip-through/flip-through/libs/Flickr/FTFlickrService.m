@@ -1,28 +1,28 @@
 //
-//  FTFlickrManager.m
+//  FTFlickrService.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTFlickrManager.h"
+#import "FTFlickrService.h"
 #import "FTFeed.h"
 #import "FTItem.h"
 #import "FTMedia.h"
 #import <RestKit/RestKit.h>
 
-@interface FTFlickrManager()
+@interface FTFlickrService()
 @end
 
 
-@implementation FTFlickrManager
+@implementation FTFlickrService
 {
 }
 
-+ (FTFlickrManager *)sharedInstance
++ (FTFlickrService *)sharedInstance
 {
-    static FTFlickrManager *_sharedInstance = nil;
+    static FTFlickrService *_sharedInstance = nil;
     
     @synchronized (self)
     {

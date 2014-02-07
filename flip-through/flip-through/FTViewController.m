@@ -8,7 +8,7 @@
 
 #import "FTViewController.h"
 #import "FTCell.h"
-#import "FTFlickrManager.h"
+#import "FTFlickrService.h"
 #import "FTAlert.h"
 #import "FTFeed.h"
 #import "FTItem.h"
@@ -177,7 +177,7 @@ static CGPoint kFooterViewHidden;
     
     __weak typeof(self) wself = self;
     
-    [[FTFlickrManager sharedInstance] getAllFeeds:^(NSString *errorMessage) {
+    [[FTFlickrService sharedInstance] getAllFeeds:^(NSString *errorMessage) {
         [self performSelector:@selector(performQuery:) withObject:bSuccessBlock afterDelay:0.5];
         
     } updateBlock:^(NSString *updateMessage) {

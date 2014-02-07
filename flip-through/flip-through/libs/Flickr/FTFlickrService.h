@@ -1,5 +1,5 @@
 //
-//  FTFlickrManager.h
+//  FTFlickrService.h
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
@@ -10,9 +10,9 @@
 
 @class FTFeed;
 
-@interface FTFlickrManager : NSObject
+@interface FTFlickrService : NSObject
 
-+ (FTFlickrManager *)sharedInstance;
++ (FTFlickrService *)sharedInstance;
 
 - (void)setup;
 

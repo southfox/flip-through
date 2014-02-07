@@ -1,17 +1,17 @@
 //
-//  FTParseManager.m
+//  FTParseService.m
 //  FT
 //
 //  Created by Javier Fuchs on 2/5/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTParseManager.h"
+#import "FTParseService.h"
 #import <Parse/Parse.h>
 #import "FTConfig.h"
 #import "NSArray+FT.h"
 #import "NSError+FT.h"
-#import "FTAnaliticsManager.h"
+#import "FTAnalyticsService.h"
 #import "FTAlert.h"
 #import "FTAppDelegate.h"
 
@@ -19,9 +19,9 @@
 #define kParseClientKey         @"3YmEB3qI7P2sT9zB8obSiyFFnntQ2yobEegI1iE5"
 
 
-NSString *const FTParseManagerQueryDidFinishNotification = @"FTParseManagerQueryDidFinishNotification";
+NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQueryDidFinishNotification";
 
-@interface FTParseManager ()
+@interface FTParseService ()
 
 @property (nonatomic, copy) void (^notFoundBlock)(NSString* errorMessage);
 @property (nonatomic, copy) void (^updateBlock)(NSString* updateMessage);
@@ -31,13 +31,13 @@ NSString *const FTParseManagerQueryDidFinishNotification = @"FTParseManagerQuery
 
 @end
 
-@implementation FTParseManager
+@implementation FTParseService
 {
 }
 
-+ (FTParseManager *)sharedInstance
++ (FTParseService *)sharedInstance
 {
-    static FTParseManager *_sharedInstance = nil;
+    static FTParseService *_sharedInstance = nil;
     
     @synchronized (self)
     {
@@ -81,11 +81,11 @@ NSString *const FTParseManagerQueryDidFinishNotification = @"FTParseManagerQuery
         
         if ([user username])
         {
-            [FTAnaliticsManager logEvent:@"PARSE" withParameters:@{@"action" : @"start", @"user" : [user username]}];
+            [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"start", @"user" : [user username]}];
         }
         else
         {
-            [FTAnaliticsManager logEvent:@"PARSE" withParameters:@{@"action" : @"install", @"user" : [self username]}];
+            [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"install", @"user" : [self username]}];
         }
         
         wself.isInitialized = YES;
@@ -170,7 +170,7 @@ NSString *const FTParseManagerQueryDidFinishNotification = @"FTParseManagerQuery
     {
         return;
     }
-    [FTAnaliticsManager logEvent:@"PARSE" withParameters:@{@"action" : @"update"}];
+    [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"update"}];
     
     __block void(^bfinishBlock)() = finishBlock;
 
@@ -187,7 +187,7 @@ NSString *const FTParseManagerQueryDidFinishNotification = @"FTParseManagerQuery
         {
             bfinishBlock();
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:FTParseManagerQueryDidFinishNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FTParseServiceQueryDidFinishNotification object:nil];
         
     }];
 }

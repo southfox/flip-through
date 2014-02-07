@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9856E2C118A5093900999247 /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2BE18A5093900999247 /* FTConfig.m */; };
+		9856E2C218A5093900999247 /* FTObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTObject.m */; };
+		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
+		9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */; };
 		985D319B18A11FC200320F87 /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319318A11FC200320F87 /* FTAlert.m */; };
 		985D31A318A1200600320F87 /* NSArray+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319E18A1200600320F87 /* NSArray+FT.m */; };
 		985D31A418A1200600320F87 /* Reachability+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A018A1200600320F87 /* Reachability+FT.m */; };
 		985D31A518A1200600320F87 /* UIView+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A218A1200600320F87 /* UIView+FT.m */; };
-		985D31C018A12F7300320F87 /* FTDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTDataManager.m */; };
+		985D31C018A12F7300320F87 /* FTDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTDataService.m */; };
 		985D31CD18A171E200320F87 /* FTFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C718A171E200320F87 /* FTFeed.m */; };
 		985D31CE18A171E200320F87 /* FTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C918A171E200320F87 /* FTItem.m */; };
-		985D31D618A1765F00320F87 /* FTFlickrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrManager.m */; };
+		985D31D618A1765F00320F87 /* FTFlickrService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrService.m */; };
 		985D31D918A178ED00320F87 /* FTMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D818A178ED00320F87 /* FTMedia.m */; };
 		985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31DA18A18E7800320F87 /* FTViewController.xib */; };
 		985D31E718A18FC700320F87 /* FTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31E218A18FC700320F87 /* FTCell.m */; };
@@ -29,7 +33,7 @@
 		985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */; };
 		988699C118A30370006F1196 /* Button-Aviary.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699BF18A30370006F1196 /* Button-Aviary.png */; };
 		988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699C018A30370006F1196 /* Button-Aviary@2x.png */; };
-		988699CA18A31109006F1196 /* FTParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 988699C718A31109006F1196 /* FTParseManager.m */; };
+		988699CA18A31109006F1196 /* FTParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 988699C718A31109006F1196 /* FTParseService.m */; };
 		98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
 		98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */; };
 		98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
@@ -59,6 +63,14 @@
 /* Begin PBXFileReference section */
 		5FEC53D510FE4B89BB8A40C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8693B0B317B34869AB6A20EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		9856E2BD18A5093900999247 /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
+		9856E2BE18A5093900999247 /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
+		9856E2BF18A5093900999247 /* FTObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTObject.h; sourceTree = "<group>"; };
+		9856E2C018A5093900999247 /* FTObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTObject.m; sourceTree = "<group>"; };
+		9856E2C318A50B9900999247 /* NSError+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FT.h"; sourceTree = "<group>"; };
+		9856E2C418A50B9900999247 /* NSError+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FT.m"; sourceTree = "<group>"; };
+		9856E2C918A50CDD00999247 /* FTAnalyticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnalyticsService.h; sourceTree = "<group>"; };
+		9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnalyticsService.m; sourceTree = "<group>"; };
 		985D319218A11FC200320F87 /* FTAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAlert.h; sourceTree = "<group>"; };
 		985D319318A11FC200320F87 /* FTAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAlert.m; sourceTree = "<group>"; };
 		985D319418A11FC200320F87 /* FTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCommon.h; sourceTree = "<group>"; };
@@ -68,14 +80,14 @@
 		985D31A018A1200600320F87 /* Reachability+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reachability+FT.m"; sourceTree = "<group>"; };
 		985D31A118A1200600320F87 /* UIView+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FT.h"; sourceTree = "<group>"; };
 		985D31A218A1200600320F87 /* UIView+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FT.m"; sourceTree = "<group>"; };
-		985D31B718A12F7300320F87 /* FTDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDataManager.h; sourceTree = "<group>"; };
-		985D31B818A12F7300320F87 /* FTDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDataManager.m; sourceTree = "<group>"; };
+		985D31B718A12F7300320F87 /* FTDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDataService.h; sourceTree = "<group>"; };
+		985D31B818A12F7300320F87 /* FTDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDataService.m; sourceTree = "<group>"; };
 		985D31C618A171E200320F87 /* FTFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFeed.h; sourceTree = "<group>"; };
 		985D31C718A171E200320F87 /* FTFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFeed.m; sourceTree = "<group>"; };
 		985D31C818A171E200320F87 /* FTItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTItem.h; sourceTree = "<group>"; };
 		985D31C918A171E200320F87 /* FTItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTItem.m; sourceTree = "<group>"; };
-		985D31D218A1765F00320F87 /* FTFlickrManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFlickrManager.h; sourceTree = "<group>"; };
-		985D31D318A1765F00320F87 /* FTFlickrManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFlickrManager.m; sourceTree = "<group>"; };
+		985D31D218A1765F00320F87 /* FTFlickrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTFlickrService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		985D31D318A1765F00320F87 /* FTFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTFlickrService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		985D31D718A178ED00320F87 /* FTMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTMedia.h; sourceTree = "<group>"; };
 		985D31D818A178ED00320F87 /* FTMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTMedia.m; sourceTree = "<group>"; };
 		985D31DB18A18E7800320F87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTViewController.xib; sourceTree = "<group>"; };
@@ -92,8 +104,8 @@
 		985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon@2x.png"; path = "../../assets/Button-Reload-icon@2x.png"; sourceTree = "<group>"; };
 		988699BF18A30370006F1196 /* Button-Aviary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary.png"; path = "../../assets/Button-Aviary.png"; sourceTree = "<group>"; };
 		988699C018A30370006F1196 /* Button-Aviary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary@2x.png"; path = "../../assets/Button-Aviary@2x.png"; sourceTree = "<group>"; };
-		988699C618A31109006F1196 /* FTParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTParseManager.h; sourceTree = "<group>"; };
-		988699C718A31109006F1196 /* FTParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTParseManager.m; sourceTree = "<group>"; };
+		988699C618A31109006F1196 /* FTParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTParseService.h; sourceTree = "<group>"; };
+		988699C718A31109006F1196 /* FTParseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTParseService.m; sourceTree = "<group>"; };
 		98BF6C6018A105A000C2EDF7 /* flip-through.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flip-through.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BF6C6318A105A000C2EDF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,7 +115,7 @@
 		98BF6C6F18A105A000C2EDF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		98BF6C7118A105A000C2EDF7 /* flip-through-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flip-through-Prefix.pch"; sourceTree = "<group>"; };
 		98BF6C7218A105A000C2EDF7 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
-		98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
+		98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		98BF6C7818A105A000C2EDF7 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
 		98BF6C7918A105A000C2EDF7 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
 		98BF6C7B18A105A000C2EDF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -139,6 +151,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9856E2C618A50CDD00999247 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2C918A50CDD00999247 /* FTAnalyticsService.h */,
+				9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */,
+			);
+			name = Analytics;
+			path = Analitics;
+			sourceTree = "<group>";
+		};
 		985D317C18A11D3200320F87 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +185,8 @@
 		985D319C18A1200600320F87 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2C318A50B9900999247 /* NSError+FT.h */,
+				9856E2C418A50B9900999247 /* NSError+FT.m */,
 				985D319D18A1200600320F87 /* NSArray+FT.h */,
 				985D319E18A1200600320F87 /* NSArray+FT.m */,
 				985D319F18A1200600320F87 /* Reachability+FT.h */,
@@ -176,6 +200,7 @@
 		985D31A618A12F7300320F87 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2C618A50CDD00999247 /* Analytics */,
 				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
@@ -186,8 +211,8 @@
 		985D31B418A12F7300320F87 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				985D31B718A12F7300320F87 /* FTDataManager.h */,
-				985D31B818A12F7300320F87 /* FTDataManager.m */,
+				985D31B718A12F7300320F87 /* FTDataService.h */,
+				985D31B818A12F7300320F87 /* FTDataService.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,6 +220,10 @@
 		985D31C218A171E200320F87 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2BD18A5093900999247 /* FTConfig.h */,
+				9856E2BE18A5093900999247 /* FTConfig.m */,
+				9856E2BF18A5093900999247 /* FTObject.h */,
+				9856E2C018A5093900999247 /* FTObject.m */,
 				985D31C618A171E200320F87 /* FTFeed.h */,
 				985D31C718A171E200320F87 /* FTFeed.m */,
 				985D31C818A171E200320F87 /* FTItem.h */,
@@ -208,8 +237,8 @@
 		985D31CF18A1765F00320F87 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				985D31D218A1765F00320F87 /* FTFlickrManager.h */,
-				985D31D318A1765F00320F87 /* FTFlickrManager.m */,
+				985D31D218A1765F00320F87 /* FTFlickrService.h */,
+				985D31D318A1765F00320F87 /* FTFlickrService.m */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -244,8 +273,8 @@
 		988699C318A31109006F1196 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				988699C618A31109006F1196 /* FTParseManager.h */,
-				988699C718A31109006F1196 /* FTParseManager.m */,
+				988699C618A31109006F1196 /* FTParseService.h */,
+				988699C718A31109006F1196 /* FTParseService.m */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -474,11 +503,15 @@
 			files = (
 				985D31E718A18FC700320F87 /* FTCell.m in Sources */,
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
-				985D31C018A12F7300320F87 /* FTDataManager.m in Sources */,
+				9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */,
+				985D31C018A12F7300320F87 /* FTDataService.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
-				988699CA18A31109006F1196 /* FTParseManager.m in Sources */,
-				985D31D618A1765F00320F87 /* FTFlickrManager.m in Sources */,
+				988699CA18A31109006F1196 /* FTParseService.m in Sources */,
+				9856E2C218A5093900999247 /* FTObject.m in Sources */,
+				985D31D618A1765F00320F87 /* FTFlickrService.m in Sources */,
+				9856E2C118A5093900999247 /* FTConfig.m in Sources */,
+				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
@@ -539,7 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -569,7 +602,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -579,7 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -603,6 +636,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -613,13 +647,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8693B0B317B34869AB6A20EC /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flip-through/flip-through-Prefix.pch";
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -628,13 +665,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8693B0B317B34869AB6A20EC /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flip-through/flip-through-Prefix.pch";
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
