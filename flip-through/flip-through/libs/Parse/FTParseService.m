@@ -11,7 +11,6 @@
 #import "FTConfig.h"
 #import "NSArray+FT.h"
 #import "NSError+FT.h"
-#import "FTAnalyticsService.h"
 #import "FTAlert.h"
 #import "FTAppDelegate.h"
 
@@ -22,12 +21,6 @@
 NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQueryDidFinishNotification";
 
 @interface FTParseService ()
-
-@property (nonatomic, copy) void (^notFoundBlock)(NSString* errorMessage);
-@property (nonatomic, copy) void (^updateBlock)(NSString* updateMessage);
-@property (nonatomic, copy) void (^successBlock)(NSArray* rows);
-@property (nonatomic, copy) void (^finishBlock)();
-
 
 @end
 
@@ -58,14 +51,13 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
     self = [super init];
     if (self) {
         [Parse setApplicationId:kParseApplicationId clientKey:kParseClientKey];
-        
     }
     return self;
 }
 
 
 
-- (void)startWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
+- (void)configureWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
 {
     __weak typeof(self) wself = self;
 
@@ -78,18 +70,7 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
         [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
         
         [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        
-        if ([user username])
-        {
-            [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"start", @"user" : [user username]}];
-        }
-        else
-        {
-            [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"install", @"user" : [self username]}];
-        }
-        
-        wself.isInitialized = YES;
-        
+
         [wself querysWithErrorBlock:^(NSString *errorMessage) 
         {
             wself.isUpdating = NO;
@@ -119,6 +100,7 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
 {
     [PFAnalytics trackEvent:event];
 }
+
 
 + (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
 {
@@ -169,15 +151,12 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
     if (self.isUpdating)
     {
         return;
-    }
-    [FTAnalyticsService logEvent:@"PARSE" withParameters:@{@"action" : @"update"}];
-    
+    }    
     __block void(^bfinishBlock)() = finishBlock;
 
     self.isUpdating = YES;
     __weak typeof(self) wself = self;
     
-    // get VIDEO
     [wself queryConfig:errorBlock successBlock:^{
         FTLog(@"Finished with Config");
 

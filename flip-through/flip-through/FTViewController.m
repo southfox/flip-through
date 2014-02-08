@@ -8,7 +8,7 @@
 
 #import "FTViewController.h"
 #import "FTCell.h"
-#import "FTFlickrService.h"
+#import "FTFlickrPublicFeedService.h"
 #import "FTAlert.h"
 #import "FTFeed.h"
 #import "FTItem.h"
@@ -22,19 +22,18 @@ static CGPoint kFooterViewHidden;
 #define kCellHeight 150
 
 @interface FTViewController ()
+@property (nonatomic, strong) NSMutableArray *feeds;
 @property (nonatomic) BOOL isShowingFullScreenImage;
 @property (nonatomic) BOOL isShowingFooter;
 @property (nonatomic) BOOL isRequestingOffset;
 @end
 
 @implementation FTViewController
-{
-    NSMutableArray *_feeds;
-}
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:NSStringFromClass([FTViewController class]) bundle:nil];
     if (self) {
         _feeds = [NSMutableArray array];
     }
@@ -46,7 +45,7 @@ static CGPoint kFooterViewHidden;
 {
     [super viewDidLoad];
     
-    [self.view makeRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) corner:8.0];
+    [self.view makeRoundingCorners:8.0];
     
     self.fullImageContainer.alpha = 0;
 
@@ -90,24 +89,23 @@ static CGPoint kFooterViewHidden;
 
 - (void)registerCells
 {
-    UINib *cellNib = [UINib nibWithNibName:@"FTCell" bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FTCell"];
-    [self.collectionView registerClass:[FTCell class] forCellWithReuseIdentifier:@"FTCell"];
+    UINib *cellNib = [UINib nibWithNibName:[FTCell identifier] bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:[FTCell identifier]];
+    [self.collectionView registerClass:[FTCell class] forCellWithReuseIdentifier:[FTCell identifier]];
 }
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _feeds.count;
+    return self.feeds.count;
 }
 
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    FTAssert(section < [_feeds count]);
-    FTFeed *feed = _feeds[section];
+    FTAssert(section < [self.feeds count]);
+    FTFeed *feed = self.feeds[section];
     FTAssert([feed isKindOfClass:[FTFeed class]]);
-
     return feed.items.count;
 }
 
@@ -116,7 +114,7 @@ static CGPoint kFooterViewHidden;
 {
     FTCell *cell = (FTCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FTCell class]) forIndexPath:indexPath];
     
-    FTFeed* feed = _feeds[indexPath.section];
+    FTFeed* feed = self.feeds[indexPath.section];
     FTAssert([feed isKindOfClass:[FTFeed class]]);
     
     FTItem* item = feed.items[indexPath.row];
@@ -177,14 +175,12 @@ static CGPoint kFooterViewHidden;
     
     __weak typeof(self) wself = self;
     
-    [[FTFlickrService sharedInstance] getAllFeeds:^(NSString *errorMessage) {
-        [self performSelector:@selector(performQuery:) withObject:bSuccessBlock afterDelay:0.5];
-        
-    } updateBlock:^(NSString *updateMessage) {
+    [[FTFlickrPublicFeedService sharedInstance] getAllFeeds:^(NSString *errorMessage) {
+        [wself performSelector:@selector(performQuery:) withObject:bSuccessBlock afterDelay:0.5];
         
     } successBlock:^(NSArray *rows) {
 
-        [_feeds addObjectsFromArray:rows];
+        [wself.feeds addObjectsFromArray:rows];
         
         [wself reloadData];
         
@@ -258,8 +254,9 @@ static CGPoint kFooterViewHidden;
 #pragma mark - UIScroll
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
-    int h = scrollView.contentOffset.y + scrollView.h - (_feeds.count*4 * kCellHeight + 144);
-    if (h >= 0) {
+    int h = scrollView.contentOffset.y + scrollView.h - (self.feeds.count * 4 * kCellHeight + 144);
+    if (h >= 0)
+    {
         [self showFooter];
     }
 }
@@ -267,7 +264,8 @@ static CGPoint kFooterViewHidden;
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
     
-    if (self.isShowingFooter && !self.isRequestingOffset) {
+    if (self.isShowingFooter && !self.isRequestingOffset)
+    {
         [self queryFlickr:^{
             
         }];
@@ -316,7 +314,7 @@ static CGPoint kFooterViewHidden;
 {
     // update the scroll view to the last page
     CGPoint co = self.collectionView.contentOffset;
-    co.y += kCellHeight*2;
+    co.y += kCellHeight * 2;
     CGRect bounds = self.collectionView.bounds;
     bounds.origin = co;
     [self.collectionView scrollRectToVisible:bounds animated:YES];

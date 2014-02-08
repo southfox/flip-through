@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTObject.h"
+#import "FTPFObject.h"
 
 @class PFObject;
 
-@interface FTConfig : FTObject
+@interface FTConfig : FTPFObject
 
 @property (nonatomic, copy) NSString *flickrFeedUrl;
 @property (nonatomic, copy) NSString *flickrFeedPath;
@@ -18,7 +18,10 @@
 @property (nonatomic, copy) NSString *aviaryAPIKey;
 @property (nonatomic, copy) NSString *facebookAppId;
 @property (nonatomic, copy) NSString *flurryAppKey;
+@property (nonatomic, copy) NSNumber *flurryEnabled;
 
 - (id)initWithPFObject:(PFObject *)object;
+
+- (BOOL)isFlurryEnabled;
 
 @end

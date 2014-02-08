@@ -10,11 +10,13 @@
 
 @interface FTAnalyticsService : NSObject 
 
-+ (void)start;
++ (FTAnalyticsService *)sharedInstance;
 
-+ (void)logEvent:(NSString*)event;
-+ (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
-+ (void)logError:(NSString *)errorID message:(NSString *)message exception:(NSException *)exception;
-+ (void)logError:(NSString *)errorID message:(NSString *)message error:(NSError *)error;
+- (void)configure;
+
+- (void)logEvent:(NSString*)event;
+- (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
+- (void)logError:(NSString *)errorID message:(NSString *)message exception:(NSException *)exception;
+- (void)logError:(NSString *)errorID message:(NSString *)message error:(NSError *)error;
 
 @end

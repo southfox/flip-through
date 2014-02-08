@@ -12,7 +12,9 @@
 #import "Flurry.h"
 #import <CoreLocation/CoreLocation.h>
 #import "FTParseService.h"
+#import "FTConfig.h"
 
+#define kEventDeviceInfo @"device_info"
 
 static BOOL configured = NO;
 
@@ -21,11 +23,37 @@ static BOOL configured = NO;
 
 @implementation FTAnalyticsService
 
-#define kApiAccessCode     @"8DY75H6GGH2FWKH9WNQR"
 
-+ (void)start;
++ (FTAnalyticsService *)sharedInstance
+{
+    static FTAnalyticsService *_sharedInstance = nil;
+    
+    @synchronized (self)
+    {
+        if (_sharedInstance == nil)
+        {
+            _sharedInstance = [[self alloc] init];
+        }
+    }
+    
+    FTAssert(_sharedInstance != nil);
+    
+    return _sharedInstance;
+}
+
+
+
+- (void)configure;
 {
 
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    if (![config isFlurryEnabled])
+    {
+        return;
+    }
+    
 	if (!configured)
     {
         // set YES for debug INFO.
@@ -48,13 +76,13 @@ static BOOL configured = NO;
         {
             [Flurry setUserID:username];
         }
-
-        // start Session
-        [Flurry startSession:kApiAccessCode];
-
-        [self logEvent:@"StartApp"];
         
-        if ([self userDefaultFirstTimeLogEvent:@"DeviceInfo"])
+        // start Session
+        [Flurry startSession:[config flurryAppKey]];
+
+        [self startSession];
+        
+        if ([self userDefaultFirstTimeLogEvent:kEventDeviceInfo])
         {
             [self sendDeviceInformation];
         }
@@ -62,6 +90,9 @@ static BOOL configured = NO;
         
     }
 }
+
+
+
 
 //+ (void)sendLocation
 //{
@@ -83,11 +114,10 @@ static BOOL configured = NO;
  * c - carrier name. String
  *
  * The v_maj, v_min and v_rev are numbers that correspond to versioning your app [v_maj].[v_min].[v_rev].
- * So for MoGa, it would probably be version 1.1.0, or something similar (because you've added some new content, not just bugfixes)
  */
 
 
-+ (void)sendDeviceInformation 
+- (void)sendDeviceInformation
 {
     NSMutableDictionary* param = [[NSMutableDictionary alloc] init];
     [param setObject:@"0" forKey:@"v_maj"];
@@ -109,11 +139,11 @@ static BOOL configured = NO;
     }
     
     FTLog(@"deviceinfo dict = %@", param);
-	[self logEvent:@"DeviceInfo" withParameters:param];
+	[self logEvent:kEventDeviceInfo withParameters:param];
 }
 
 
-+ (void)getVersionInParameters:(NSMutableDictionary* )param 
+- (void)getVersionInParameters:(NSMutableDictionary* )param
 {
     __block NSMutableDictionary* bparam = param;
     NSString *bundleVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -141,14 +171,30 @@ static BOOL configured = NO;
 
 
 // custom event
-+ (void)logEvent:(NSString*)event;
+- (void)logEvent:(NSString*)event;
 {
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    if (![config isFlurryEnabled])
+    {
+        return;
+    }
+
     [Flurry logEvent:event];
     [FTParseService logEvent:event];
 }
 
-+ (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
+- (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
 {
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    if (![config isFlurryEnabled])
+    {
+        return;
+    }
+
 #ifdef DEBUG
     for (NSString *key in dict.allKeys)
     {
@@ -162,8 +208,16 @@ static BOOL configured = NO;
 }
 
 
-+ (void)logError:(NSString *)errorID message:(NSString *)message exception:(NSException *)exception;
+- (void)logError:(NSString *)errorID message:(NSString *)message exception:(NSException *)exception;
 {
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    if (![config isFlurryEnabled])
+    {
+        return;
+    }
+
 	[Flurry logError:errorID message:message exception:exception];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:errorID forKey:@"errorID"];
@@ -180,8 +234,16 @@ static BOOL configured = NO;
     
 }
 
-+ (void)logError:(NSString *)errorID message:(NSString *)message error:(NSError *)error;
+- (void)logError:(NSString *)errorID message:(NSString *)message error:(NSError *)error;
 {
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    if (![config isFlurryEnabled])
+    {
+        return;
+    }
+
 	[Flurry logError:errorID message:message error:error];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:errorID forKey:@"errorID"];
@@ -199,7 +261,7 @@ static BOOL configured = NO;
 }
 
 
-+ (BOOL)userDefaultFirstTimeLogEvent:(NSString*)event {
+- (BOOL)userDefaultFirstTimeLogEvent:(NSString*)event {
 	NSString* key = [NSString stringWithFormat:@"current-analitics-first-time-%@", event];
 	NSNumber* value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
 	if (value == nil) {
@@ -210,5 +272,15 @@ static BOOL configured = NO;
 	}
 	return NO;
 }
+
+
+#pragma mark -
+#pragma mark events
+
+- (void)startSession;
+{
+    [self logEvent:@"start_application"];
+}
+
 
 @end

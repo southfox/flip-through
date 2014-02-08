@@ -1,5 +1,5 @@
 //
-//  FTObject.h
+//  FTPFObject.h
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/7/14.
@@ -10,7 +10,7 @@
 
 @class PFObject;
 
-@interface FTObject : NSObject
+@interface FTPFObject : NSObject
 
 @property (nonatomic, copy) NSString *objectId;
 @property (nonatomic, copy) NSDate *createdAt;

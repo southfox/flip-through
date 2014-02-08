@@ -1,16 +1,16 @@
 //
-//  FTObject.m
+//  FTPFObject.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/7/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTObject.h"
+#import "FTPFObject.h"
 
 #import <Parse/Parse.h>
 
-@implementation FTObject
+@implementation FTPFObject
 
 - (id)initWithPFObject:(PFObject *)object
 {

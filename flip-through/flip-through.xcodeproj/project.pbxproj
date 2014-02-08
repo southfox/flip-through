@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9856E2C118A5093900999247 /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2BE18A5093900999247 /* FTConfig.m */; };
-		9856E2C218A5093900999247 /* FTObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTObject.m */; };
+		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
 		9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */; };
 		985D319B18A11FC200320F87 /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319318A11FC200320F87 /* FTAlert.m */; };
@@ -18,7 +18,7 @@
 		985D31C018A12F7300320F87 /* FTDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTDataService.m */; };
 		985D31CD18A171E200320F87 /* FTFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C718A171E200320F87 /* FTFeed.m */; };
 		985D31CE18A171E200320F87 /* FTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C918A171E200320F87 /* FTItem.m */; };
-		985D31D618A1765F00320F87 /* FTFlickrService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrService.m */; };
+		985D31D618A1765F00320F87 /* FTFlickrPublicFeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */; };
 		985D31D918A178ED00320F87 /* FTMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D818A178ED00320F87 /* FTMedia.m */; };
 		985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31DA18A18E7800320F87 /* FTViewController.xib */; };
 		985D31E718A18FC700320F87 /* FTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31E218A18FC700320F87 /* FTCell.m */; };
@@ -65,8 +65,8 @@
 		8693B0B317B34869AB6A20EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		9856E2BD18A5093900999247 /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
 		9856E2BE18A5093900999247 /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
-		9856E2BF18A5093900999247 /* FTObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTObject.h; sourceTree = "<group>"; };
-		9856E2C018A5093900999247 /* FTObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTObject.m; sourceTree = "<group>"; };
+		9856E2BF18A5093900999247 /* FTPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPFObject.h; sourceTree = "<group>"; };
+		9856E2C018A5093900999247 /* FTPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPFObject.m; sourceTree = "<group>"; };
 		9856E2C318A50B9900999247 /* NSError+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FT.h"; sourceTree = "<group>"; };
 		9856E2C418A50B9900999247 /* NSError+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FT.m"; sourceTree = "<group>"; };
 		9856E2C918A50CDD00999247 /* FTAnalyticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnalyticsService.h; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 		985D31C718A171E200320F87 /* FTFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFeed.m; sourceTree = "<group>"; };
 		985D31C818A171E200320F87 /* FTItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTItem.h; sourceTree = "<group>"; };
 		985D31C918A171E200320F87 /* FTItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTItem.m; sourceTree = "<group>"; };
-		985D31D218A1765F00320F87 /* FTFlickrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTFlickrService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		985D31D318A1765F00320F87 /* FTFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTFlickrService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		985D31D218A1765F00320F87 /* FTFlickrPublicFeedService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTFlickrPublicFeedService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTFlickrPublicFeedService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		985D31D718A178ED00320F87 /* FTMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTMedia.h; sourceTree = "<group>"; };
 		985D31D818A178ED00320F87 /* FTMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTMedia.m; sourceTree = "<group>"; };
 		985D31DB18A18E7800320F87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTViewController.xib; sourceTree = "<group>"; };
@@ -220,10 +220,10 @@
 		985D31C218A171E200320F87 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2BF18A5093900999247 /* FTPFObject.h */,
+				9856E2C018A5093900999247 /* FTPFObject.m */,
 				9856E2BD18A5093900999247 /* FTConfig.h */,
 				9856E2BE18A5093900999247 /* FTConfig.m */,
-				9856E2BF18A5093900999247 /* FTObject.h */,
-				9856E2C018A5093900999247 /* FTObject.m */,
 				985D31C618A171E200320F87 /* FTFeed.h */,
 				985D31C718A171E200320F87 /* FTFeed.m */,
 				985D31C818A171E200320F87 /* FTItem.h */,
@@ -237,8 +237,8 @@
 		985D31CF18A1765F00320F87 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				985D31D218A1765F00320F87 /* FTFlickrService.h */,
-				985D31D318A1765F00320F87 /* FTFlickrService.m */,
+				985D31D218A1765F00320F87 /* FTFlickrPublicFeedService.h */,
+				985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -508,8 +508,8 @@
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
 				988699CA18A31109006F1196 /* FTParseService.m in Sources */,
-				9856E2C218A5093900999247 /* FTObject.m in Sources */,
-				985D31D618A1765F00320F87 /* FTFlickrService.m in Sources */,
+				9856E2C218A5093900999247 /* FTPFObject.m in Sources */,
+				985D31D618A1765F00320F87 /* FTFlickrPublicFeedService.m in Sources */,
 				9856E2C118A5093900999247 /* FTConfig.m in Sources */,
 				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,

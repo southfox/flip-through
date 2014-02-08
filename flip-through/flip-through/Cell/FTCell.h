@@ -15,8 +15,9 @@
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong, readonly) FTItem *item;
 
-
 - (void)configureWithItem:(FTItem *)item;
+
++ (NSString *)identifier;
 
 
 @end

@@ -14,20 +14,19 @@ extern NSString *const FTParseServiceQueryDidFinishNotification;
 
 @interface FTParseService : NSObject 
 
++ (FTParseService *)sharedInstance;
+
 @property (nonatomic, strong, readonly) FTConfig *config;
 @property (nonatomic) BOOL isUpdating;
-@property (nonatomic) BOOL isInitialized;
-@property (nonatomic) BOOL isLoggedIn;
 
 - (NSString *)email;
 - (NSString *)username;
 - (BOOL)isAuthenticated;
 
-+ (FTParseService *)sharedInstance;
 
 - (void)querysWithErrorBlock:(void (^)(NSString *errorMessage))errorBlock finishBlock:(void (^)())finishBlock;
 
-- (void)startWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
+- (void)configureWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
 
 + (void)logEvent:(NSString*)event;
 + (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;

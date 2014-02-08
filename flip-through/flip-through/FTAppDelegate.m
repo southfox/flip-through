@@ -9,9 +9,12 @@
 #import "FTAppDelegate.h"
 #import "Reachability+FT.h"
 #import "FTAlert.h"
-#import "FTFlickrService.h"
 #import "FTViewController.h"
 
+// services
+#import "FTFlickrPublicFeedService.h"
+#import "FTParseService.h"
+#import "FTAnalyticsService.h"
 
 @implementation FTAppDelegate
 {
@@ -24,9 +27,20 @@
 
     if ([self configureNetwork])
     {
-        // if network
+        __weak typeof(self) wself = self;
 
-        [self configureFlikrManager];
+        [self configureParseServiceWithOptions:launchOptions finishBlock:^{
+            // Once finished, configure the other services
+
+            [wself configureAnalyticsService];
+
+            // flickr feed
+            [wself configureFlikrPublicFeedService];
+            
+            // configure data
+            [wself configureDataService];
+
+        }];
     }
     
     [self configureWindow];
@@ -106,12 +120,43 @@
 }
 
 #pragma mark -
+#pragma mark Parse service
+
+- (void)configureParseServiceWithOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
+{
+    [[FTParseService sharedInstance] configureWithLaunchOptions:launchOptions finishBlock:finishBlock];
+}
+
+
+
+#pragma mark -
 #pragma mark Flickr service
 
-- (void)configureFlikrManager;
+- (void)configureFlikrPublicFeedService;
 {
-    [[FTFlickrService sharedInstance] configure];
+    [[FTFlickrPublicFeedService sharedInstance] configure];
 }
+
+
+#pragma mark -
+#pragma mark Analytics service
+
+- (void)configureAnalyticsService;
+{
+    NSString *username = [[FTParseService sharedInstance] username];
+    if (username)
+    {
+        [[FTAnalyticsService sharedInstance] logEvent:@"PARSE" withParameters:@{@"action" : @"start", @"user" : username}];
+    }
+    else
+    {
+        [[FTAnalyticsService sharedInstance] logEvent:@"PARSE" withParameters:@{@"action" : @"install", @"user" : username}];
+    }
+
+    [[FTAnalyticsService sharedInstance] configure];
+}
+
+
 
 #pragma mark -
 #pragma mark window
@@ -120,12 +165,19 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    FTViewController *viewController = [[FTViewController alloc] initWithNibName:@"FTViewController" bundle:nil];
+    FTViewController *viewController = [[FTViewController alloc] init];
     self.window.rootViewController = viewController;
     
     [self.window makeKeyAndVisible];
 }
 
 
+#pragma mark -
+#pragma mark data
+
+- (void)configureDataService;
+{
+    
+}
 
 @end

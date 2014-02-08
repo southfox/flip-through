@@ -66,4 +66,9 @@
 }
 
 
++ (NSString *)identifier;
+{
+    return NSStringFromClass([FTCell class]);
+}
+
 @end

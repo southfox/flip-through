@@ -1,28 +1,31 @@
 //
-//  FTFlickrService.m
+//  FTFlickrPublicFeedService.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTFlickrService.h"
+#import "FTFlickrPublicFeedService.h"
 #import "FTFeed.h"
 #import "FTItem.h"
 #import "FTMedia.h"
 #import <RestKit/RestKit.h>
 
-@interface FTFlickrService()
+#import "FTParseService.h"
+#import "FTConfig.h"
+
+@interface FTFlickrPublicFeedService()
 @end
 
 
-@implementation FTFlickrService
+@implementation FTFlickrPublicFeedService
 {
 }
 
-+ (FTFlickrService *)sharedInstance
++ (FTFlickrPublicFeedService *)sharedInstance
 {
-    static FTFlickrService *_sharedInstance = nil;
+    static FTFlickrPublicFeedService *_sharedInstance = nil;
     
     @synchronized (self)
     {
@@ -41,7 +44,10 @@
 
 - (void)configure
 {
-    NSURL *baseURL = [NSURL URLWithString:@"http://api.flickr.com/services/feeds"];
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config);
+    
+    NSURL *baseURL = [NSURL URLWithString:[config flickrFeedUrl]];
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:baseURL];
     [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"application/x-javascript"];
 
@@ -52,8 +58,7 @@
 
 
 
-- (void)getAllFeeds:(void (^)(NSString* errorMessage))notFoundBlock
-        updateBlock:(void (^)(NSString* updateMessage))updateBlock
+- (void)getAllFeeds:(void (^)(NSString* errorMessage))errorBlock
        successBlock:(void (^)(NSArray* rows))successBlock;
 {
     NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -62,23 +67,26 @@
                                  nil];
 
     __block RKObjectManager * objectManager = [RKObjectManager sharedManager];
+    __block void(^bErrorBlock)(NSString* errorMessage) = errorBlock;
+    __block void(^bSuccessBlock)(NSArray* rows) = bSuccessBlock;
     
-    updateBlock(@"Searching...");
-    [objectManager getObjectsAtPath:@"photos_public.gne" parameters:queryParams success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    FTConfig *config = [[FTParseService sharedInstance] config];
+
+    [objectManager getObjectsAtPath:[config flickrFeedPath] parameters:queryParams success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         FTLog(@"We object mapped the response with the following result: %@", mappingResult);
         
         if (mappingResult.count)
         {
-            successBlock(mappingResult.array);
+            bSuccessBlock(mappingResult.array);
         }
         else
         {
-            notFoundBlock(@"No found any results.");
+            bErrorBlock(@"No found any results.");
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         FTLog(@"Error: %@", error);
         
-        notFoundBlock(error.localizedDescription);
+        bErrorBlock(error.localizedDescription);
     }];
     
 }
