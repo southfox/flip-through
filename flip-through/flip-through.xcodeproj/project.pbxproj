@@ -11,6 +11,7 @@
 		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
 		9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */; };
+		9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2D018A98CC200999247 /* FTAviaryManager.m */; };
 		985D319B18A11FC200320F87 /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319318A11FC200320F87 /* FTAlert.m */; };
 		985D31A318A1200600320F87 /* NSArray+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319E18A1200600320F87 /* NSArray+FT.m */; };
 		985D31A418A1200600320F87 /* Reachability+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A018A1200600320F87 /* Reachability+FT.m */; };
@@ -71,6 +72,8 @@
 		9856E2C418A50B9900999247 /* NSError+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FT.m"; sourceTree = "<group>"; };
 		9856E2C918A50CDD00999247 /* FTAnalyticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnalyticsService.h; sourceTree = "<group>"; };
 		9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnalyticsService.m; sourceTree = "<group>"; };
+		9856E2CF18A98CC200999247 /* FTAviaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAviaryManager.h; sourceTree = "<group>"; };
+		9856E2D018A98CC200999247 /* FTAviaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAviaryManager.m; sourceTree = "<group>"; };
 		985D319218A11FC200320F87 /* FTAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAlert.h; sourceTree = "<group>"; };
 		985D319318A11FC200320F87 /* FTAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAlert.m; sourceTree = "<group>"; };
 		985D319418A11FC200320F87 /* FTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCommon.h; sourceTree = "<group>"; };
@@ -161,6 +164,15 @@
 			path = Analitics;
 			sourceTree = "<group>";
 		};
+		9856E2CE18A98CC200999247 /* Aviary */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2CF18A98CC200999247 /* FTAviaryManager.h */,
+				9856E2D018A98CC200999247 /* FTAviaryManager.m */,
+			);
+			path = Aviary;
+			sourceTree = "<group>";
+		};
 		985D317C18A11D3200320F87 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +212,7 @@
 		985D31A618A12F7300320F87 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E2C618A50CDD00999247 /* Analytics */,
 				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
@@ -513,6 +526,7 @@
 				9856E2C118A5093900999247 /* FTConfig.m in Sources */,
 				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
+				9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
 				985D31CD18A171E200320F87 /* FTFeed.m in Sources */,

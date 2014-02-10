@@ -90,7 +90,7 @@ static CGPoint kFooterViewHidden;
 
     [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
 
-    if ([FTParseService sharedInstance].isUpdating)
+    if ([FTParseService sharedInstance].isUpdating || ![[FTParseService sharedInstance] config])
     {
         [self.collectionView startSpinnerWithString:@"Updating..." tag:1];
     }
@@ -339,7 +339,10 @@ static CGPoint kFooterViewHidden;
 
 - (void)parseQueryDidFinished:(NSNotification *)notification
 {
-    [[FTAnalyticsService sharedInstance] logEvent:@"NOTIF" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"notification": notification.name}];
+    if (notification)
+    {
+        [[FTAnalyticsService sharedInstance] logEvent:@"NOTIF" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"notification": notification.name}];
+    }
 
     __weak typeof(self) wself = self;
     [self queryFlickr:^{

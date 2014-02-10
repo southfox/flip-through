@@ -160,12 +160,12 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
     [wself queryConfig:errorBlock successBlock:^{
         FTLog(@"Finished with Config");
 
-        wself.isUpdating = NO;
         
         if (bfinishBlock)
         {
             bfinishBlock();
         }
+        wself.isUpdating = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:FTParseServiceQueryDidFinishNotification object:nil];
         
     }];
