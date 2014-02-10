@@ -198,8 +198,15 @@ static NSMutableDictionary *RKRegisteredResponseMapperOperationDataSourceClasses
     __block NSError *underlyingError = nil;
     __block id object;
     dispatch_sync(RKResponseMapperSerializationQueue(), ^{
-        object = [RKMIMETypeSerialization objectFromData:self.data MIMEType:MIMEType error:&underlyingError];
-    });    
+        if (self.data)
+        {
+            object = [RKMIMETypeSerialization objectFromData:self.data MIMEType:MIMEType error:&underlyingError];
+        }
+        else
+        {
+            object = nil;
+        }
+    });
     if (! object) {
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         [userInfo setValue:[NSString stringWithFormat:@"Loaded an unprocessable response (%ld) with content type '%@'", (long) self.response.statusCode, MIMEType]

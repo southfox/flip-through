@@ -15,7 +15,12 @@
 #import "FTParseService.h"
 #import "FTConfig.h"
 
+#import "FTAnalyticsService.h"
+
+#import "Reachability+FT.h"
+
 @interface FTFlickrPublicFeedService()
+@property (nonatomic) BOOL isQueryInProcess;
 @end
 
 
@@ -61,6 +66,23 @@
 - (void)getAllFeeds:(void (^)(NSString* errorMessage))errorBlock
        successBlock:(void (^)(NSArray* rows))successBlock;
 {
+    if (self.isQueryInProcess)
+    {
+        errorBlock(@"another query process");
+        return;
+    }
+    
+    if (![Reachability isNetworkAvailable])
+    {
+        [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"status": @"no_network"}];
+        errorBlock(@"no internet");
+        return;
+    }
+    
+    self.isQueryInProcess = YES;
+    
+    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
+
     NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"json", @"format",
                                  @"1", @"nojsoncallback",
@@ -68,10 +90,13 @@
 
     __block RKObjectManager * objectManager = [RKObjectManager sharedManager];
     __block void(^bErrorBlock)(NSString* errorMessage) = errorBlock;
-    __block void(^bSuccessBlock)(NSArray* rows) = bSuccessBlock;
+    __block void(^bSuccessBlock)(NSArray* rows) = successBlock;
     
-    FTConfig *config = [[FTParseService sharedInstance] config];
+    __weak typeof(self) wself = self;
 
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config);
+    
     [objectManager getObjectsAtPath:[config flickrFeedPath] parameters:queryParams success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         FTLog(@"We object mapped the response with the following result: %@", mappingResult);
         
@@ -81,12 +106,18 @@
         }
         else
         {
-            bErrorBlock(@"No found any results.");
+            bErrorBlock(@"no found any results.");
         }
+        wself.isQueryInProcess = NO;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         FTLog(@"Error: %@", error);
         
+        [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([wself class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"error": [error description]}];
+
+        
         bErrorBlock(error.localizedDescription);
+        wself.isQueryInProcess = NO;
+
     }];
     
 }

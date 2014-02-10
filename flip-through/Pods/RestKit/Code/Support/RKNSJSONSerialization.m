@@ -24,6 +24,10 @@
 
 + (id)objectFromData:(NSData *)data error:(NSError **)error
 {
+    if (!data)
+    {
+        NSLog(@"Oops! is null");
+    }
     id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
     if (!object)
     {

@@ -26,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+
     if ([self configureNetwork])
     {
         __weak typeof(self) wself = self;
@@ -117,6 +118,8 @@
 
 - (void)showNoNetworkAlert;
 {
+    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"status": @"no_network"}];
+
     [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
 }
 
@@ -135,6 +138,7 @@
 
 - (void)configureFlikrPublicFeedService;
 {
+    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"service" : @"flicr"}];
     [[FTFlickrPublicFeedService sharedInstance] configure];
 }
 
@@ -165,6 +169,8 @@
 
 - (void)configureWindow
 {
+    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : @"window"}];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     FTViewController *viewController = [[FTViewController alloc] init];
@@ -179,7 +185,8 @@
 
 - (void)configureDataService;
 {
-    
+    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : @"data"}];
+
 }
 
 

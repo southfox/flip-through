@@ -185,7 +185,10 @@ static BOOL configured = NO;
 - (void)logEvent:(NSString*)event;
 {
     FTConfig *config = [[FTParseService sharedInstance] config];
-    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    if (!config)
+    {
+        return;
+    }
 
     if ([config isFlurryEnabled])
     {
@@ -232,7 +235,10 @@ static BOOL configured = NO;
     [self logEvent:event];
 
     FTConfig *config = [[FTParseService sharedInstance] config];
-    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    if (!config)
+    {
+        return;
+    }
     
 #ifdef DEBUG
     for (NSString *key in dict.allKeys)

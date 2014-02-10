@@ -104,7 +104,7 @@ NSString *const FTParseServiceQueryDidFinishNotification = @"FTParseServiceQuery
 
 + (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
 {
-    // PFAnalytics receives only 4 parameters
+    // PFAnalytics receives only 4 parameters, and should be strings
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     int i = 0;
     for (NSString *key in dict.allKeys)

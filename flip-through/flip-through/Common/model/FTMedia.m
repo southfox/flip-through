@@ -56,8 +56,8 @@
 
 - (NSString *)mediaBigUrl;
 {
-    NSString *z = [self.m stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_z.jpg"];
-    return z;
+    NSString *b = [self.m stringByReplacingOccurrencesOfString:@"_m.jpg" withString:@"_b.jpg"];
+    return b;
 }
 
 

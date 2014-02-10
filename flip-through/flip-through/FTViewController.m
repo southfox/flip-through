@@ -14,6 +14,9 @@
 #import "FTItem.h"
 #import "UIView+FT.h"
 #import "UIImageView+AFNetworking.h"
+#import "FTParseService.h"
+#import "Reachability+FT.h"
+#import "FTAnalyticsService.h"
 
 static CGPoint kFooterViewVisible;
 static CGPoint kFooterViewHidden;
@@ -60,15 +63,18 @@ static CGPoint kFooterViewHidden;
     [self hideFooter];
     self.view.userInteractionEnabled = YES;
 
-    [self.view startSpinnerWithString:@"Updating..." tag:1];
+    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
 
-    __weak typeof(self) wself = self;
-    [self queryFlickr:^{
-        [wself.view stopSpinner:1];
-        [wself queryFlickr:^{
-            FTLog(@"finished the 2 first querys");
-        }];
-    }];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(parseQueryDidFinished:)
+                                                 name:FTParseServiceQueryDidFinishNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +87,17 @@ static CGPoint kFooterViewHidden;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
+
+    if ([FTParseService sharedInstance].isUpdating)
+    {
+        [self.collectionView startSpinnerWithString:@"Updating..." tag:1];
+    }
+    else
+    {
+        [self parseQueryDidFinished:nil];
+    }
 
 }
 
@@ -215,7 +232,7 @@ static CGPoint kFooterViewHidden;
         return;
     }
     
-    NSString *imageUrl = [item mediaUrl];
+    NSString *imageUrl = [item mediaBigUrl];
     NSURL *url = [NSURL URLWithString:imageUrl];
     
     __weak typeof(self) wself = self;
@@ -319,6 +336,29 @@ static CGPoint kFooterViewHidden;
     bounds.origin = co;
     [self.collectionView scrollRectToVisible:bounds animated:YES];
 }
+
+- (void)parseQueryDidFinished:(NSNotification *)notification
+{
+    [[FTAnalyticsService sharedInstance] logEvent:@"NOTIF" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"notification": notification.name}];
+
+    __weak typeof(self) wself = self;
+    [self queryFlickr:^{
+        [wself.collectionView stopSpinner:1];
+        [wself queryFlickr:^{
+            FTLog(@"finished the 2 first querys");
+        }];
+    }];
+
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if ([Reachability isNetworkAvailable] && [[FTParseService sharedInstance] isUpdating])
+    {
+        [self.collectionView startSpinnerWithString:@"Updating..." tag:1];
+    }
+}
+
 
 
 @end
