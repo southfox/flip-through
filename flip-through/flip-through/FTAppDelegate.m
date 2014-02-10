@@ -16,6 +16,7 @@
 #import "FTParseService.h"
 #import "FTAnalyticsService.h"
 
+
 @implementation FTAppDelegate
 {
     Reachability *_reachability;
@@ -28,7 +29,7 @@
     if ([self configureNetwork])
     {
         __weak typeof(self) wself = self;
-
+        
         [self configureParseServiceWithOptions:launchOptions finishBlock:^{
             // Once finished, configure the other services
 
@@ -143,17 +144,18 @@
 
 - (void)configureAnalyticsService;
 {
+    [[FTAnalyticsService sharedInstance] configure];
+
     NSString *username = [[FTParseService sharedInstance] username];
     if (username)
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"PARSE" withParameters:@{@"action" : @"start", @"user" : username}];
+        [[FTAnalyticsService sharedInstance] logEvent:@"START" withParameters:@{@"action" : @"start", @"user" : username}];
     }
     else
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"PARSE" withParameters:@{@"action" : @"install", @"user" : username}];
+        [[FTAnalyticsService sharedInstance] logEvent:@"START" withParameters:@{@"action" : @"install", @"user" : username}];
     }
-
-    [[FTAnalyticsService sharedInstance] configure];
+    
 }
 
 
@@ -179,5 +181,6 @@
 {
     
 }
+
 
 @end

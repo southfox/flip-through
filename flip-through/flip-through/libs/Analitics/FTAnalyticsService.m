@@ -9,10 +9,15 @@
 #import "FTAnalyticsService.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-#import "Flurry.h"
 #import <CoreLocation/CoreLocation.h>
 #import "FTParseService.h"
 #import "FTConfig.h"
+#import "Flurry.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
+#import "Reachability+FT.h"
+#import "Crittercism.h"
 
 #define kEventDeviceInfo @"device_info"
 
@@ -22,7 +27,6 @@ static BOOL configured = NO;
 @end
 
 @implementation FTAnalyticsService
-
 
 + (FTAnalyticsService *)sharedInstance
 {
@@ -49,43 +53,50 @@ static BOOL configured = NO;
     FTConfig *config = [[FTParseService sharedInstance] config];
     FTAssert(config && [config isKindOfClass:[FTConfig class]]);
     
-    if (![config isFlurryEnabled])
-    {
-        return;
-    }
-    
 	if (!configured)
     {
-        // set YES for debug INFO.
-#ifdef DEBUG
-        [Flurry setDebugLogEnabled:YES];
-        [Flurry setShowErrorInLogEnabled:YES];
-#else
-        [Flurry setDebugLogEnabled:NO];
-        [Flurry setShowErrorInLogEnabled:NO];
-#endif
-        
-        // Override the app version
-        NSString *bundleVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-        [Flurry setAppVersion:bundleVersion];
-        
-        // user's id in your system
-        NSString *username = [[FTParseService sharedInstance] username];
-        
-        if (username)
+        if ([config isFlurryEnabled])
         {
-            [Flurry setUserID:username];
+            // set YES for debug INFO.
+    #ifdef DEBUG
+            [Flurry setDebugLogEnabled:YES];
+            [Flurry setShowErrorInLogEnabled:YES];
+    #else
+            [Flurry setDebugLogEnabled:NO];
+            [Flurry setShowErrorInLogEnabled:NO];
+    #endif
+            
+            // Override the app version
+            NSString *bundleVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+            [Flurry setAppVersion:bundleVersion];
+            
+            // user's id in your system
+            NSString *username = [[FTParseService sharedInstance] username];
+            
+            if (username)
+            {
+                [Flurry setUserID:username];
+            }
+            
+            // start Session
+            [Flurry startSession:[config flurryAppKey]];
         }
         
-        // start Session
-        [Flurry startSession:[config flurryAppKey]];
-
+        if ([config isGoogleAnalyticsEnabled])
+        {
+            [self configureGoogleAnalytics];
+        }
+        
+        if ([config isCrittercismEnabled])
+        {
+            [Crittercism enableWithAppID:[config crittercismAppId]];
+        }
+        
+        
         [self startSession];
         
-        if ([self userDefaultFirstTimeLogEvent:kEventDeviceInfo])
-        {
-            [self sendDeviceInformation];
-        }
+        [self sendDeviceInformation];
+        
         configured = YES;
         
     }
@@ -175,36 +186,86 @@ static BOOL configured = NO;
 {
     FTConfig *config = [[FTParseService sharedInstance] config];
     FTAssert(config && [config isKindOfClass:[FTConfig class]]);
-    
-    if (![config isFlurryEnabled])
+
+    if ([config isFlurryEnabled])
     {
-        return;
+        [Flurry logEvent:event];
+    }
+    
+    if ([config isParseLogEnabled])
+    {
+        [FTParseService logEvent:event];
+    }
+    
+    if ([config isGoogleAnalyticsEnabled])
+    {
+        id<GAITracker> gaiTracker = [[GAI sharedInstance] defaultTracker];
+
+        [gaiTracker set:kGAIScreenName value:event];
+
+        [gaiTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"    // Event category (required)
+                                                              action:event              // Event action (required)
+                                                               label:nil                // Event label
+                                                               value:nil] build]];      // Event value
+        
+    }
+    
+    if ([config isCrittercismEnabled])
+    {
+        
+        NSString *breadcrumb = [NSString stringWithFormat:@"<event %@>", event];
+        NSString* username = [[FTParseService sharedInstance] username];
+        
+        if (username && [username length])
+        {
+            [Crittercism setUsername:username];
+        }
+
+        [Crittercism leaveBreadcrumb:breadcrumb];
+
     }
 
-    [Flurry logEvent:event];
-    [FTParseService logEvent:event];
 }
 
 - (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
 {
+    [self logEvent:event];
+
     FTConfig *config = [[FTParseService sharedInstance] config];
     FTAssert(config && [config isKindOfClass:[FTConfig class]]);
     
-    if (![config isFlurryEnabled])
-    {
-        return;
-    }
-
 #ifdef DEBUG
     for (NSString *key in dict.allKeys)
     {
         id value = dict[key];
         FTAssert(value && [value isKindOfClass:[NSString class]]);
     }
-
+    
 #endif
-    [FTParseService logEvent:event withParameters:dict];
-	[Flurry logEvent:event withParameters:dict];
+
+    if ([config isFlurryEnabled])
+    {
+        [Flurry logEvent:event withParameters:dict];
+    }
+    
+    if ([config isParseLogEnabled])
+    {
+        [FTParseService logEvent:event withParameters:dict];
+    }
+    
+    if ([config isGoogleAnalyticsEnabled])
+    {
+        id<GAITracker> gaiTracker = [[GAI sharedInstance] defaultTracker];
+        
+        for (NSString *key in dict.allKeys)
+        {
+            [gaiTracker set:key value:dict[key]];
+        }
+
+        [gaiTracker set:kGAIScreenName value:event];
+
+        [gaiTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
 }
 
 
@@ -213,56 +274,60 @@ static BOOL configured = NO;
     FTConfig *config = [[FTParseService sharedInstance] config];
     FTAssert(config && [config isKindOfClass:[FTConfig class]]);
     
-    if (![config isFlurryEnabled])
+    if ([config isFlurryEnabled])
     {
-        return;
+        [Flurry logError:errorID message:message exception:exception];
     }
-
-	[Flurry logError:errorID message:message exception:exception];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:errorID forKey:@"errorID"];
-    [dict setObject:message forKey:@"message"];
-    if (exception.reason)
+    
+    if ([config isParseLogEnabled])
     {
-        [dict setObject:exception.reason forKey:@"reason"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:errorID forKey:@"errorID"];
+        [dict setObject:message forKey:@"message"];
+        if (exception.reason)
+        {
+            [dict setObject:exception.reason forKey:@"reason"];
+        }
+        if (exception.name)
+        {
+            [dict setObject:exception.name forKey:@"name"];
+        }
+        [FTParseService logEvent:@"Exception" withParameters:dict];
     }
-    if (exception.name)
-    {
-        [dict setObject:exception.name forKey:@"name"];
-    }
-    [FTParseService logEvent:@"Exception" withParameters:dict];
     
 }
+
 
 - (void)logError:(NSString *)errorID message:(NSString *)message error:(NSError *)error;
 {
     FTConfig *config = [[FTParseService sharedInstance] config];
     FTAssert(config && [config isKindOfClass:[FTConfig class]]);
     
-    if (![config isFlurryEnabled])
+    if ([config isFlurryEnabled])
     {
-        return;
+        [Flurry logError:errorID message:message error:error];
     }
-
-	[Flurry logError:errorID message:message error:error];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:errorID forKey:@"errorID"];
-    [dict setObject:message forKey:@"message"];
-    if (error.code)
+    
+    if ([config isParseLogEnabled])
     {
-        [dict setObject:[NSString stringWithFormat:@"%d", (int)error.code] forKey:@"code"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:errorID forKey:@"errorID"];
+        [dict setObject:message forKey:@"message"];
+        if (error.code)
+        {
+            [dict setObject:[NSString stringWithFormat:@"%d", (int)error.code] forKey:@"code"];
+        }
+        if (error.localizedDescription)
+        {
+            [dict setObject:error.localizedDescription forKey:@"localizedDescription"];
+        }
+        [FTParseService logEvent:@"Error" withParameters:dict];
     }
-    if (error.localizedDescription)
-    {
-        [dict setObject:error.localizedDescription forKey:@"localizedDescription"];
-    }
-    [FTParseService logEvent:@"Error" withParameters:dict];
-
 }
 
 
 - (BOOL)userDefaultFirstTimeLogEvent:(NSString*)event {
-	NSString* key = [NSString stringWithFormat:@"current-analitics-first-time-%@", event];
+	NSString* key = [NSString stringWithFormat:@"current-analytics-first-time-%@", event];
 	NSNumber* value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
 	if (value == nil) {
 		// simply save the key in the standard user defaults with any value
@@ -280,6 +345,29 @@ static BOOL configured = NO;
 - (void)startSession;
 {
     [self logEvent:@"start_application"];
+}
+
+
+#pragma mark -
+#pragma mark google analytics
+
+#pragma mark -
+#pragma mark Google Analitics
+
+- (void)configureGoogleAnalytics;
+{
+    FTConfig *config = [[FTParseService sharedInstance] config];
+    FTAssert(config && [config isKindOfClass:[FTConfig class]]);
+    
+    // Initialize Google Analytics with a 120-second dispatch interval. There is a
+    // tradeoff between battery usage and timely dispatch.
+    [GAI sharedInstance].dispatchInterval = 120;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+#ifdef DEBUG
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+#endif
+
+    [[GAI sharedInstance] trackerWithTrackingId:[config googleAnalyticsTrackingId]];
 }
 
 

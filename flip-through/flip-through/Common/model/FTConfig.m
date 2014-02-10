@@ -34,6 +34,16 @@
         FTAssert(_flurryAppKey);
         _flurryEnabled = [object objectForKey:@"flurryEnabled"];
         FTAssert(_flurryEnabled);
+        _googleAnalyticsEnabled = [object objectForKey:@"googleAnalyticsEnabled"];
+        FTAssert(_googleAnalyticsEnabled);
+        _googleAnalyticsTrackingId = [object objectForKey:@"googleAnalyticsTrackingId"];
+        FTAssert(_googleAnalyticsTrackingId);
+        _parseLogEnabled = [object objectForKey:@"parseLogEnabled"];
+        FTAssert(_parseLogEnabled);
+        _crittercismEnabled = [object objectForKey:@"crittercismEnabled"];
+        FTAssert(_crittercismEnabled);
+        _crittercismAppId = [object objectForKey:@"crittercismAppId"];
+        FTAssert(_crittercismAppId);
     }
     return self;
 }
@@ -41,7 +51,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled];
+    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled, self.googleAnalyticsEnabled, self.googleAnalyticsTrackingId, self.parseLogEnabled, self.crittercismEnabled, self.crittercismAppId];
 }
 
 
@@ -50,5 +60,20 @@
     return [self.flurryEnabled boolValue];
 }
 
+- (BOOL)isGoogleAnalyticsEnabled;
+{
+    return [self.googleAnalyticsEnabled boolValue];
+}
 
+- (BOOL)isParseLogEnabled;
+{
+    return [self.parseLogEnabled boolValue];
+}
+
+
+- (BOOL)isCrittercismEnabled;
+{
+    return [self.crittercismEnabled boolValue];
+}
 @end
+

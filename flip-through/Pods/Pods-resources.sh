@@ -40,6 +40,7 @@ install_resource()
   esac
 }
 install_resource "AviarySDK/3.3.11-master-basic/AviarySDK/Resources/AviarySDKResources.bundle"
+install_resource "CrittercismSDK/CrittercismSDK/dsym_upload.sh"
 install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
 install_resource "Pinterest-iOS/PinItSDKiOS/Pinterest.embeddedframework/Pinterest.framework/Versions/A/Resources/PinterestSDKResources.bundle"
 install_resource "google-plus-ios-sdk/google-plus-ios-sdk-1.5.0/GooglePlus.bundle"

@@ -18,6 +18,12 @@
 #define COCOAPODS_VERSION_MINOR_AviarySDK 3
 #define COCOAPODS_VERSION_PATCH_AviarySDK 11
 
+// CrittercismSDK
+#define COCOAPODS_POD_AVAILABLE_CrittercismSDK
+#define COCOAPODS_VERSION_MAJOR_CrittercismSDK 4
+#define COCOAPODS_VERSION_MINOR_CrittercismSDK 3
+#define COCOAPODS_VERSION_PATCH_CrittercismSDK 1
+
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
@@ -28,7 +34,13 @@
 #define COCOAPODS_POD_AVAILABLE_FlurrySDK
 #define COCOAPODS_VERSION_MAJOR_FlurrySDK 4
 #define COCOAPODS_VERSION_MINOR_FlurrySDK 3
-#define COCOAPODS_VERSION_PATCH_FlurrySDK 1
+#define COCOAPODS_VERSION_PATCH_FlurrySDK 2
+
+// GoogleAnalytics-iOS-SDK
+#define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
+#define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 0
+#define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 3
 
 // ISO8601DateFormatterValueTransformer
 #define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatterValueTransformer

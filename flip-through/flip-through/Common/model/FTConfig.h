@@ -19,9 +19,20 @@
 @property (nonatomic, copy) NSString *facebookAppId;
 @property (nonatomic, copy) NSString *flurryAppKey;
 @property (nonatomic, copy) NSNumber *flurryEnabled;
+@property (nonatomic, copy) NSNumber *googleAnalyticsEnabled;
+@property (nonatomic, copy) NSString *googleAnalyticsTrackingId;
+@property (nonatomic, copy) NSNumber *parseLogEnabled;
+@property (nonatomic, copy) NSNumber *crittercismEnabled;
+@property (nonatomic, copy) NSString *crittercismAppId;
 
 - (id)initWithPFObject:(PFObject *)object;
 
 - (BOOL)isFlurryEnabled;
+
+- (BOOL)isParseLogEnabled;
+
+- (BOOL)isGoogleAnalyticsEnabled;
+
+- (BOOL)isCrittercismEnabled;
 
 @end
