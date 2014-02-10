@@ -331,9 +331,12 @@ static CGPoint kFooterViewHidden;
 {
     // update the scroll view to the last page
     CGPoint co = self.collectionView.contentOffset;
-    co.y += kCellHeight * 2;
-    CGRect bounds = self.collectionView.bounds;
+    co.y += kCellHeight * 1.5;
+    CGSize s = self.collectionView.s;
+    s.width -= 20;
+    CGRect bounds;
     bounds.origin = co;
+    bounds.size = s;
     [self.collectionView scrollRectToVisible:bounds animated:YES];
 }
 
