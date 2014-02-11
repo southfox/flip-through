@@ -351,18 +351,28 @@ static CGPoint kFooterViewHidden;
     if (row > 0 && row < 20)
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:row inSection:self.currentIndexPath.section];
+        FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+        [self updateFullScreenOfCurrentIndexPath];
+
     }
     else if (section < [self.collectionView numberOfSections])
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+        FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+        [self updateFullScreenOfCurrentIndexPath];
+
     }
     else
     {
-        [self showFooter];
+        __weak typeof(self) wself = self;
+        __block int bsection = section;
+        [self showFooter:^{
+            wself.currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:bsection];
+            FTLog(@"%d,%d", wself.currentIndexPath.section, wself.currentIndexPath.row);
+            [wself updateFullScreenOfCurrentIndexPath];
+        }];
     }
-    FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
 
-    [self updateFullScreenOfCurrentIndexPath];
 }
 
 
@@ -379,24 +389,16 @@ static CGPoint kFooterViewHidden;
     int h = scrollView.contentOffset.y + scrollView.h - (self.feeds.count * 4 * kCellHeight + 144);
     if (h >= 0)
     {
-        [self showFooter];
+        [self showFooter:^{
+            
+        }];
     }
 }
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-    
-//    if (self.isShowingFooter && !self.isRequestingOffset)
-//    {
-//        [self queryFlickr:^{
-//            
-//        }];
-//    }
-}
 
 #pragma mark footer
 
-- (void)showFooter {
+- (void)showFooter:(void (^)())completion {
     
     if (self.isShowingFooter)
     {
@@ -405,13 +407,15 @@ static CGPoint kFooterViewHidden;
     
     __weak typeof(self) wself = self;
     
+    __block void(^bCompletion)() = completion;
+
     self.isShowingFooter = YES;
     [UIView animateWithDuration:0.3 animations:^{
         wself.footerView.center = kFooterViewHidden;
         wself.footerView.center = kFooterViewVisible;
     } completion:^(BOOL finished) {
         [wself queryFlickr:^{
-            
+            bCompletion();
         }];
     }];
 }
