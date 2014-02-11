@@ -239,14 +239,14 @@ static CGPoint kFooterViewHidden;
     
 }
 
-- (void)updateFullScreenOfCurrentIndexPath;
+- (void)updateFullScreenOfCurrentIndexPath:(UIViewAnimationOptions)option;
 {
     FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
     
     FTItem *item = cell.item;
     FTAssert([item isKindOfClass:[FTItem class]]);
     
-    [self updateFullScreenItem:cell.item];
+    [self updateFullScreenItem:cell.item option:option];
 }
 
 
@@ -282,7 +282,7 @@ static CGPoint kFooterViewHidden;
     }];
 }
 
-- (void)updateFullScreenItem:(FTItem *)item;
+- (void)updateFullScreenItem:(FTItem *)item option:(UIViewAnimationOptions)option;
 {
     if (!self.isShowingFullScreenImage)
     {
@@ -293,13 +293,17 @@ static CGPoint kFooterViewHidden;
     NSURL *url = [NSURL URLWithString:imageUrl];
     
     __weak typeof(self) wself = self;
-    self.fullImage.alpha = 0;
-    [self.fullImage setImageWithURL:url placeholderImage:kImagePlaceholder];
     
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        wself.fullImage.alpha = 1;
-    } completion:^(BOOL finished) {
-    }];
+    [UIView transitionWithView:self.fullImage
+                      duration:0.5
+                       options:option
+                    animations:^{
+                        [wself.fullImage setImageWithURL:url placeholderImage:kImagePlaceholder];
+                        
+                    }
+                    completion:^(BOOL finished) {
+                    }];
+
 }
 
 - (void)dismissFullScreenImage;
@@ -329,14 +333,17 @@ static CGPoint kFooterViewHidden;
     if (row >= 0)
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:row inSection:self.currentIndexPath.section];
+        FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+        
+        [self updateFullScreenOfCurrentIndexPath:UIViewAnimationOptionTransitionCurlDown];
     }
     else if (section >= 0)
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+        FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+        
+        [self updateFullScreenOfCurrentIndexPath:UIViewAnimationOptionTransitionCurlDown];
     }
-    FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
-
-    [self updateFullScreenOfCurrentIndexPath];
 }
 
 
@@ -352,14 +359,14 @@ static CGPoint kFooterViewHidden;
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:row inSection:self.currentIndexPath.section];
         FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
-        [self updateFullScreenOfCurrentIndexPath];
+        [self updateFullScreenOfCurrentIndexPath:UIViewAnimationOptionTransitionCurlUp];
 
     }
     else if (section < [self.collectionView numberOfSections])
     {
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
         FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
-        [self updateFullScreenOfCurrentIndexPath];
+        [self updateFullScreenOfCurrentIndexPath:UIViewAnimationOptionTransitionCurlUp];
 
     }
     else
@@ -369,7 +376,7 @@ static CGPoint kFooterViewHidden;
         [self showFooter:^{
             wself.currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:bsection];
             FTLog(@"%d,%d", wself.currentIndexPath.section, wself.currentIndexPath.row);
-            [wself updateFullScreenOfCurrentIndexPath];
+            [wself updateFullScreenOfCurrentIndexPath:UIViewAnimationOptionTransitionCurlUp];
         }];
     }
 
