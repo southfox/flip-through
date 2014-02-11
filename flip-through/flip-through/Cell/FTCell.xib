@@ -14,16 +14,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view alpha="0.5" contentMode="scaleToFill" id="txZ-4a-P4h" userLabel="View - container">
+                        <rect key="frame" x="1" y="1" width="148" height="148"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="tEd-4c-93U">
                         <rect key="frame" x="3" y="3" width="144" height="144"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <size key="customSize" width="-764" height="-209"/>
             <connections>
+                <outlet property="containerView" destination="txZ-4a-P4h" id="Xs7-22-QR0"/>
                 <outlet property="imageView" destination="tEd-4c-93U" id="WZ9-Rm-cMu"/>
             </connections>
         </collectionViewCell>

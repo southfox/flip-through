@@ -13,6 +13,7 @@
 
 @interface FTCell : UICollectionViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UIView *containerView;
 @property (nonatomic, strong, readonly) FTItem *item;
 
 - (void)configureWithItem:(FTItem *)item;

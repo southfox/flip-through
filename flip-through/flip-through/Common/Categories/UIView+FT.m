@@ -146,23 +146,25 @@ static const CGRect kUIViewFTSpinnerFrame = {100.0, 76.0, 40.0, 40.0};
     containerView.tag = kUIViewFTContainerTag + tag;
     containerView.backgroundColor = [UIColor darkGrayColor];
 
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:kUIViewFTMessageFrame];
-    textLabel.tag = kUIViewFTMessageTag;
-    textLabel.text = string;
-    textLabel.backgroundColor = [UIColor clearColor];
-    textLabel.textColor = [UIColor whiteColor];
-    textLabel.font = [UIFont boldSystemFontOfSize:18.0];
-    textLabel.textAlignment = NSTextAlignmentCenter;
-    textLabel.adjustsFontSizeToFitWidth = YES;
-    textLabel.minimumScaleFactor = 0.5;
-    textLabel.numberOfLines = 2;
-
+    if (string)
+    {
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:kUIViewFTMessageFrame];
+        textLabel.tag = kUIViewFTMessageTag;
+        textLabel.text = string;
+        textLabel.backgroundColor = [UIColor clearColor];
+        textLabel.textColor = [UIColor whiteColor];
+        textLabel.font = [UIFont boldSystemFontOfSize:18.0];
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.adjustsFontSizeToFitWidth = YES;
+        textLabel.minimumScaleFactor = 0.5;
+        textLabel.numberOfLines = 2;
+        [containerView addSubview:textLabel];
+    }
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     spinner.frame = kUIViewFTSpinnerFrame;
     [spinner startAnimating];
     spinner.tag = kUIViewFTSpinnerTag;
 
-    [containerView addSubview:textLabel];
     [containerView addSubview:spinner];
     [self addSubview:containerView];
 }

@@ -268,13 +268,10 @@ static CGPoint kFooterViewHidden;
         return;
     }
     
-    NSString *imageUrl = [item mediaBigUrl];
-    NSURL *url = [NSURL URLWithString:imageUrl];
-    
+    [self showItemMedia:item];
+
     __weak typeof(self) wself = self;
     self.fullImageContainer.alpha = 0;
-    [self.fullImage setImageWithURL:url placeholderImage:kImagePlaceholder];
-    
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         wself.fullImageContainer.alpha = 1;
     } completion:^(BOOL finished) {
@@ -289,21 +286,33 @@ static CGPoint kFooterViewHidden;
         return;
     }
     
-    NSString *imageUrl = [item mediaBigUrl];
-    NSURL *url = [NSURL URLWithString:imageUrl];
-    
     __weak typeof(self) wself = self;
-    
+    __block FTItem *bitem = item;
     [UIView transitionWithView:self.fullImage
                       duration:0.5
                        options:option
                     animations:^{
-                        [wself.fullImage setImageWithURL:url placeholderImage:kImagePlaceholder];
-                        
+                        [wself showItemMedia:bitem];
                     }
                     completion:^(BOOL finished) {
                     }];
 
+}
+
+- (void)showItemMedia:(FTItem *)item;
+{
+    __weak typeof(self) wself = self;
+
+    NSString *imageUrl = [item mediaBigUrl];
+    NSURL *url = [NSURL URLWithString:imageUrl];
+
+    [self.view startSpinnerWithString:@"Downloading..." tag:1];
+    [self.fullImage setImageWithURL:url placeholderImage:kBigImagePlaceholder success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        wself.fullImage.image = image;
+        [wself.view stopSpinner:1];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        [wself.view stopSpinner:1];
+    }];
 }
 
 - (void)dismissFullScreenImage;
@@ -382,11 +391,6 @@ static CGPoint kFooterViewHidden;
 
 }
 
-
-- (IBAction)reload:(id)sender;
-{
-//    [self queryFlickr];
-}
 
 
 #pragma mark -

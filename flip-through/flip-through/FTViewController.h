@@ -17,6 +17,4 @@
 
 @property (nonatomic, strong) IBOutlet UIView *footerView;
 
-- (IBAction)reload:(id)sender;
-
 @end
