@@ -27,6 +27,7 @@
     if (!data)
     {
         NSLog(@"Oops! is null");
+        return nil;
     }
     id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
     if (!object)
@@ -35,11 +36,16 @@
         NSString* escapedString = [NSString stringWithUTF8String:[data bytes]];
         escapedString = [escapedString stringByReplacingOccurrencesOfString:@"\\'" withString:@" "];
         NSData* data1 = [escapedString dataUsingEncoding:NSUTF8StringEncoding];
+        if (!data1)
+        {
+            return nil;
+        }
         id object2 = [NSJSONSerialization JSONObjectWithData:data1 options:0 error:error];
         if (object2)
         {
             return object2;
         }
+        return nil;
 
     }
     return object;

@@ -29,6 +29,7 @@ static CGPoint kFooterViewHidden;
 @property (nonatomic) BOOL isShowingFullScreenImage;
 @property (nonatomic) BOOL isShowingFooter;
 @property (nonatomic) BOOL isRequestingOffset;
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
 @end
 
 @implementation FTViewController
@@ -39,6 +40,7 @@ static CGPoint kFooterViewHidden;
     self = [super initWithNibName:NSStringFromClass([FTViewController class]) bundle:nil];
     if (self) {
         _feeds = [NSMutableArray array];
+        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
     return self;
 }
@@ -147,12 +149,10 @@ static CGPoint kFooterViewHidden;
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:indexPath];
-
-    FTItem *item = cell.item;
-    FTAssert([item isKindOfClass:[FTItem class]]);
+    _currentIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
     
-    [self showFullScreenItem:cell.item];
+    FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+    [self showFullScreen:indexPath];
 }
 
 
@@ -217,11 +217,47 @@ static CGPoint kFooterViewHidden;
 
 
 
+
+
+
 - (void)addGestureRecognizers;
 {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage)];
     recognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:recognizer];
+    
+    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightAction)];
+    swipeRightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    swipeRightRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:swipeRightRecognizer];
+    
+    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftAction)];
+    swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    swipeLeftRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:swipeLeftRecognizer];
+    
+    
+}
+
+- (void)updateFullScreenOfCurrentIndexPath;
+{
+    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
+    
+    FTItem *item = cell.item;
+    FTAssert([item isKindOfClass:[FTItem class]]);
+    
+    [self updateFullScreenItem:cell.item];
+}
+
+
+- (void)showFullScreen:(NSIndexPath *)indexPath;
+{
+    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:indexPath];
+
+    FTItem *item = cell.item;
+    FTAssert([item isKindOfClass:[FTItem class]]);
+
+    [self showFullScreenItem:cell.item];
 }
 
 
@@ -246,6 +282,26 @@ static CGPoint kFooterViewHidden;
     }];
 }
 
+- (void)updateFullScreenItem:(FTItem *)item;
+{
+    if (!self.isShowingFullScreenImage)
+    {
+        return;
+    }
+    
+    NSString *imageUrl = [item mediaBigUrl];
+    NSURL *url = [NSURL URLWithString:imageUrl];
+    
+    __weak typeof(self) wself = self;
+    self.fullImage.alpha = 0;
+    [self.fullImage setImageWithURL:url placeholderImage:kImagePlaceholder];
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.fullImage.alpha = 1;
+    } completion:^(BOOL finished) {
+    }];
+}
+
 - (void)dismissFullScreenImage;
 {
     if (!self.isShowingFullScreenImage)
@@ -260,6 +316,55 @@ static CGPoint kFooterViewHidden;
         wself.isShowingFullScreenImage = NO;
     }];
 }
+
+- (void)rightAction
+{
+    if (!self.isShowingFullScreenImage)
+    {
+        return;
+    }
+
+    int section = self.currentIndexPath.section - 1;
+    int row = self.currentIndexPath.row - 1;
+    if (row >= 0)
+    {
+        _currentIndexPath = [NSIndexPath indexPathForRow:row inSection:self.currentIndexPath.section];
+    }
+    else if (section >= 0)
+    {
+        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+    }
+    FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+
+    [self updateFullScreenOfCurrentIndexPath];
+}
+
+
+- (void)leftAction
+{
+    if (!self.isShowingFullScreenImage)
+    {
+        return;
+    }
+    int section = self.currentIndexPath.section + 1;
+    int row = self.currentIndexPath.row + 1;
+    if (row > 0 && row < 20)
+    {
+        _currentIndexPath = [NSIndexPath indexPathForRow:row inSection:self.currentIndexPath.section];
+    }
+    else if (section < [self.collectionView numberOfSections])
+    {
+        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+    }
+    else
+    {
+        [self showFooter];
+    }
+    FTLog(@"%d,%d", _currentIndexPath.section, _currentIndexPath.row);
+
+    [self updateFullScreenOfCurrentIndexPath];
+}
+
 
 - (IBAction)reload:(id)sender;
 {
@@ -281,12 +386,12 @@ static CGPoint kFooterViewHidden;
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
     
-    if (self.isShowingFooter && !self.isRequestingOffset)
-    {
-        [self queryFlickr:^{
-            
-        }];
-    }
+//    if (self.isShowingFooter && !self.isRequestingOffset)
+//    {
+//        [self queryFlickr:^{
+//            
+//        }];
+//    }
 }
 
 #pragma mark footer
@@ -305,6 +410,9 @@ static CGPoint kFooterViewHidden;
         wself.footerView.center = kFooterViewHidden;
         wself.footerView.center = kFooterViewVisible;
     } completion:^(BOOL finished) {
+        [wself queryFlickr:^{
+            
+        }];
     }];
 }
 
