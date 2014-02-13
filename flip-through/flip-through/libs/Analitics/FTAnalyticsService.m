@@ -18,6 +18,7 @@
 #import "GAIFields.h"
 #import "Reachability+FT.h"
 #import "Crittercism.h"
+#import <Crashlytics/Crashlytics.h>
 
 #define kEventDeviceInfo @"device_info"
 
@@ -86,13 +87,7 @@ static BOOL configured = NO;
         {
             [self configureGoogleAnalytics];
         }
-        
-        if ([config isCrittercismEnabled])
-        {
-            [Crittercism enableWithAppID:[config crittercismAppId]];
-        }
-        
-        
+
         [self startSession];
         
         [self sendDeviceInformation];
@@ -213,11 +208,12 @@ static BOOL configured = NO;
         
     }
     
+    NSString* username = [[FTParseService sharedInstance] username];
+
     if ([config isCrittercismEnabled])
     {
         
         NSString *breadcrumb = [NSString stringWithFormat:@"<event %@>", event];
-        NSString* username = [[FTParseService sharedInstance] username];
         
         if (username && [username length])
         {
@@ -227,8 +223,18 @@ static BOOL configured = NO;
         [Crittercism leaveBreadcrumb:breadcrumb];
 
     }
+    
+    if ([config isCrashlyticsEnabled])
+    {
+        if (username && [username length])
+        {
+            [Crashlytics setUserName:username];
+        }
+    }
 
 }
+
+
 
 - (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
 {

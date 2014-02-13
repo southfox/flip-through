@@ -1,22 +1,22 @@
 //
-//  FTCell.m
+//  FTGridCell.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTCell.h"
+#import "FTGridCell.h"
 #import "UIView+FT.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+AFNetworking.h"
 #import "FTItem.h"
 #import "FTMedia.h"
 
-@interface FTCell()
+@interface FTGridCell()
 @end
 
-@implementation FTCell
+@implementation FTGridCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -24,18 +24,11 @@
     if (self) {
         
         // Initialization code
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"FTCell" owner:self options:nil];
-        
-        if ([arrayOfViews count] < 1) {
-            return nil;
-        }
-        
-        if (![[arrayOfViews objectAtIndex:0] isKindOfClass:[UICollectionViewCell class]]) {
-            return nil;
-        }
-        
-        self = [arrayOfViews objectAtIndex:0];
-        
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([FTGridCell class]) owner:self options:nil];
+        FTAssert([array count]);
+        FTAssert([[array objectAtIndex:0] isKindOfClass:[UICollectionViewCell class]]);
+        self = [array objectAtIndex:0];
+        FTAssert([self isKindOfClass:[FTGridCell class]]);
     }
     
     return self;
@@ -69,7 +62,7 @@
 
 + (NSString *)identifier;
 {
-    return NSStringFromClass([FTCell class]);
+    return NSStringFromClass([FTGridCell class]);
 }
 
 @end

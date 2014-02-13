@@ -1,13 +1,14 @@
 //
-//  FTViewController.m
+//  FTGridViewController.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTViewController.h"
-#import "FTCell.h"
+#import "FTGridViewController.h"
+#import "FTPhotoView.h"
+#import "FTGridCell.h"
 #import "FTFlickrPublicFeedService.h"
 #import "FTAlert.h"
 #import "FTFeed.h"
@@ -24,23 +25,24 @@ static CGPoint kFooterViewHidden;
 #define kCellWidth 150
 #define kCellHeight 150
 
-@interface FTViewController ()
+@interface FTGridViewController ()
 @property (nonatomic, strong) NSMutableArray *feeds;
-@property (nonatomic) BOOL isShowingFullScreenImage;
+@property (nonatomic, strong) FTPhotoView *photoView;
 @property (nonatomic) BOOL isShowingFooter;
 @property (nonatomic) BOOL isRequestingOffset;
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 @end
 
-@implementation FTViewController
+@implementation FTGridViewController
 
 
 - (id)init
 {
-    self = [super initWithNibName:NSStringFromClass([FTViewController class]) bundle:nil];
+    self = [super initWithNibName:NSStringFromClass([FTGridViewController class]) bundle:nil];
     if (self) {
         _feeds = [NSMutableArray array];
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        _photoView = [[FTPhotoView alloc] init];
     }
     return self;
 }
@@ -52,45 +54,27 @@ static CGPoint kFooterViewHidden;
     
     [self.view makeRoundingCorners:8.0];
     
-    self.fullImageContainer.alpha = 0;
-
-    [self addGestureRecognizers];
-
-    [self registerCells];
+    [self configurePhotoView];
     
-    kFooterViewVisible = kFooterViewHidden = self.footerView.center;
-    kFooterViewHidden.y += self.footerView.h;
-    self.footerView.center = kFooterViewHidden;
+    [self configureCells];
     
-    [self hideFooter];
-    self.view.userInteractionEnabled = YES;
-
-    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
-
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(parseQueryDidFinished:)
-                                                 name:FTParseServiceQueryDidFinishNotification
-                                               object:nil];
+    [self configureFooter];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
-
+    [self configureObservers];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+    FTLogViewEvent(@"memory", @"warning", @"here");
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
 
     if ([FTParseService sharedInstance].isUpdating || ![[FTParseService sharedInstance] config])
     {
@@ -103,14 +87,24 @@ static CGPoint kFooterViewHidden;
 
 }
 
+- (void)configurePhotoView;
+{
+    __weak typeof(self) wself = self;
+    [self.photoView configureView:self.view leftBlock:^{
+        [wself leftAction];
+    } rightBlock:^{
+        [wself rightAction];
+    }];
+}
+
 #pragma mark - UICollectionView Datasource
 
 
-- (void)registerCells
+- (void)configureCells
 {
-    UINib *cellNib = [UINib nibWithNibName:[FTCell identifier] bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:[FTCell identifier]];
-    [self.collectionView registerClass:[FTCell class] forCellWithReuseIdentifier:[FTCell identifier]];
+    UINib *cellNib = [UINib nibWithNibName:[FTGridCell identifier] bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:[FTGridCell identifier]];
+    [self.collectionView registerClass:[FTGridCell class] forCellWithReuseIdentifier:[FTGridCell identifier]];
 }
 
 
@@ -131,7 +125,7 @@ static CGPoint kFooterViewHidden;
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FTCell *cell = (FTCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FTCell class]) forIndexPath:indexPath];
+    FTGridCell *cell = (FTGridCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FTGridCell class]) forIndexPath:indexPath];
     
     FTFeed* feed = self.feeds[indexPath.section];
     FTAssert([feed isKindOfClass:[FTFeed class]]);
@@ -220,123 +214,32 @@ static CGPoint kFooterViewHidden;
 
 
 
-- (void)addGestureRecognizers;
-{
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage)];
-    recognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:recognizer];
-    
-    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightAction)];
-    swipeRightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    swipeRightRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:swipeRightRecognizer];
-    
-    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftAction)];
-    swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    swipeLeftRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:swipeLeftRecognizer];
-    
-    
-}
-
 - (void)updateFullScreenOfCurrentIndexPath:(UIViewAnimationOptions)option;
 {
-    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
+    FTGridCell *cell = (FTGridCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
     
     FTItem *item = cell.item;
     FTAssert([item isKindOfClass:[FTItem class]]);
     
-    [self updateFullScreenItem:cell.item option:option];
+    [self.photoView updateFullScreenItem:cell.item option:option];
 }
 
 
 - (void)showFullScreen:(NSIndexPath *)indexPath;
 {
-    FTCell *cell = (FTCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:indexPath];
+    FTGridCell *cell = (FTGridCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:indexPath];
 
     FTItem *item = cell.item;
     FTAssert([item isKindOfClass:[FTItem class]]);
 
-    [self showFullScreenItem:cell.item];
+    [self.photoView showFullScreenItem:item];
 }
 
 
-- (void)showFullScreenItem:(FTItem *)item;
-{
-    if (self.isShowingFullScreenImage)
-    {
-        return;
-    }
-    
-    [self showItemMedia:item];
 
-    __weak typeof(self) wself = self;
-    self.fullImageContainer.alpha = 0;
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        wself.fullImageContainer.alpha = 1;
-    } completion:^(BOOL finished) {
-        wself.isShowingFullScreenImage = YES;
-    }];
-}
-
-- (void)updateFullScreenItem:(FTItem *)item option:(UIViewAnimationOptions)option;
-{
-    if (!self.isShowingFullScreenImage)
-    {
-        return;
-    }
-    
-    __weak typeof(self) wself = self;
-    __block FTItem *bitem = item;
-    [UIView transitionWithView:self.fullImage
-                      duration:0.5
-                       options:option
-                    animations:^{
-                        [wself showItemMedia:bitem];
-                    }
-                    completion:^(BOOL finished) {
-                    }];
-
-}
-
-- (void)showItemMedia:(FTItem *)item;
-{
-    __weak typeof(self) wself = self;
-
-    NSString *imageUrl = [item mediaBigUrl];
-    NSURL *url = [NSURL URLWithString:imageUrl];
-
-    [self.view startSpinnerWithString:@"Downloading..." tag:1];
-    [self.fullImage setImageWithURL:url placeholderImage:kBigImagePlaceholder success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        wself.fullImage.image = image;
-        [wself.view stopSpinner:1];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        [wself.view stopSpinner:1];
-    }];
-}
-
-- (void)dismissFullScreenImage;
-{
-    if (!self.isShowingFullScreenImage)
-    {
-        return;
-    }
-
-    __weak typeof(self) wself = self;
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        wself.fullImageContainer.alpha = 0;
-    } completion:^(BOOL finished) {
-        wself.isShowingFullScreenImage = NO;
-    }];
-}
 
 - (void)rightAction
 {
-    if (!self.isShowingFullScreenImage)
-    {
-        return;
-    }
-
     int section = self.currentIndexPath.section - 1;
     int row = self.currentIndexPath.row - 1;
     if (row >= 0)
@@ -358,10 +261,6 @@ static CGPoint kFooterViewHidden;
 
 - (void)leftAction
 {
-    if (!self.isShowingFullScreenImage)
-    {
-        return;
-    }
     int section = self.currentIndexPath.section + 1;
     int row = self.currentIndexPath.row + 1;
     if (row > 0 && row < 20)
@@ -409,6 +308,15 @@ static CGPoint kFooterViewHidden;
 
 #pragma mark footer
 
+- (void)configureFooter;
+{
+    kFooterViewVisible = kFooterViewHidden = self.footerView.center;
+    kFooterViewHidden.y += self.footerView.h;
+    self.footerView.center = kFooterViewHidden;
+    
+    [self hideFooter];
+    self.view.userInteractionEnabled = YES;
+}
 - (void)showFooter:(void (^)())completion {
     
     if (self.isShowingFooter)
@@ -467,7 +375,7 @@ static CGPoint kFooterViewHidden;
 {
     if (notification)
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"NOTIF" withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"notification": notification.name}];
+        FTLogViewEvent(@"UI", @"notification", notification.name);
     }
 
     __weak typeof(self) wself = self;
@@ -489,5 +397,16 @@ static CGPoint kFooterViewHidden;
 }
 
 
-
+- (void)configureObservers;
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(parseQueryDidFinished:)
+                                                 name:FTParseServiceQueryDidFinishNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+}
 @end

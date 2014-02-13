@@ -1,5 +1,5 @@
 //
-//  FTCell.m
+//  FTGridCell.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
@@ -11,7 +11,7 @@
 @class FTItem;
 
 
-@interface FTCell : UICollectionViewCell
+@interface FTGridCell : UICollectionViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UIView *containerView;
 @property (nonatomic, strong, readonly) FTItem *item;

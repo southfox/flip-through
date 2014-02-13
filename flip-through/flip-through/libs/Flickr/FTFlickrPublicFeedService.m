@@ -74,14 +74,15 @@
     
     if (![Reachability isNetworkAvailable])
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"status": @"no_network"}];
+        FTLogViewEvent(@"SERVICE", @"status", @"no_network");
+
         errorBlock(@"no internet");
         return;
     }
     
     self.isQueryInProcess = YES;
     
-    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__]}];
+    FTLogViewEvent(@"SERVICE", @"calling", @"all_feads");
 
     NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:
                                  @"json", @"format",
@@ -112,8 +113,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         FTLog(@"Error: %@", error);
         
-        [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([wself class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"error": [error description]}];
-
+        FTLogViewEvent(@"SERVICE", @"error", [error description]);
         
         bErrorBlock(error.localizedDescription);
         wself.isQueryInProcess = NO;

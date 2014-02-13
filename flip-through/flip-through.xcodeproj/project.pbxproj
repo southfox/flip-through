@@ -14,18 +14,24 @@
 		9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2D018A98CC200999247 /* FTAviaryManager.m */; };
 		9856E2D418AA488300999247 /* big-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D218AA488300999247 /* big-image-placeholder.png */; };
 		9856E2D518AA488300999247 /* big-image-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D318AA488300999247 /* big-image-placeholder@2x.png */; };
+		9856E2E118AB994000999247 /* FTGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D718AB994000999247 /* FTGridCell.xib */; };
+		9856E2E218AB994000999247 /* FTGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D918AB994000999247 /* FTGridViewController.xib */; };
+		9856E2E318AB994000999247 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2DB18AB994000999247 /* InfoPlist.strings */; };
+		9856E2E418AB994000999247 /* FTGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2DE18AB994000999247 /* FTGridCell.m */; };
+		9856E2E518AB994000999247 /* FTGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2E018AB994000999247 /* FTGridViewController.m */; };
+		9856E2ED18AB9AC600999247 /* FTPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2E918AB9AC600999247 /* FTPhotoView.xib */; };
+		9856E2EE18AB9AC600999247 /* FTPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2EC18AB9AC600999247 /* FTPhotoView.m */; };
+		9856E2FF18ACFB2F00999247 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9856E2FE18ACFB2F00999247 /* Crashlytics.framework */; };
+		9856E30318AD030000999247 /* FTCrashService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E30218AD030000999247 /* FTCrashService.m */; };
 		985D319B18A11FC200320F87 /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319318A11FC200320F87 /* FTAlert.m */; };
 		985D31A318A1200600320F87 /* NSArray+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319E18A1200600320F87 /* NSArray+FT.m */; };
 		985D31A418A1200600320F87 /* Reachability+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A018A1200600320F87 /* Reachability+FT.m */; };
 		985D31A518A1200600320F87 /* UIView+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A218A1200600320F87 /* UIView+FT.m */; };
-		985D31C018A12F7300320F87 /* FTDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTDataService.m */; };
+		985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTSerializeService.m */; };
 		985D31CD18A171E200320F87 /* FTFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C718A171E200320F87 /* FTFeed.m */; };
 		985D31CE18A171E200320F87 /* FTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C918A171E200320F87 /* FTItem.m */; };
 		985D31D618A1765F00320F87 /* FTFlickrPublicFeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */; };
 		985D31D918A178ED00320F87 /* FTMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D818A178ED00320F87 /* FTMedia.m */; };
-		985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31DA18A18E7800320F87 /* FTViewController.xib */; };
-		985D31E718A18FC700320F87 /* FTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31E218A18FC700320F87 /* FTCell.m */; };
-		985D31E818A18FC700320F87 /* FTCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985D31E318A18FC700320F87 /* FTCell.xib */; };
 		985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31E918A1BFE500320F87 /* Button-Close-icon.png */; };
 		985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */; };
 		985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */; };
@@ -40,10 +46,8 @@
 		98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
 		98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */; };
 		98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
-		98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C6C18A105A000C2EDF7 /* InfoPlist.strings */; };
 		98BF6C7018A105A000C2EDF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C6F18A105A000C2EDF7 /* main.m */; };
 		98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */; };
-		98BF6C7A18A105A000C2EDF7 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C7918A105A000C2EDF7 /* FTViewController.m */; };
 		98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C7B18A105A000C2EDF7 /* Images.xcassets */; };
 		98BF6C8318A105A000C2EDF7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C8218A105A000C2EDF7 /* XCTest.framework */; };
 		98BF6C8418A105A000C2EDF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6318A105A000C2EDF7 /* Foundation.framework */; };
@@ -78,6 +82,19 @@
 		9856E2D018A98CC200999247 /* FTAviaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAviaryManager.m; sourceTree = "<group>"; };
 		9856E2D218AA488300999247 /* big-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-image-placeholder.png"; path = "../../assets/big-image-placeholder.png"; sourceTree = "<group>"; };
 		9856E2D318AA488300999247 /* big-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-image-placeholder@2x.png"; path = "../../assets/big-image-placeholder@2x.png"; sourceTree = "<group>"; };
+		9856E2D818AB994000999247 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTGridCell.xib; sourceTree = "<group>"; };
+		9856E2DA18AB994000999247 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTGridViewController.xib; sourceTree = "<group>"; };
+		9856E2DC18AB994000999247 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9856E2DD18AB994000999247 /* FTGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGridCell.h; sourceTree = "<group>"; };
+		9856E2DE18AB994000999247 /* FTGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTGridCell.m; sourceTree = "<group>"; };
+		9856E2DF18AB994000999247 /* FTGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGridViewController.h; sourceTree = "<group>"; };
+		9856E2E018AB994000999247 /* FTGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTGridViewController.m; sourceTree = "<group>"; };
+		9856E2EA18AB9AC600999247 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTPhotoView.xib; sourceTree = "<group>"; };
+		9856E2EB18AB9AC600999247 /* FTPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPhotoView.h; sourceTree = "<group>"; };
+		9856E2EC18AB9AC600999247 /* FTPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPhotoView.m; sourceTree = "<group>"; };
+		9856E2FE18ACFB2F00999247 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		9856E30118AD030000999247 /* FTCrashService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCrashService.h; sourceTree = "<group>"; };
+		9856E30218AD030000999247 /* FTCrashService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCrashService.m; sourceTree = "<group>"; };
 		985D319218A11FC200320F87 /* FTAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAlert.h; sourceTree = "<group>"; };
 		985D319318A11FC200320F87 /* FTAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAlert.m; sourceTree = "<group>"; };
 		985D319418A11FC200320F87 /* FTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCommon.h; sourceTree = "<group>"; };
@@ -87,8 +104,8 @@
 		985D31A018A1200600320F87 /* Reachability+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reachability+FT.m"; sourceTree = "<group>"; };
 		985D31A118A1200600320F87 /* UIView+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FT.h"; sourceTree = "<group>"; };
 		985D31A218A1200600320F87 /* UIView+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FT.m"; sourceTree = "<group>"; };
-		985D31B718A12F7300320F87 /* FTDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDataService.h; sourceTree = "<group>"; };
-		985D31B818A12F7300320F87 /* FTDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDataService.m; sourceTree = "<group>"; };
+		985D31B718A12F7300320F87 /* FTSerializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSerializeService.h; sourceTree = "<group>"; };
+		985D31B818A12F7300320F87 /* FTSerializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTSerializeService.m; sourceTree = "<group>"; };
 		985D31C618A171E200320F87 /* FTFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFeed.h; sourceTree = "<group>"; };
 		985D31C718A171E200320F87 /* FTFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFeed.m; sourceTree = "<group>"; };
 		985D31C818A171E200320F87 /* FTItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTItem.h; sourceTree = "<group>"; };
@@ -97,10 +114,6 @@
 		985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTFlickrPublicFeedService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		985D31D718A178ED00320F87 /* FTMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTMedia.h; sourceTree = "<group>"; };
 		985D31D818A178ED00320F87 /* FTMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTMedia.m; sourceTree = "<group>"; };
-		985D31DB18A18E7800320F87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTViewController.xib; sourceTree = "<group>"; };
-		985D31E118A18FC700320F87 /* FTCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCell.h; sourceTree = "<group>"; };
-		985D31E218A18FC700320F87 /* FTCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCell.m; sourceTree = "<group>"; };
-		985D31E318A18FC700320F87 /* FTCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FTCell.xib; sourceTree = "<group>"; };
 		985D31E918A1BFE500320F87 /* Button-Close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Close-icon.png"; path = "../../assets/Button-Close-icon.png"; sourceTree = "<group>"; };
 		985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Refresh-icon.png"; path = "../../assets/Button-Refresh-icon.png"; sourceTree = "<group>"; };
 		985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon.png"; path = "../../assets/Button-Reload-icon.png"; sourceTree = "<group>"; };
@@ -118,13 +131,10 @@
 		98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		98BF6C6718A105A000C2EDF7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98BF6C6B18A105A000C2EDF7 /* flip-through-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "flip-through-Info.plist"; sourceTree = "<group>"; };
-		98BF6C6D18A105A000C2EDF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		98BF6C6F18A105A000C2EDF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		98BF6C7118A105A000C2EDF7 /* flip-through-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flip-through-Prefix.pch"; sourceTree = "<group>"; };
 		98BF6C7218A105A000C2EDF7 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
 		98BF6C7318A105A000C2EDF7 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		98BF6C7818A105A000C2EDF7 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
-		98BF6C7918A105A000C2EDF7 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
 		98BF6C7B18A105A000C2EDF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		98BF6C8118A105A000C2EDF7 /* flip-throughTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flip-throughTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BF6C8218A105A000C2EDF7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -139,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF6C6618A105A000C2EDF7 /* CoreGraphics.framework in Frameworks */,
+				9856E2FF18ACFB2F00999247 /* Crashlytics.framework in Frameworks */,
 				98BF6C6818A105A000C2EDF7 /* UIKit.framework in Frameworks */,
 				98BF6C6418A105A000C2EDF7 /* Foundation.framework in Frameworks */,
 				CE53B4F31F81415FB7A93F3B /* libPods.a in Frameworks */,
@@ -175,6 +186,55 @@
 				9856E2D018A98CC200999247 /* FTAviaryManager.m */,
 			);
 			path = Aviary;
+			sourceTree = "<group>";
+		};
+		9856E2D618AB994000999247 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2E618AB995800999247 /* nib */,
+				9856E2E718AB996B00999247 /* cell */,
+				9856E2DF18AB994000999247 /* FTGridViewController.h */,
+				9856E2E018AB994000999247 /* FTGridViewController.m */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		9856E2E618AB995800999247 /* nib */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2D718AB994000999247 /* FTGridCell.xib */,
+				9856E2D918AB994000999247 /* FTGridViewController.xib */,
+				9856E2DB18AB994000999247 /* InfoPlist.strings */,
+			);
+			name = nib;
+			sourceTree = "<group>";
+		};
+		9856E2E718AB996B00999247 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2DD18AB994000999247 /* FTGridCell.h */,
+				9856E2DE18AB994000999247 /* FTGridCell.m */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		9856E2E818AB9AC600999247 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				9856E2EB18AB9AC600999247 /* FTPhotoView.h */,
+				9856E2EC18AB9AC600999247 /* FTPhotoView.m */,
+				9856E2E918AB9AC600999247 /* FTPhotoView.xib */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		9856E30018AD030000999247 /* Crash */ = {
+			isa = PBXGroup;
+			children = (
+				9856E30118AD030000999247 /* FTCrashService.h */,
+				9856E30218AD030000999247 /* FTCrashService.m */,
+			);
+			path = Crash;
 			sourceTree = "<group>";
 		};
 		985D317C18A11D3200320F87 /* App */ = {
@@ -218,6 +278,7 @@
 			children = (
 				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E2C618A50CDD00999247 /* Analytics */,
+				9856E30018AD030000999247 /* Crash */,
 				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
@@ -228,8 +289,8 @@
 		985D31B418A12F7300320F87 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				985D31B718A12F7300320F87 /* FTDataService.h */,
-				985D31B818A12F7300320F87 /* FTDataService.m */,
+				985D31B718A12F7300320F87 /* FTSerializeService.h */,
+				985D31B818A12F7300320F87 /* FTSerializeService.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -260,28 +321,18 @@
 			path = Flickr;
 			sourceTree = "<group>";
 		};
-		985D31DD18A18FC700320F87 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				985D31E118A18FC700320F87 /* FTCell.h */,
-				985D31E218A18FC700320F87 /* FTCell.m */,
-				985D31E318A18FC700320F87 /* FTCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		985D31EF18A1BFEE00320F87 /* img */ = {
 			isa = PBXGroup;
 			children = (
 				9856E2D218AA488300999247 /* big-image-placeholder.png */,
 				9856E2D318AA488300999247 /* big-image-placeholder@2x.png */,
+				985D31F018A1C71C00320F87 /* image-placeholder.png */,
+				985D31F218A1C7DB00320F87 /* image-placeholder@2x.png */,
 				988699BF18A30370006F1196 /* Button-Aviary.png */,
 				988699C018A30370006F1196 /* Button-Aviary@2x.png */,
-				985D31F218A1C7DB00320F87 /* image-placeholder@2x.png */,
 				985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */,
 				985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */,
 				985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */,
-				985D31F018A1C71C00320F87 /* image-placeholder.png */,
 				985D31E918A1BFE500320F87 /* Button-Close-icon.png */,
 				985D31EA18A1BFE500320F87 /* Button-Refresh-icon.png */,
 				985D31EB18A1BFE500320F87 /* Button-Reload-icon.png */,
@@ -321,6 +372,7 @@
 		98BF6C6218A105A000C2EDF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9856E2FE18ACFB2F00999247 /* Crashlytics.framework */,
 				98BF6C6318A105A000C2EDF7 /* Foundation.framework */,
 				98BF6C6518A105A000C2EDF7 /* CoreGraphics.framework */,
 				98BF6C6718A105A000C2EDF7 /* UIKit.framework */,
@@ -335,10 +387,8 @@
 			children = (
 				985D318718A11FC200320F87 /* Common */,
 				985D317C18A11D3200320F87 /* App */,
-				985D31DD18A18FC700320F87 /* Cell */,
-				98BF6C7818A105A000C2EDF7 /* FTViewController.h */,
-				98BF6C7918A105A000C2EDF7 /* FTViewController.m */,
-				985D31DA18A18E7800320F87 /* FTViewController.xib */,
+				9856E2D618AB994000999247 /* Grid */,
+				9856E2E818AB9AC600999247 /* Photo */,
 				985D31EF18A1BFEE00320F87 /* img */,
 				98BF6C7B18A105A000C2EDF7 /* Images.xcassets */,
 				985D31A618A12F7300320F87 /* libs */,
@@ -351,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				98BF6C6B18A105A000C2EDF7 /* flip-through-Info.plist */,
-				98BF6C6C18A105A000C2EDF7 /* InfoPlist.strings */,
 				98BF6C6F18A105A000C2EDF7 /* main.m */,
 				98BF6C7118A105A000C2EDF7 /* flip-through-Prefix.pch */,
 			);
@@ -388,6 +437,7 @@
 				98BF6C5D18A105A000C2EDF7 /* Frameworks */,
 				98BF6C5E18A105A000C2EDF7 /* Resources */,
 				D45D791206AE4F3EA2B67B95 /* Copy Pods Resources */,
+				9856E2EF18ACF48C00999247 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -456,7 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */,
-				985D31DC18A18E7800320F87 /* FTViewController.xib in Resources */,
+				9856E2E218AB994000999247 /* FTGridViewController.xib in Resources */,
 				985D31F618A1C7DB00320F87 /* image-placeholder@2x.png in Resources */,
 				985D31F118A1C71C00320F87 /* image-placeholder.png in Resources */,
 				9856E2D418AA488300999247 /* big-image-placeholder.png in Resources */,
@@ -464,13 +514,14 @@
 				985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */,
 				985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */,
 				985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */,
+				9856E2E318AB994000999247 /* InfoPlist.strings in Resources */,
+				9856E2ED18AB9AC600999247 /* FTPhotoView.xib in Resources */,
 				988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */,
-				98BF6C6E18A105A000C2EDF7 /* InfoPlist.strings in Resources */,
+				9856E2E118AB994000999247 /* FTGridCell.xib in Resources */,
 				9856E2D518AA488300999247 /* big-image-placeholder@2x.png in Resources */,
 				985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */,
 				985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */,
 				988699C118A30370006F1196 /* Button-Aviary.png in Resources */,
-				985D31E818A18FC700320F87 /* FTCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +551,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		9856E2EF18ACF48C00999247 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 061cb8f826889206e7bf1b139bd809c35b9aac3a f08b4d6a39d81cee14a96985dea1610c4097fc32e0985c8a14bb49493a3b0d8a";
+		};
 		D45D791206AE4F3EA2B67B95 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -522,12 +587,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				985D31E718A18FC700320F87 /* FTCell.m in Sources */,
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
 				9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */,
-				985D31C018A12F7300320F87 /* FTDataService.m in Sources */,
+				985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
+				9856E2EE18AB9AC600999247 /* FTPhotoView.m in Sources */,
 				988699CA18A31109006F1196 /* FTParseService.m in Sources */,
 				9856E2C218A5093900999247 /* FTPFObject.m in Sources */,
 				985D31D618A1765F00320F87 /* FTFlickrPublicFeedService.m in Sources */,
@@ -535,12 +600,14 @@
 				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */,
+				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
 				985D31CD18A171E200320F87 /* FTFeed.m in Sources */,
+				9856E2E518AB994000999247 /* FTGridViewController.m in Sources */,
 				985D31A318A1200600320F87 /* NSArray+FT.m in Sources */,
+				9856E30318AD030000999247 /* FTCrashService.m in Sources */,
 				985D31D918A178ED00320F87 /* FTMedia.m in Sources */,
-				98BF6C7A18A105A000C2EDF7 /* FTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,20 +630,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		985D31DA18A18E7800320F87 /* FTViewController.xib */ = {
+		9856E2D718AB994000999247 /* FTGridCell.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				985D31DB18A18E7800320F87 /* en */,
+				9856E2D818AB994000999247 /* en */,
 			);
-			name = FTViewController.xib;
+			name = FTGridCell.xib;
 			sourceTree = "<group>";
 		};
-		98BF6C6C18A105A000C2EDF7 /* InfoPlist.strings */ = {
+		9856E2D918AB994000999247 /* FTGridViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				98BF6C6D18A105A000C2EDF7 /* en */,
+				9856E2DA18AB994000999247 /* en */,
+			);
+			name = FTGridViewController.xib;
+			sourceTree = "<group>";
+		};
+		9856E2DB18AB994000999247 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9856E2DC18AB994000999247 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9856E2E918AB9AC600999247 /* FTPhotoView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9856E2EA18AB9AC600999247 /* en */,
+			);
+			name = FTPhotoView.xib;
 			sourceTree = "<group>";
 		};
 		98BF6C8B18A105A000C2EDF7 /* InfoPlist.strings */ = {
@@ -672,6 +755,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fox/Job/mine/github/flip-through/flip-through",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flip-through/flip-through-Prefix.pch";
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";
@@ -690,6 +777,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fox/Job/mine/github/flip-through/flip-through",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flip-through/flip-through-Prefix.pch";
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";

@@ -24,6 +24,8 @@
 @property (nonatomic, copy) NSNumber *parseLogEnabled;
 @property (nonatomic, copy) NSNumber *crittercismEnabled;
 @property (nonatomic, copy) NSString *crittercismAppId;
+@property (nonatomic, copy) NSNumber *crashlyticsEnabled;
+@property (nonatomic, copy) NSString *crashlyticsAppId;
 
 - (id)initWithPFObject:(PFObject *)object;
 
@@ -34,5 +36,7 @@
 - (BOOL)isGoogleAnalyticsEnabled;
 
 - (BOOL)isCrittercismEnabled;
+
+- (BOOL)isCrashlyticsEnabled;
 
 @end

@@ -4,13 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTGridViewController">
             <connections>
                 <outlet property="collectionView" destination="lrQ-DC-2TI" id="frA-N9-MBq"/>
                 <outlet property="footerView" destination="az6-hv-hfn" id="8HD-Q9-N4a"/>
-                <outlet property="fullImage" destination="lnN-XU-3WP" id="WbX-im-tCi"/>
-                <outlet property="fullImageContainer" destination="w5O-jw-3VU" id="HX7-1A-nAH"/>
-                <outlet property="searchDisplayController" destination="JMJ-i3-0cL" id="kMQ-tL-uqF"/>
                 <outlet property="view" destination="1" id="D0p-16-9bo"/>
             </connections>
         </placeholder>
@@ -36,18 +33,6 @@
                         <outlet property="delegate" destination="-1" id="Q2T-kD-oJe"/>
                     </connections>
                 </collectionView>
-                <view alpha="0.0" contentMode="scaleToFill" id="w5O-jw-3VU" userLabel="View - full image container">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lnN-XU-3WP" userLabel="Image View - full image">
-                            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" id="az6-hv-hfn">
                     <rect key="frame" x="0.0" y="725" width="1024" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,13 +57,5 @@
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <searchDisplayController id="JMJ-i3-0cL">
-            <connections>
-                <outlet property="delegate" destination="-1" id="UsY-Pu-VM1"/>
-                <outlet property="searchContentsController" destination="-1" id="OvV-of-vCS"/>
-                <outlet property="searchResultsDataSource" destination="-1" id="5EX-mL-yGr"/>
-                <outlet property="searchResultsDelegate" destination="-1" id="dHF-rr-Usu"/>
-            </connections>
-        </searchDisplayController>
     </objects>
 </document>

@@ -20,27 +20,27 @@ Services implemented and used:
 - Parse: there's a table with the configuration in parse.com.
 - Analytics: it works with flurry, parse log
 - Crittercism is the crash framework. Inside Analytics is a good place to leave the crumbs.
+- Crashlytics is another crash framework. Very good framework, you don't need to upload syms.
+- With flickr the use is restriced to services that does not require authentication. Now it's using the public flickr feed which does not require authentication: http://www.flickr.com/services/feeds/docs/photos_public/
 
 TBD:
 
-There are additional functionality such as displaying photos for a particular user or tag or location.
-There are third party libraries, but I DON’T use a pre-baked flickr client like ObjectiveFlickr https://github.com/lukhnos/objectiveflickr
 In the future I'll add:
+- There are additional functionality such as displaying photos for a particular user or tag or location.
 - sharing using: mail, facebook, tweet, linkedin, google+, Pinterest, digg, StumbleUpon, Reddit, Tumblr, Adtty, Allvoices, Amazon Wishlist, Arto, Baidu, Bebo, Blinklist, Blip, Blogmarks, Blogger, Brainity, BuddyMarks, Buffer, Add to BX, Care2, chiq, CiteULike, Connotea, coRank, Corcboard, Current, Dealspi.us, Delicius, Digg, Diigo, .net Shoutout, DZone, Edmodo and flickr off course.
-- With flickr the use should be restriced to services that doess not require authentication. Now it's using the public flickr feed which does not require authentication: http://www.flickr.com/services/feeds/docs/photos_public/
+- Edit photos using Aviary
+- show banner, views and video ads: new service FTAdService (only if the user didn't purchase)
+- IAP: purchase the full pack ?
 
-Settings
-Help
-My Favorites
-Search
-Tags
+Add sections or tabs:
+- Settings
+- Help
+- My Favorites
+- Search
+- Tags
 
 
-Bug fixing:
-I found that the JSON parser is not parsing very well when there are escaped single quotes in a string:
-    Fixed bug on JSON parser, does not support escaped single quotes. The problem was inside: 
-    +++ b/flip-through/Pods/RestKit/Code/Support/RKNSJSONSerialization.m
-    A simple replace of the escaped single quote fixed that for now.
-    It's a problem in JSONKit inside RestKit.
+Bug fixing: I found that the JSON parser is not parsing very well when there are escaped single quotes in a string: Fixed bug on JSON parser, does not support escaped single quotes. The problem was inside: +++ b/flip-through/Pods/RestKit/Code/Support/RKNSJSONSerialization.m A simple replace of the escaped single quote fixed that for now.  It's a problem in JSONKit inside RestKit.
+
 
 

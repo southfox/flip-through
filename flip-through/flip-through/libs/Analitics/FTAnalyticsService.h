@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FTAnalyticsService : NSObject 
+#define FTLogViewEvent(event, key, value) \
+[[FTAnalyticsService sharedInstance] logEvent:event withParameters:@{@"view" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], key: value}];
+
+@interface FTAnalyticsService : NSObject
 
 + (FTAnalyticsService *)sharedInstance;
 

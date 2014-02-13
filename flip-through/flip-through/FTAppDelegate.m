@@ -9,12 +9,13 @@
 #import "FTAppDelegate.h"
 #import "Reachability+FT.h"
 #import "FTAlert.h"
-#import "FTViewController.h"
+#import "FTGridViewController.h"
 
 // services
 #import "FTFlickrPublicFeedService.h"
 #import "FTParseService.h"
 #import "FTAnalyticsService.h"
+#import "FTCrashService.h"
 
 
 @implementation FTAppDelegate
@@ -33,6 +34,8 @@
         
         [self configureParseServiceWithOptions:launchOptions finishBlock:^{
             // Once finished, configure the other services
+
+            [wself configureCrashService];
 
             [wself configureAnalyticsService];
 
@@ -118,7 +121,7 @@
 
 - (void)showNoNetworkAlert;
 {
-    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : NSStringFromClass([self class]), @"fnc" : [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__], @"status": @"no_network"}];
+    FTLogViewEvent(@"SERVICE", @"status", @"no_network");
 
     [FTAlert alertWithFrame:self.window.frame title:@"Oops!" message:@"No internet connection found. Please check and try again." leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
 }
@@ -138,10 +141,19 @@
 
 - (void)configureFlikrPublicFeedService;
 {
-    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"service" : @"flicr"}];
+    FTLogViewEvent(@"SERVICE", @"service", @"flickr");
+
     [[FTFlickrPublicFeedService sharedInstance] configure];
 }
 
+
+#pragma mark -
+#pragma mark Crash service
+
+- (void)configureCrashService;
+{
+    [[FTCrashService sharedInstance] configure];
+}
 
 #pragma mark -
 #pragma mark Analytics service
@@ -153,11 +165,11 @@
     NSString *username = [[FTParseService sharedInstance] username];
     if (username)
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"START" withParameters:@{@"action" : @"start", @"user" : username}];
+        FTLogViewEvent(@"START", @"user", username);
     }
     else
     {
-        [[FTAnalyticsService sharedInstance] logEvent:@"START" withParameters:@{@"action" : @"install", @"user" : username}];
+        FTLogViewEvent(@"INSTALL", @"user", username);
     }
     
 }
@@ -169,11 +181,9 @@
 
 - (void)configureWindow
 {
-    [[FTAnalyticsService sharedInstance] logEvent:@"UI" withParameters:@{@"view" : @"window"}];
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    FTViewController *viewController = [[FTViewController alloc] init];
+    FTGridViewController *viewController = [[FTGridViewController alloc] init];
     self.window.rootViewController = viewController;
     
     [self.window makeKeyAndVisible];
@@ -185,7 +195,6 @@
 
 - (void)configureDataService;
 {
-    [[FTAnalyticsService sharedInstance] logEvent:@"SERVICE" withParameters:@{@"name" : @"data"}];
 
 }
 

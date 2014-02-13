@@ -1,28 +1,28 @@
 //
-//  FTDataService.m
+//  FTSerializeService.m
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
 //  Copyright (c) 2014 flip-through. All rights reserved.
 //
 
-#import "FTDataService.h"
+#import "FTSerializeService.h"
 #import "FTFeed.h"
 
 #define kJsonFileName [NSString stringWithFormat:@"%@.json", NSStringFromClass([self class])]
 
-@interface FTDataService()
+@interface FTSerializeService()
 @property (nonatomic, strong) NSMutableArray *data;
 @end
 
 
-@implementation FTDataService
+@implementation FTSerializeService
 {
 }
 
-+ (FTDataService *)sharedInstance
++ (FTSerializeService *)sharedInstance
 {
-    static FTDataService *_sharedInstance = nil;
+    static FTSerializeService *_sharedInstance = nil;
     
     @synchronized (self)
     {
