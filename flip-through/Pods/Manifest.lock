@@ -32,6 +32,7 @@ PODS:
     - TransitionKit (= 2.0.0)
   - RKValueTransformers (1.0.1)
   - SOCKit (1.1)
+  - TestFlightSDK (2.2.1)
   - TransitionKit (2.0.0)
 
 DEPENDENCIES:
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - Pinterest-iOS (~> 2.3)
   - Reachability (~> 3.1.1)
   - RestKit (~> 0.22.0)
+  - TestFlightSDK (~> 2.2.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
@@ -60,6 +62,7 @@ SPEC CHECKSUMS:
   RestKit: dc107a0aa4f962575ad0385bac5b3c5e4f591f4e
   RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
+  TestFlightSDK: 030fa8a1bc8aa9ba5c9ae1be05ceaba775368c0c
   TransitionKit: 433284465abacdc07852d7db6dd0cc075010059a
 
 COCOAPODS: 0.23.0
