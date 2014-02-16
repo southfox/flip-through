@@ -48,6 +48,10 @@
         FTAssert(_crittercismEnabled);
         _crashlyticsAppId = [object objectForKey:@"crashlyticsAppId"];
         FTAssert(_crashlyticsAppId);
+        _testFlightEnabled = [object objectForKey:@"testFlightEnabled"];
+        FTAssert(_testFlightEnabled);
+        _testFlightApplicationToken = [object objectForKey:@"testFlightApplicationToken"];
+        FTAssert(_testFlightApplicationToken);
     }
     return self;
 }
@@ -55,7 +59,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled, self.googleAnalyticsEnabled, self.googleAnalyticsTrackingId, self.parseLogEnabled, self.crittercismEnabled, self.crittercismAppId, self.crashlyticsEnabled, self.crashlyticsAppId];
+    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled, self.googleAnalyticsEnabled, self.googleAnalyticsTrackingId, self.parseLogEnabled, self.crittercismEnabled, self.crittercismAppId, self.crashlyticsEnabled, self.crashlyticsAppId, self.testFlightEnabled, self.testFlightApplicationToken];
 }
 
 
@@ -83,6 +87,11 @@
 - (BOOL)isCrashlyticsEnabled;
 {
     return [self.crashlyticsEnabled boolValue];
+}
+
+- (BOOL)isTestFlightEnabled;
+{
+    return [self.testFlightEnabled boolValue];
 }
 @end
 

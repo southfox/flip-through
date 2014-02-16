@@ -19,6 +19,7 @@
 #import "Reachability+FT.h"
 #import "Crittercism.h"
 #import <Crashlytics/Crashlytics.h>
+#import <TestFlight.h>
 
 #define kEventDeviceInfo @"device_info"
 
@@ -231,6 +232,14 @@ static BOOL configured = NO;
             [Crashlytics setUserName:username];
         }
     }
+    
+    if ([config isTestFlightEnabled])
+    {
+        if (username && [username length])
+        {
+            [TestFlight addCustomEnvironmentInformation:username forKey:@"username"];
+        }
+    }
 
 }
 
@@ -277,6 +286,11 @@ static BOOL configured = NO;
         [gaiTracker set:kGAIScreenName value:event];
 
         [gaiTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    }
+    
+    if ([config isTestFlightEnabled])
+    {
+        [TestFlight passCheckpoint:event];
     }
 }
 
@@ -339,7 +353,7 @@ static BOOL configured = NO;
 
 
 - (BOOL)userDefaultFirstTimeLogEvent:(NSString*)event {
-	NSString* key = [NSString stringWithFormat:@"current-analytics-first-time-%@", event];
+	NSString* key = [NSString stringWithFormat:@"default-analytics-first-time-%@", event];
 	NSNumber* value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
 	if (value == nil) {
 		// simply save the key in the standard user defaults with any value

@@ -26,6 +26,8 @@
 @property (nonatomic, copy) NSString *crittercismAppId;
 @property (nonatomic, copy) NSNumber *crashlyticsEnabled;
 @property (nonatomic, copy) NSString *crashlyticsAppId;
+@property (nonatomic, copy) NSNumber *testFlightEnabled;
+@property (nonatomic, copy) NSString *testFlightApplicationToken;
 
 - (id)initWithPFObject:(PFObject *)object;
 
@@ -38,5 +40,7 @@
 - (BOOL)isCrittercismEnabled;
 
 - (BOOL)isCrashlyticsEnabled;
+
+- (BOOL)isTestFlightEnabled;
 
 @end

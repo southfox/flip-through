@@ -11,6 +11,7 @@
 #import "Crittercism.h"
 #import "FTParseService.h"
 #import <Crashlytics/Crashlytics.h>
+#import <TestFlight.h>
 
 @interface FTCrashService ()
 @end
@@ -52,6 +53,10 @@
         [Crashlytics startWithAPIKey:[config crashlyticsAppId]];
     }
     
+    if ([config isTestFlightEnabled])
+    {
+        [TestFlight takeOff:[config testFlightApplicationToken]];
+    }
 }
 
 
