@@ -16,10 +16,17 @@
 #import "FTParseService.h"
 #import "Reachability+FT.h"
 #import "FTAnalyticsService.h"
+#import "FTAviaryController.h"
+
+static CGPoint kToolbarViewVisible;
+static CGPoint kToolbarViewHidden;
 
 
 @interface FTPhotoView ()
+@property (nonatomic, strong) UIViewController *parentViewController;
+@property (nonatomic) BOOL isDownloaded;
 @property (nonatomic) BOOL isShowingFullScreenImage;
+@property (nonatomic) BOOL isShowingToolbar;
 @property (nonatomic,copy) void (^leftBlock)();
 @property (nonatomic,copy) void (^rightBlock)();
 @end
@@ -39,15 +46,20 @@
     return self;
 }
 
-- (void)configureView:(UIView *)view leftBlock:(void (^)())leftBlock rightBlock:(void (^)())rightBlock;
+- (void)configureView:(UIViewController *)parentViewController leftBlock:(void (^)())leftBlock rightBlock:(void (^)())rightBlock;
 {
-    [view addSubview:self];
+    _parentViewController = parentViewController;
+    [parentViewController.view addSubview:self];
     _leftBlock = leftBlock;
     _rightBlock = rightBlock;
 }
 
 - (void)awakeFromNib
 {
+    kToolbarViewHidden = kToolbarViewVisible = self.toolbarView.center;
+    kToolbarViewHidden.y -= self.toolbarView.h;
+    self.toolbarView.center = kToolbarViewHidden;
+    
     [self makeRoundingCorners:8.0];
     self.alpha = 0;
     [self addGestureRecognizers];
@@ -58,9 +70,9 @@
 
 - (void)addGestureRecognizers;
 {
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage)];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleToolbar)];
     recognizer.cancelsTouchesInView = NO;
-    [self addGestureRecognizer:recognizer];
+    [self.imageContainerView addGestureRecognizer:recognizer];
     
     UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightAction)];
     swipeRightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
@@ -126,6 +138,7 @@
     [self.fullImage setImageWithURL:url placeholderImage:kBigImagePlaceholder success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         wself.fullImage.image = image;
         [wself stopSpinner:1];
+        [wself toggleToolbar];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         [wself stopSpinner:1];
     }];
@@ -143,8 +156,10 @@
         wself.alpha = 0;
     } completion:^(BOOL finished) {
         wself.isShowingFullScreenImage = NO;
+        [wself hideToolbar];
     }];
 }
+
 
 - (void)rightAction
 {
@@ -165,6 +180,68 @@
     self.leftBlock();
 }
 
+
+
+- (IBAction)actionButton:(id)sender;
+{
+    if (sender == self.aviaryButton)
+    {
+        [[FTAviaryController sharedInstance] editImage:self.fullImage.image inViewController:self.parentViewController];
+    }
+    else if (sender == self.closeButton)
+    {
+        [self dismissFullScreenImage];
+    }
+    else
+    {
+        FTAssert(NO);
+    }
+}
+
+#pragma mark -
+#pragma mark toolbar
+
+- (void)toggleToolbar;
+{
+    if (self.isShowingToolbar)
+    {
+        [self hideToolbar];
+    }
+    else
+    {
+        [self showToolbar];
+    }
+}
+
+- (void)hideToolbar;
+{
+    if (!self.isShowingToolbar)
+    {
+        return;
+    }
+    __weak typeof(self) wself = self;
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.toolbarView.center = kToolbarViewHidden;
+    } completion:^(BOOL finished) {
+        wself.isShowingToolbar = NO;
+    }];
+}
+
+- (void)showToolbar;
+{
+    if (self.isShowingToolbar)
+    {
+        return;
+    }
+    __weak typeof(self) wself = self;
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        wself.toolbarView.center = kToolbarViewVisible;
+    } completion:^(BOOL finished) {
+        wself.isShowingToolbar = YES;
+    }];
+}
 
 
 

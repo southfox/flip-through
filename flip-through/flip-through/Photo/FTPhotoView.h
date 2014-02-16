@@ -12,12 +12,18 @@
 
 @interface FTPhotoView : UIView
 
+@property (nonatomic, strong) IBOutlet UIView *imageContainerView;
+@property (nonatomic, strong) IBOutlet UIView *toolbarView;
 @property (nonatomic, strong) IBOutlet UIImageView *fullImage;
+@property (nonatomic, strong) IBOutlet UIButton *aviaryButton;
+@property (nonatomic, strong) IBOutlet UIButton *closeButton;
 
 - (void)showFullScreenItem:(FTItem *)item;
 - (void)updateFullScreenItem:(FTItem *)item option:(UIViewAnimationOptions)option;
 
 - (id)init;
-- (void)configureView:(UIView *)view leftBlock:(void (^)())leftBlock rightBlock:(void (^)())rightBlock;
+- (void)configureView:(UIViewController *)parentViewController leftBlock:(void (^)())leftBlock rightBlock:(void (^)())rightBlock;
+
+- (IBAction)actionButton:(id)sender;
 
 @end

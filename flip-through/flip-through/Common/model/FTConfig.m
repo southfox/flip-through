@@ -28,6 +28,8 @@
         FTAssert(_flickrFeedParam);
         _aviaryAPIKey = [object objectForKey:@"aviaryAPIKey"];
         FTAssert(_aviaryAPIKey);
+        _aviaryInAppPurchasesEnabled = [object objectForKey:@"aviaryInAppPurchasesEnabled"];
+        FTAssert(_aviaryInAppPurchasesEnabled);
         _facebookAppId = [object objectForKey:@"facebookAppId"];
         FTAssert(_flickrFeedUrl);
         _flurryAppKey = [object objectForKey:@"flurryAppKey"];
@@ -62,6 +64,10 @@
     return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled, self.googleAnalyticsEnabled, self.googleAnalyticsTrackingId, self.parseLogEnabled, self.crittercismEnabled, self.crittercismAppId, self.crashlyticsEnabled, self.crashlyticsAppId, self.testFlightEnabled, self.testFlightApplicationToken];
 }
 
+- (BOOL)isAviaryInAppPurchasesEnabled;
+{
+    return [self.aviaryInAppPurchasesEnabled boolValue];
+}
 
 - (BOOL)isFlurryEnabled;
 {

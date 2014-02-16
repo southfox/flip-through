@@ -11,7 +11,7 @@
 		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
 		9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */; };
-		9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2D018A98CC200999247 /* FTAviaryManager.m */; };
+		9856E2D118A98CC200999247 /* FTAviaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2D018A98CC200999247 /* FTAviaryController.m */; };
 		9856E2D418AA488300999247 /* big-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D218AA488300999247 /* big-image-placeholder.png */; };
 		9856E2D518AA488300999247 /* big-image-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D318AA488300999247 /* big-image-placeholder@2x.png */; };
 		9856E2E118AB994000999247 /* FTGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9856E2D718AB994000999247 /* FTGridCell.xib */; };
@@ -78,8 +78,8 @@
 		9856E2C418A50B9900999247 /* NSError+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FT.m"; sourceTree = "<group>"; };
 		9856E2C918A50CDD00999247 /* FTAnalyticsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnalyticsService.h; sourceTree = "<group>"; };
 		9856E2CA18A50CDD00999247 /* FTAnalyticsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnalyticsService.m; sourceTree = "<group>"; };
-		9856E2CF18A98CC200999247 /* FTAviaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAviaryManager.h; sourceTree = "<group>"; };
-		9856E2D018A98CC200999247 /* FTAviaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAviaryManager.m; sourceTree = "<group>"; };
+		9856E2CF18A98CC200999247 /* FTAviaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAviaryController.h; sourceTree = "<group>"; };
+		9856E2D018A98CC200999247 /* FTAviaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAviaryController.m; sourceTree = "<group>"; };
 		9856E2D218AA488300999247 /* big-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-image-placeholder.png"; path = "../../assets/big-image-placeholder.png"; sourceTree = "<group>"; };
 		9856E2D318AA488300999247 /* big-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-image-placeholder@2x.png"; path = "../../assets/big-image-placeholder@2x.png"; sourceTree = "<group>"; };
 		9856E2D818AB994000999247 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FTGridCell.xib; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 		9856E2CE18A98CC200999247 /* Aviary */ = {
 			isa = PBXGroup;
 			children = (
-				9856E2CF18A98CC200999247 /* FTAviaryManager.h */,
-				9856E2D018A98CC200999247 /* FTAviaryManager.m */,
+				9856E2CF18A98CC200999247 /* FTAviaryController.h */,
+				9856E2D018A98CC200999247 /* FTAviaryController.m */,
 			);
 			path = Aviary;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				9856E2C118A5093900999247 /* FTConfig.m in Sources */,
 				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
-				9856E2D118A98CC200999247 /* FTAviaryManager.m in Sources */,
+				9856E2D118A98CC200999247 /* FTAviaryController.m in Sources */,
 				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,

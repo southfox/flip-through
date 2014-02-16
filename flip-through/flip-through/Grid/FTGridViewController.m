@@ -90,7 +90,7 @@ static CGPoint kFooterViewHidden;
 - (void)configurePhotoView;
 {
     __weak typeof(self) wself = self;
-    [self.photoView configureView:self.view leftBlock:^{
+    [self.photoView configureView:self leftBlock:^{
         [wself leftAction];
     } rightBlock:^{
         [wself rightAction];
@@ -362,7 +362,7 @@ static CGPoint kFooterViewHidden;
 {
     // update the scroll view to the last page
     CGPoint co = self.collectionView.contentOffset;
-    co.y += kCellHeight * 1.5;
+    co.y += kCellHeight * 4;
     CGSize s = self.collectionView.s;
     s.width -= 20;
     CGRect bounds;
