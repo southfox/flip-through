@@ -11,11 +11,13 @@
 #import "FTConfig.h"
 #import "FTParseService.h"
 #import "AFPhotoEditorCustomization.h"
+#import "UIImage+FT.h"
 
 @interface FTAviaryController ()
 @property (nonatomic, strong) AFPhotoEditorSession *currentSession;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, strong) UIView *currentView;
+@property (nonatomic,copy) void (^saveBlock)(UIImage *image);
 @end
 
 @implementation FTAviaryController
@@ -56,9 +58,10 @@
 }
 
 
-- (void)editImage:(UIImage *)image inViewController:(UIViewController *)viewController;
+- (void)editImage:(UIImage *)image editedImageName:(NSString *)editedImageName inViewController:(UIViewController *)viewController saveBlock:(void (^)(UIImage *image))saveBlock;
 {
     _currentViewController = viewController;
+    _saveBlock = saveBlock;
     
     [self.currentViewController.view startSpinnerWithString:@"Loading..." tag:1];
     
@@ -86,13 +89,14 @@
     AFPhotoEditorContext *context = [session createContextWithImage:image];
     
     __weak typeof(self) wself = self;
+//    __block NSString *beditedImageName = editedImageName;
     
     // Request that the context asynchronously replay the session's actions on its image.
     [context render:^(UIImage *result) {
         // `result` will be nil if the image was not modified in the session, or non-nil if the session was closed successfully
         if(result != nil)
         {
-            [wself saveHiResImage:result]; // Developer-defined method that saves the high resolution image to disk, perhaps.
+//            [image saveToDisk:beditedImageName];
         }
         // Release the session.
         [wself setCurrentSession:nil];
@@ -107,7 +111,8 @@
 {
     
     // Handle the result image here and dismiss the editor.
-    [self closeEditor:editor];
+    [self closeEditor:editor image:image];
+    
     
 }
 
@@ -115,12 +120,13 @@
 - (void)photoEditorCanceled:(AFPhotoEditorController *)editor
 {
     // Handle cancellation here
-    [self closeEditor:editor];
+    [self closeEditor:editor image:nil];
 }
 
-- (void)closeEditor:(AFPhotoEditorController *)editor;
+- (void)closeEditor:(AFPhotoEditorController *)editor image:(UIImage *)image;
 {
     __block AFPhotoEditorController *beditor = editor;
+    __block UIImage *bimage = image;
     __weak typeof(self) wself = self;
 
     [self.currentViewController dismissViewControllerAnimated:NO completion:^{
@@ -129,19 +135,15 @@
             beditor.view.alpha = 0;
         } completion:^(BOOL finished) {
             [wself.currentViewController.view stopSpinner:1];
+            wself.saveBlock(bimage);
         }];
     }];
 
 }
 
-- (void)saveHiResImage:(UIImage *)image;
+- (void)saveHiResImage:(UIImage *)image editedImageName:(NSString *)editedImageName;
 {
-//    [self.photoAviaryImageView setImage:image];
-//    
-//    TBAsset *asset = self.assets[self.currentPhotoIndex.row];
-//    
-//    [image saveToDisk:[asset effectImageName]];
-//    asset.effectAppliedValue = [NSNumber numberWithBool:YES];
+    [image saveToDisk:editedImageName];
 }
 
 #pragma mark - Rotation

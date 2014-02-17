@@ -24,13 +24,13 @@ Services implemented and used:
     Crashlytics is another crash framework. Very good framework, you don't need to upload syms.
     Testflight has a crash detector. It's integrated in the app.
 - With flickr the use is restriced to services that does not require authentication. Now it's using the public flickr feed which does not require authentication: http://www.flickr.com/services/feeds/docs/photos_public/
+- Added a controller to edit photos using Aviary
 
 TBD:
 
 In the future I'll add:
 - There are additional functionality such as displaying photos for a particular user or tag or location.
 - share icon or social link (Be the first to know about updates and new features!) or "Got it!": mail, facebook, tweet, linkedin, google+, Pinterest, digg, StumbleUpon, Reddit, Tumblr, Adtty, Allvoices, Amazon Wishlist, Arto, Baidu, Bebo, Blinklist, Blip, Blogmarks, Blogger, Brainity, BuddyMarks, Buffer, Add to BX, Care2, chiq, CiteULike, Connotea, coRank, Corcboard, Current, Dealspi.us, Delicius, Digg, Diigo, .net Shoutout, DZone, Edmodo and flickr off course.
-- Edit photos using Aviary
 - show banner, views and video ads: new service FTAdService (only if the user didn't purchase)
 - IAP: purchase the full pack ?
 

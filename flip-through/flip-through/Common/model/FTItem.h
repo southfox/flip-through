@@ -31,6 +31,8 @@
 @property (nonatomic, copy) NSString *author;
 @property (nonatomic, copy) NSString *author_id;
 @property (nonatomic, copy) NSString *tags;
+@property (nonatomic, strong) NSString *lowImageName;
+@property (nonatomic, strong) NSString *editedImageName;
 
 - (NSString *)mediaUrl;
 - (NSString *)mediaBigUrl;

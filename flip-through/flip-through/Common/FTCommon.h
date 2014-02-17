@@ -34,6 +34,7 @@
 
 #define kImagePlaceholder [UIImage imageNamed:@"image-placeholder"]
 #define kBigImagePlaceholder [UIImage imageNamed:@"big-image-placeholder"]
+#define kCommonImageExtension @"jpeg"
 
 
 

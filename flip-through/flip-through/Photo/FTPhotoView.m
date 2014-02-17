@@ -17,7 +17,7 @@
 #import "Reachability+FT.h"
 #import "FTAnalyticsService.h"
 #import "FTAviaryController.h"
-
+#import "UIImage+FT.h"
 
 static CGPoint kToolbarViewVisible;
 static CGPoint kToolbarViewHidden;
@@ -25,6 +25,7 @@ static CGPoint kToolbarViewHidden;
 
 @interface FTPhotoView ()
 @property (nonatomic, strong) UIViewController *parentViewController;
+@property (nonatomic, strong) FTItem *item;
 @property (nonatomic) BOOL isDownloaded;
 @property (nonatomic) BOOL isShowingFullScreenImage;
 @property (nonatomic) BOOL isShowingToolbar;
@@ -125,14 +126,17 @@ static CGPoint kToolbarViewHidden;
 
 - (void)showItemMedia:(FTItem *)item;
 {
+    _item = item;
+    
     self.alpha = 1;
     __weak typeof(self) wself = self;
 
-    NSString *imageUrl = [item mediaBigUrl];
-    NSURL *url = [NSURL URLWithString:imageUrl];
+    NSURL *lowImageUrl = [NSURL URLWithString:[self.item mediaUrl]];
+    NSURL *imageUrl = [NSURL URLWithString:[self.item mediaBigUrl]];
 
     [self startSpinnerWithString:@"Downloading..." tag:1];
-    [self.fullImage setImageWithURL:url placeholderImage:kBigImagePlaceholder success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    [self.fullImage setImageWithURL:lowImageUrl];
+    [self.fullImage setImageWithURL:imageUrl placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         wself.fullImage.image = image;
         [wself stopSpinner:1];
         [wself toggleToolbar];
@@ -184,8 +188,16 @@ static CGPoint kToolbarViewHidden;
 {
     if (sender == self.aviaryButton)
     {
-        [[FTAviaryController sharedInstance] editImage:self.fullImage.image inViewController:self.parentViewController];
-    } 
+        __weak typeof(self) wself = self;
+
+        [[FTAviaryController sharedInstance] editImage:self.fullImage.image editedImageName:self.item.editedImageName inViewController:self.parentViewController saveBlock:^(UIImage *image) {
+            if (image)
+            {
+                [image saveToDisk:wself.item.editedImageName];
+                wself.fullImage.image = image;
+            }
+        }];
+    }
     else if (sender == self.closeButton)
     {
         [self dismissFullScreenImage];

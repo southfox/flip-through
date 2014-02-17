@@ -40,6 +40,7 @@
 		985D31F718A1C7DB00320F87 /* Button-Close-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */; };
 		985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */; };
 		985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */; };
+		9878EAC918B1F6F400A98977 /* UIImage+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9878EAC818B1F6F400A98977 /* UIImage+FT.m */; };
 		988699C118A30370006F1196 /* Button-Aviary.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699BF18A30370006F1196 /* Button-Aviary.png */; };
 		988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 988699C018A30370006F1196 /* Button-Aviary@2x.png */; };
 		988699CA18A31109006F1196 /* FTParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 988699C718A31109006F1196 /* FTParseService.m */; };
@@ -122,6 +123,8 @@
 		985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Close-icon@2x.png"; path = "../../assets/Button-Close-icon@2x.png"; sourceTree = "<group>"; };
 		985D31F418A1C7DB00320F87 /* Button-Refresh-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Refresh-icon@2x.png"; path = "../../assets/Button-Refresh-icon@2x.png"; sourceTree = "<group>"; };
 		985D31F518A1C7DB00320F87 /* Button-Reload-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Reload-icon@2x.png"; path = "../../assets/Button-Reload-icon@2x.png"; sourceTree = "<group>"; };
+		9878EAC718B1F6F400A98977 /* UIImage+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FT.h"; sourceTree = "<group>"; };
+		9878EAC818B1F6F400A98977 /* UIImage+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FT.m"; sourceTree = "<group>"; };
 		988699BF18A30370006F1196 /* Button-Aviary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary.png"; path = "../../assets/Button-Aviary.png"; sourceTree = "<group>"; };
 		988699C018A30370006F1196 /* Button-Aviary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Aviary@2x.png"; path = "../../assets/Button-Aviary@2x.png"; sourceTree = "<group>"; };
 		988699C618A31109006F1196 /* FTParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTParseService.h; sourceTree = "<group>"; };
@@ -261,12 +264,14 @@
 		985D319C18A1200600320F87 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				9856E2C318A50B9900999247 /* NSError+FT.h */,
-				9856E2C418A50B9900999247 /* NSError+FT.m */,
 				985D319D18A1200600320F87 /* NSArray+FT.h */,
 				985D319E18A1200600320F87 /* NSArray+FT.m */,
+				9856E2C318A50B9900999247 /* NSError+FT.h */,
+				9856E2C418A50B9900999247 /* NSError+FT.m */,
 				985D319F18A1200600320F87 /* Reachability+FT.h */,
 				985D31A018A1200600320F87 /* Reachability+FT.m */,
+				9878EAC718B1F6F400A98977 /* UIImage+FT.h */,
+				9878EAC818B1F6F400A98977 /* UIImage+FT.m */,
 				985D31A118A1200600320F87 /* UIView+FT.h */,
 				985D31A218A1200600320F87 /* UIView+FT.m */,
 			);
@@ -588,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
+				9878EAC918B1F6F400A98977 /* UIImage+FT.m in Sources */,
 				9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */,
 				985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,

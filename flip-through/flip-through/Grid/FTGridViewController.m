@@ -18,6 +18,7 @@
 #import "FTParseService.h"
 #import "Reachability+FT.h"
 #import "FTAnalyticsService.h"
+#import "UIImage+FT.h"
 
 static CGPoint kFooterViewVisible;
 static CGPoint kFooterViewHidden;
@@ -210,10 +211,6 @@ static CGPoint kFooterViewHidden;
 
 
 
-
-
-
-
 - (void)updateFullScreenOfCurrentIndexPath:(UIViewAnimationOptions)option;
 {
     FTGridCell *cell = (FTGridCell *) [self collectionView:self.collectionView cellForItemAtIndexPath:self.currentIndexPath];
@@ -231,6 +228,7 @@ static CGPoint kFooterViewHidden;
 
     FTItem *item = cell.item;
     FTAssert([item isKindOfClass:[FTItem class]]);
+    [cell.imageView.image saveToDisk:[item lowImageName]];
 
     [self.photoView showFullScreenItem:item];
 }

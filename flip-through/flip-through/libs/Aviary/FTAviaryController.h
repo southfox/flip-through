@@ -10,10 +10,12 @@
 
 #import "AFPhotoEditorController.h"
 
+@class FTItem;
+
 @interface FTAviaryController : NSObject <AFPhotoEditorControllerDelegate>
 
 + (FTAviaryController *)sharedInstance;
 
-- (void)editImage:(UIImage *)image inViewController:(UIViewController *)viewController;
+- (void)editImage:(UIImage *)image editedImageName:(NSString *)editedImageName inViewController:(UIViewController *)viewController saveBlock:(void (^)(UIImage *image))saveBlock;
 
 @end

@@ -16,6 +16,8 @@
     self = [super init];
     if (self) {
         _objectId = [NSString stringWithFormat:@"%@_%lf", NSStringFromClass([self class]), [[NSDate date] timeIntervalSince1970]];
+        _editedImageName = [NSString stringWithFormat:@"%@_%@.%@",_objectId, @"EDIT", kCommonImageExtension];
+        _lowImageName = [NSString stringWithFormat:@"%@_%@.%@",_objectId, @"LOW", kCommonImageExtension];
     }
     return self;
 }
