@@ -29,6 +29,7 @@ Services implemented and used:
 TBD:
 
 In the future I'll add:
+- in full screen mode: accept gesture recognizers to magnify the image (pinch).
 - There are additional functionality such as displaying photos for a particular user or tag or location.
 - share icon or social link (Be the first to know about updates and new features!) or "Got it!": mail, facebook, tweet, linkedin, google+, Pinterest, digg, StumbleUpon, Reddit, Tumblr, Adtty, Allvoices, Amazon Wishlist, Arto, Baidu, Bebo, Blinklist, Blip, Blogmarks, Blogger, Brainity, BuddyMarks, Buffer, Add to BX, Care2, chiq, CiteULike, Connotea, coRank, Corcboard, Current, Dealspi.us, Delicius, Digg, Diigo, .net Shoutout, DZone, Edmodo and flickr off course.
 - show banner, views and video ads: new service FTAdService (only if the user didn't purchase)

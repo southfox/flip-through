@@ -110,6 +110,7 @@ static CGPoint kToolbarViewHidden;
     {
         return;
     }
+    [self toggleToolbar];
     
     __weak typeof(self) wself = self;
     __block FTItem *bitem = item;
@@ -153,12 +154,13 @@ static CGPoint kToolbarViewHidden;
         return;
     }
 
+    [self hideToolbar];
+
     __weak typeof(self) wself = self;
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         wself.alpha = 0;
     } completion:^(BOOL finished) {
         wself.isShowingFullScreenImage = NO;
-        [wself hideToolbar];
     }];
 }
 
@@ -189,12 +191,13 @@ static CGPoint kToolbarViewHidden;
     if (sender == self.aviaryButton)
     {
         __weak typeof(self) wself = self;
-
+        [self toggleToolbar];
         [[FTAviaryController sharedInstance] editImage:self.fullImage.image editedImageName:self.item.editedImageName inViewController:self.parentViewController saveBlock:^(UIImage *image) {
             if (image)
             {
                 [image saveToDisk:wself.item.editedImageName];
                 wself.fullImage.image = image;
+                [wself toggleToolbar];
             }
         }];
     }
