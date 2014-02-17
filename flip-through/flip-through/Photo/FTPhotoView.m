@@ -18,6 +18,7 @@
 #import "FTAnalyticsService.h"
 #import "FTAviaryController.h"
 
+
 static CGPoint kToolbarViewVisible;
 static CGPoint kToolbarViewHidden;
 
@@ -77,12 +78,12 @@ static CGPoint kToolbarViewHidden;
     UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightAction)];
     swipeRightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     swipeRightRecognizer.cancelsTouchesInView = NO;
-    [self addGestureRecognizer:swipeRightRecognizer];
+    [self.imageContainerView addGestureRecognizer:swipeRightRecognizer];
     
     UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftAction)];
     swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     swipeLeftRecognizer.cancelsTouchesInView = NO;
-    [self addGestureRecognizer:swipeLeftRecognizer];
+    [self.imageContainerView addGestureRecognizer:swipeLeftRecognizer];
     
     
 }
@@ -95,16 +96,11 @@ static CGPoint kToolbarViewHidden;
     {
         return;
     }
+    self.isShowingFullScreenImage = YES;
+
     
     [self showItemMedia:item];
 
-    __weak typeof(self) wself = self;
-    self.alpha = 0;
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        wself.alpha = 1;
-    } completion:^(BOOL finished) {
-        wself.isShowingFullScreenImage = YES;
-    }];
 }
 
 - (void)updateFullScreenItem:(FTItem *)item option:(UIViewAnimationOptions)option;
@@ -129,6 +125,7 @@ static CGPoint kToolbarViewHidden;
 
 - (void)showItemMedia:(FTItem *)item;
 {
+    self.alpha = 1;
     __weak typeof(self) wself = self;
 
     NSString *imageUrl = [item mediaBigUrl];
@@ -142,6 +139,7 @@ static CGPoint kToolbarViewHidden;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         [wself stopSpinner:1];
     }];
+
 }
 
 - (void)dismissFullScreenImage;
@@ -187,7 +185,7 @@ static CGPoint kToolbarViewHidden;
     if (sender == self.aviaryButton)
     {
         [[FTAviaryController sharedInstance] editImage:self.fullImage.image inViewController:self.parentViewController];
-    }
+    } 
     else if (sender == self.closeButton)
     {
         [self dismissFullScreenImage];

@@ -317,6 +317,8 @@ static CGPoint kFooterViewHidden;
     [self hideFooter];
     self.view.userInteractionEnabled = YES;
 }
+
+
 - (void)showFooter:(void (^)())completion {
     
     if (self.isShowingFooter)
@@ -338,6 +340,7 @@ static CGPoint kFooterViewHidden;
         }];
     }];
 }
+
 
 - (void)hideFooter
 {
