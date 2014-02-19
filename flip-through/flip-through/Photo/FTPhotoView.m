@@ -18,6 +18,9 @@
 #import "FTAnalyticsService.h"
 #import "FTAviaryController.h"
 #import "UIImage+FT.h"
+#import "FTFacebookService.h"
+#import "NSError+FT.h"
+#import <Social/Social.h>
 
 static CGPoint kToolbarViewVisible;
 static CGPoint kToolbarViewHidden;
@@ -188,9 +191,9 @@ static CGPoint kToolbarViewHidden;
 
 - (IBAction)actionButton:(id)sender;
 {
+    __weak typeof(self) wself = self;
     if (sender == self.aviaryButton)
     {
-        __weak typeof(self) wself = self;
         [self toggleToolbar];
         [[FTAviaryController sharedInstance] editImage:self.fullImage.image editedImageName:self.item.editedImageName inViewController:self.parentViewController saveBlock:^(UIImage *image) {
             if (image)
@@ -204,6 +207,14 @@ static CGPoint kToolbarViewHidden;
     else if (sender == self.closeButton)
     {
         [self dismissFullScreenImage];
+    }
+    else if (sender == self.facebookButton)
+    {
+        [self facebookPopover];
+    }
+    else if (sender == self.linkedInButton)
+    {
+        [self linkedInShare];
     }
     else
     {
@@ -256,6 +267,69 @@ static CGPoint kToolbarViewHidden;
     }];
 }
 
+- (void)facebookPopover;
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"upload", @"share", nil];
+    
+    [actionSheet showFromRect:self.facebookButton.frame inView:self.facebookButton animated:YES];
+}
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [self uploadPhoto];
+    }
+    else if (buttonIndex == 1)
+    {
+        [self sharePhoto];
+    }
+}
+
+- (void)uploadPhoto;
+{
+    __weak typeof(self) wself = self;
+    self.facebookButton.enabled = NO;
+    [self startSpinnerWithString:@"Uploading..." tag:1];
+    [[FTFacebookService sharedInstance] uploadImage:[self.fullImage.image thumbnailBySize:self.fullImage.image.size] finishBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            [wself stopSpinner:1];
+        }
+        else
+        {
+            [wself stopSpinnerWithString:[error facebook] tag:1];
+        }
+        wself.facebookButton.enabled = YES;
+    }];
+
+}
+
+- (void)sharePhoto;
+{
+    //        [[FTFacebookService sharedInstance] post:@"Image from flickr" description:@"I want to share this image" image:[self.fullImage.image thumbnailBySize:self.fullImage.image.size] url:@"http://www.google.com" finishBlock:^(BOOL succeeded, NSError *error) {
+    //        }];
+    
+    __weak typeof(self) wself = self;
+    
+    self.facebookButton.enabled = NO;
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *fbComposer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        [fbComposer setInitialText:@"Image from flickr"];
+        
+        [fbComposer addImage:self.fullImage.image];
+        
+        [self.parentViewController presentViewController:fbComposer animated:YES completion:^{
+            wself.facebookButton.enabled = YES;
+        }];
+    }
+}
+
+- (void)linkedInShare;
+{
+}
 
 @end

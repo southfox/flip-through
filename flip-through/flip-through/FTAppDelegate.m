@@ -8,6 +8,7 @@
 
 #import "FTAppDelegate.h"
 #import "Reachability+FT.h"
+#import "NSError+FT.h"
 #import "FTAlert.h"
 #import "FTGridViewController.h"
 
@@ -16,6 +17,7 @@
 #import "FTParseService.h"
 #import "FTAnalyticsService.h"
 #import "FTCrashService.h"
+#import "FTFacebookService.h"
 
 
 @implementation FTAppDelegate
@@ -32,23 +34,33 @@
     {
         __weak typeof(self) wself = self;
         
-        [self configureParseServiceWithOptions:launchOptions finishBlock:^{
+        [self configureParseServiceWithOptions:launchOptions finishBlock:^(BOOL succeeded, NSError *error) {
             // Once finished, configure the other services
 
-            [wself configureCrashService];
+            if (succeeded)
+            {
+                [wself configureCrashService];
 
-            [wself configureAnalyticsService];
+                [wself configureAnalyticsService];
 
-            // flickr feed
-            [wself configureFlikrPublicFeedService];
-            
-            // configure data
-            [wself configureDataService];
+                // flickr feed
+                [wself configureFlikrPublicFeedService];
+                
+                // configure data
+                [wself configureDataService];
 
+                dispatch_async(dispatch_get_main_queue(), ^{
+                               [wself configureWindow];
+                });
+                
+            }
+            else
+            {
+                [FTAlert alertWithFrame:self.window.frame title:@"Epaaa!" message:[error parse] leftTitle:@"Ok" leftBlock:^{} rightTitle:nil rightBlock:nil];
+            }
         }];
     }
     
-    [self configureWindow];
 
     return YES;
 }
@@ -77,12 +89,20 @@
     if ([Reachability isNetworkAvailable])
     {
         // TODO: get the flickr feed here
+     
+        [[FTParseService sharedInstance] applicationDidBecomeActive:application];
     }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [[FTParseService sharedInstance] application:application openURL:url sourceApplication:sourceApplication];
 }
 
 
@@ -129,7 +149,7 @@
 #pragma mark -
 #pragma mark Parse service
 
-- (void)configureParseServiceWithOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
+- (void)configureParseServiceWithOptions:(NSDictionary *)launchOptions finishBlock:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 {
     [[FTParseService sharedInstance] configureWithLaunchOptions:launchOptions finishBlock:finishBlock];
 }

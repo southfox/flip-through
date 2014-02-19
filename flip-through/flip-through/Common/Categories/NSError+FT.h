@@ -10,6 +10,8 @@
 
 @interface NSError (FT)
 
-- (NSString *)parseError;
+- (NSString *)facebook;
+- (NSString *)parse;
++ (id)errorWithMessage:(NSString *)message;
 
 @end

@@ -8,12 +8,18 @@
 
 #import "NSError+FT.h"
 #import <Parse/PFConstants.h>
+#import <FBError.h>
 
 #import "FTParseService.h"
 
 @implementation NSError (FT)
 
-- (NSString *)parseError
+- (NSString *)facebook;
+{
+    return self.userInfo[FBErrorParsedJSONResponseKey][@"body"][@"error"][@"message"];
+}
+
+- (NSString *)parse;
 {
     switch (self.code) {
     case   1:   return @"Internal server error. No information available. ";	break;
@@ -82,6 +88,12 @@
     }
 
     return @"We've encountered a problem connecting to the server. Please try again.";
+}
+
+
++ (id)errorWithMessage:(NSString *)message;
+{
+    return [NSError errorWithDomain:@"com.flip.through" code:-1 userInfo:@{@"inner_error_object" : message}];
 }
 
 @end

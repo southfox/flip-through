@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		984320E118B28E4200119AC1 /* Button-Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320DF18B28E4200119AC1 /* Button-Facebook.png */; };
+		984320E218B28E4200119AC1 /* Button-Facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320E018B28E4200119AC1 /* Button-Facebook@2x.png */; };
+		984320E618B39D2A00119AC1 /* FTFacebookService.m in Sources */ = {isa = PBXBuildFile; fileRef = 984320E518B39D2A00119AC1 /* FTFacebookService.m */; };
+		984320E918B3A30400119AC1 /* FTFacebookUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 984320E718B3A30400119AC1 /* FTFacebookUser.m */; };
+		984320ED18B3E6B100119AC1 /* NSDate+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 984320EC18B3E6B100119AC1 /* NSDate+FT.m */; };
+		984320F018B4595100119AC1 /* Button-LinkedIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320EE18B4595100119AC1 /* Button-LinkedIn.png */; };
+		984320F118B4595100119AC1 /* Button-LinkedIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320EF18B4595100119AC1 /* Button-LinkedIn@2x.png */; };
 		9856E2C118A5093900999247 /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2BE18A5093900999247 /* FTConfig.m */; };
 		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
@@ -71,6 +78,16 @@
 /* Begin PBXFileReference section */
 		5FEC53D510FE4B89BB8A40C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8693B0B317B34869AB6A20EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		984320DF18B28E4200119AC1 /* Button-Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Facebook.png"; path = "../../assets/Button-Facebook.png"; sourceTree = "<group>"; };
+		984320E018B28E4200119AC1 /* Button-Facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Facebook@2x.png"; path = "../../assets/Button-Facebook@2x.png"; sourceTree = "<group>"; };
+		984320E418B39D2A00119AC1 /* FTFacebookService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFacebookService.h; sourceTree = "<group>"; };
+		984320E518B39D2A00119AC1 /* FTFacebookService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFacebookService.m; sourceTree = "<group>"; };
+		984320E718B3A30400119AC1 /* FTFacebookUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFacebookUser.m; sourceTree = "<group>"; };
+		984320E818B3A30400119AC1 /* FTFacebookUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFacebookUser.h; sourceTree = "<group>"; };
+		984320EB18B3E6B100119AC1 /* NSDate+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FT.h"; sourceTree = "<group>"; };
+		984320EC18B3E6B100119AC1 /* NSDate+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FT.m"; sourceTree = "<group>"; };
+		984320EE18B4595100119AC1 /* Button-LinkedIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-LinkedIn.png"; path = "../../assets/Button-LinkedIn.png"; sourceTree = "<group>"; };
+		984320EF18B4595100119AC1 /* Button-LinkedIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-LinkedIn@2x.png"; path = "../../assets/Button-LinkedIn@2x.png"; sourceTree = "<group>"; };
 		9856E2BD18A5093900999247 /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
 		9856E2BE18A5093900999247 /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
 		9856E2BF18A5093900999247 /* FTPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPFObject.h; sourceTree = "<group>"; };
@@ -172,6 +189,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		984320E318B39D2A00119AC1 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				984320E418B39D2A00119AC1 /* FTFacebookService.h */,
+				984320E518B39D2A00119AC1 /* FTFacebookService.m */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
 		9856E2C618A50CDD00999247 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +292,8 @@
 			children = (
 				985D319D18A1200600320F87 /* NSArray+FT.h */,
 				985D319E18A1200600320F87 /* NSArray+FT.m */,
+				984320EB18B3E6B100119AC1 /* NSDate+FT.h */,
+				984320EC18B3E6B100119AC1 /* NSDate+FT.m */,
 				9856E2C318A50B9900999247 /* NSError+FT.h */,
 				9856E2C418A50B9900999247 /* NSError+FT.m */,
 				985D319F18A1200600320F87 /* Reachability+FT.h */,
@@ -284,6 +312,7 @@
 				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E2C618A50CDD00999247 /* Analytics */,
 				9856E30018AD030000999247 /* Crash */,
+				984320E318B39D2A00119AC1 /* Facebook */,
 				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
@@ -307,6 +336,8 @@
 				9856E2C018A5093900999247 /* FTPFObject.m */,
 				9856E2BD18A5093900999247 /* FTConfig.h */,
 				9856E2BE18A5093900999247 /* FTConfig.m */,
+				984320E818B3A30400119AC1 /* FTFacebookUser.h */,
+				984320E718B3A30400119AC1 /* FTFacebookUser.m */,
 				985D31C618A171E200320F87 /* FTFeed.h */,
 				985D31C718A171E200320F87 /* FTFeed.m */,
 				985D31C818A171E200320F87 /* FTItem.h */,
@@ -329,9 +360,13 @@
 		985D31EF18A1BFEE00320F87 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				984320EE18B4595100119AC1 /* Button-LinkedIn.png */,
+				984320EF18B4595100119AC1 /* Button-LinkedIn@2x.png */,
 				9856E2D218AA488300999247 /* big-image-placeholder.png */,
 				9856E2D318AA488300999247 /* big-image-placeholder@2x.png */,
 				985D31F018A1C71C00320F87 /* image-placeholder.png */,
+				984320DF18B28E4200119AC1 /* Button-Facebook.png */,
+				984320E018B28E4200119AC1 /* Button-Facebook@2x.png */,
 				985D31F218A1C7DB00320F87 /* image-placeholder@2x.png */,
 				988699BF18A30370006F1196 /* Button-Aviary.png */,
 				988699C018A30370006F1196 /* Button-Aviary@2x.png */,
@@ -511,10 +546,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF6C7C18A105A000C2EDF7 /* Images.xcassets in Resources */,
+				984320F018B4595100119AC1 /* Button-LinkedIn.png in Resources */,
 				9856E2E218AB994000999247 /* FTGridViewController.xib in Resources */,
 				985D31F618A1C7DB00320F87 /* image-placeholder@2x.png in Resources */,
 				985D31F118A1C71C00320F87 /* image-placeholder.png in Resources */,
 				9856E2D418AA488300999247 /* big-image-placeholder.png in Resources */,
+				984320F118B4595100119AC1 /* Button-LinkedIn@2x.png in Resources */,
+				984320E118B28E4200119AC1 /* Button-Facebook.png in Resources */,
 				985D31F918A1C7DB00320F87 /* Button-Reload-icon@2x.png in Resources */,
 				985D31F818A1C7DB00320F87 /* Button-Refresh-icon@2x.png in Resources */,
 				985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */,
@@ -522,6 +560,7 @@
 				9856E2E318AB994000999247 /* InfoPlist.strings in Resources */,
 				9856E2ED18AB9AC600999247 /* FTPhotoView.xib in Resources */,
 				988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */,
+				984320E218B28E4200119AC1 /* Button-Facebook@2x.png in Resources */,
 				9856E2E118AB994000999247 /* FTGridCell.xib in Resources */,
 				9856E2D518AA488300999247 /* big-image-placeholder@2x.png in Resources */,
 				985D31EC18A1BFE500320F87 /* Button-Close-icon.png in Resources */,
@@ -606,13 +645,16 @@
 				9856E2C518A50B9900999247 /* NSError+FT.m in Sources */,
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				9856E2D118A98CC200999247 /* FTAviaryController.m in Sources */,
+				984320E918B3A30400119AC1 /* FTFacebookUser.m in Sources */,
 				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
 				985D31CD18A171E200320F87 /* FTFeed.m in Sources */,
 				9856E2E518AB994000999247 /* FTGridViewController.m in Sources */,
+				984320ED18B3E6B100119AC1 /* NSDate+FT.m in Sources */,
 				985D31A318A1200600320F87 /* NSArray+FT.m in Sources */,
 				9856E30318AD030000999247 /* FTCrashService.m in Sources */,
+				984320E618B39D2A00119AC1 /* FTFacebookService.m in Sources */,
 				985D31D918A178ED00320F87 /* FTMedia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +812,73 @@
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(PODS_ROOT)/AviarySDK/3.3.11-master-basic/AviarySDK/libAviarySDK.a\"",
+					"-lCrittercism_v4_3_1",
+					"-lFlurry_4.3.2",
+					"-lGoogleAnalyticsServices",
+					"-lTestFlight",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					Accelerate,
+					"-framework",
+					AddressBook,
+					"-framework",
+					AssetsLibrary,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreLocation,
+					"-framework",
+					CoreMotion,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					GoogleOpenSource,
+					"-framework",
+					GooglePlus,
+					"-framework",
+					MediaPlayer,
+					"-framework",
+					MessageUI,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					OpenGLES,
+					"-framework",
+					Parse,
+					"-framework",
+					Pinterest,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					StoreKit,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-weak_framework",
+					Accounts,
+					"-weak_framework",
+					AdSupport,
+					"-weak_framework",
+					Security,
+					"-weak_framework",
+					Social,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;
@@ -792,6 +901,73 @@
 				INFOPLIST_FILE = "flip-through/flip-through-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(PODS_ROOT)/AviarySDK/3.3.11-master-basic/AviarySDK/libAviarySDK.a\"",
+					"-lCrittercism_v4_3_1",
+					"-lFlurry_4.3.2",
+					"-lGoogleAnalyticsServices",
+					"-lTestFlight",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					Accelerate,
+					"-framework",
+					AddressBook,
+					"-framework",
+					AssetsLibrary,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreLocation,
+					"-framework",
+					CoreMotion,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					GoogleOpenSource,
+					"-framework",
+					GooglePlus,
+					"-framework",
+					MediaPlayer,
+					"-framework",
+					MessageUI,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					OpenGLES,
+					"-framework",
+					Parse,
+					"-framework",
+					Pinterest,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					StoreKit,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-weak_framework",
+					Accounts,
+					"-weak_framework",
+					AdSupport,
+					"-weak_framework",
+					Security,
+					"-weak_framework",
+					Social,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = app;

@@ -10,12 +10,14 @@
 
 @class FTItem;
 
-@interface FTPhotoView : UIView
+@interface FTPhotoView : UIView <UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UIView *imageContainerView;
 @property (nonatomic, strong) IBOutlet UIView *toolbarView;
 @property (nonatomic, strong) IBOutlet UIImageView *fullImage;
 @property (nonatomic, strong) IBOutlet UIButton *aviaryButton;
+@property (nonatomic, strong) IBOutlet UIButton *facebookButton;
+@property (nonatomic, strong) IBOutlet UIButton *linkedInButton;
 @property (nonatomic, strong) IBOutlet UIButton *closeButton;
 
 - (void)showFullScreenItem:(FTItem *)item;

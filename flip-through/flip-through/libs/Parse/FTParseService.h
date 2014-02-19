@@ -10,6 +10,7 @@
 
 extern NSString *const FTParseServiceQueryDidFinishNotification;
 
+@class PFUser;
 @class FTConfig;
 
 @interface FTParseService : NSObject 
@@ -19,16 +20,23 @@ extern NSString *const FTParseServiceQueryDidFinishNotification;
 @property (nonatomic, strong, readonly) FTConfig *config;
 @property (nonatomic) BOOL isUpdating;
 
+- (PFUser *)currentUser;
 - (NSString *)email;
 - (NSString *)username;
 - (BOOL)isAuthenticated;
 
 
-- (void)querysWithErrorBlock:(void (^)(NSString *errorMessage))errorBlock finishBlock:(void (^)())finishBlock;
+- (void)querys:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 
-- (void)configureWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)())finishBlock;
+- (void)configureWithLaunchOptions:(NSDictionary *)launchOptions finishBlock:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 
 + (void)logEvent:(NSString*)event;
 + (void)logEvent:(NSString*)event withParameters:(NSDictionary*)dict;
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
+- (void)applicationDidBecomeActive:(UIApplication *)application;
+
+- (void)logout;
+- (BOOL)isLoggedInWithFacebook;
 
 @end

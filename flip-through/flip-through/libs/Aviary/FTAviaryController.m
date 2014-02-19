@@ -89,14 +89,12 @@
     AFPhotoEditorContext *context = [session createContextWithImage:image];
     
     __weak typeof(self) wself = self;
-//    __block NSString *beditedImageName = editedImageName;
     
     // Request that the context asynchronously replay the session's actions on its image.
     [context render:^(UIImage *result) {
         // `result` will be nil if the image was not modified in the session, or non-nil if the session was closed successfully
         if(result != nil)
         {
-//            [image saveToDisk:beditedImageName];
         }
         // Release the session.
         [wself setCurrentSession:nil];

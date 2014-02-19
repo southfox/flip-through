@@ -30,8 +30,10 @@
         FTAssert(_aviaryAPIKey);
         _aviaryInAppPurchasesEnabled = [object objectForKey:@"aviaryInAppPurchasesEnabled"];
         FTAssert(_aviaryInAppPurchasesEnabled);
+        _facebookEnabled = [object objectForKey:@"facebookEnabled"];
+        FTAssert(_facebookEnabled);
         _facebookAppId = [object objectForKey:@"facebookAppId"];
-        FTAssert(_flickrFeedUrl);
+        FTAssert(_facebookAppId);
         _flurryAppKey = [object objectForKey:@"flurryAppKey"];
         FTAssert(_flurryAppKey);
         _flurryEnabled = [object objectForKey:@"flurryEnabled"];
@@ -67,6 +69,11 @@
 - (BOOL)isAviaryInAppPurchasesEnabled;
 {
     return [self.aviaryInAppPurchasesEnabled boolValue];
+}
+
+- (BOOL)isFacebookEnabled;
+{
+    return [self.facebookEnabled boolValue];
 }
 
 - (BOOL)isFlurryEnabled;

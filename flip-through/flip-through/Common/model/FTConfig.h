@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *aviaryAPIKey;
 @property (nonatomic, copy) NSNumber *aviaryInAppPurchasesEnabled;
 @property (nonatomic, copy) NSString *facebookAppId;
+@property (nonatomic, copy) NSNumber *facebookEnabled;
 @property (nonatomic, copy) NSString *flurryAppKey;
 @property (nonatomic, copy) NSNumber *flurryEnabled;
 @property (nonatomic, copy) NSNumber *googleAnalyticsEnabled;
@@ -33,6 +34,8 @@
 - (id)initWithPFObject:(PFObject *)object;
 
 - (BOOL)isAviaryInAppPurchasesEnabled;
+
+- (BOOL)isFacebookEnabled;
 
 - (BOOL)isFlurryEnabled;
 
