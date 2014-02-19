@@ -36,6 +36,12 @@
 #define COCOAPODS_VERSION_MINOR_FlurrySDK 3
 #define COCOAPODS_VERSION_PATCH_FlurrySDK 2
 
+// GTMHTTPFetcher
+#define COCOAPODS_POD_AVAILABLE_GTMHTTPFetcher
+#define COCOAPODS_VERSION_MAJOR_GTMHTTPFetcher 0
+#define COCOAPODS_VERSION_MINOR_GTMHTTPFetcher 0
+#define COCOAPODS_VERSION_PATCH_GTMHTTPFetcher 2
+
 // GoogleAnalytics-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3
@@ -108,6 +114,12 @@
 #define COCOAPODS_VERSION_MINOR_RestKit_Support 22
 #define COCOAPODS_VERSION_PATCH_RestKit_Support 0
 
+// SBJson
+#define COCOAPODS_POD_AVAILABLE_SBJson
+#define COCOAPODS_VERSION_MAJOR_SBJson 3
+#define COCOAPODS_VERSION_MINOR_SBJson 2
+#define COCOAPODS_VERSION_PATCH_SBJson 0
+
 // SOCKit
 #define COCOAPODS_POD_AVAILABLE_SOCKit
 #define COCOAPODS_VERSION_MAJOR_SOCKit 1
@@ -131,4 +143,28 @@
 #define COCOAPODS_VERSION_MAJOR_google_plus_ios_sdk 1
 #define COCOAPODS_VERSION_MINOR_google_plus_ios_sdk 5
 #define COCOAPODS_VERSION_PATCH_google_plus_ios_sdk 0
+
+// gtm-oauth2
+#define COCOAPODS_POD_AVAILABLE_gtm_oauth2
+#define COCOAPODS_VERSION_MAJOR_gtm_oauth2 0
+#define COCOAPODS_VERSION_MINOR_gtm_oauth2 0
+#define COCOAPODS_VERSION_PATCH_gtm_oauth2 3
+
+// gtm-oauth2/Core
+#define COCOAPODS_POD_AVAILABLE_gtm_oauth2_Core
+#define COCOAPODS_VERSION_MAJOR_gtm_oauth2_Core 0
+#define COCOAPODS_VERSION_MINOR_gtm_oauth2_Core 0
+#define COCOAPODS_VERSION_PATCH_gtm_oauth2_Core 3
+
+// gtm-oauth2/Core/Mac
+#define COCOAPODS_POD_AVAILABLE_gtm_oauth2_Core_Mac
+#define COCOAPODS_VERSION_MAJOR_gtm_oauth2_Core_Mac 0
+#define COCOAPODS_VERSION_MINOR_gtm_oauth2_Core_Mac 0
+#define COCOAPODS_VERSION_PATCH_gtm_oauth2_Core_Mac 3
+
+// gtm-oauth2/Core/Touch
+#define COCOAPODS_POD_AVAILABLE_gtm_oauth2_Core_Touch
+#define COCOAPODS_VERSION_MAJOR_gtm_oauth2_Core_Touch 0
+#define COCOAPODS_VERSION_MINOR_gtm_oauth2_Core_Touch 0
+#define COCOAPODS_VERSION_PATCH_gtm_oauth2_Core_Touch 3
 

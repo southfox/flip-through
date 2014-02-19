@@ -25,6 +25,7 @@ Services implemented and used:
     Testflight has a crash detector. It's integrated in the app.
 - With flickr the use is restriced to services that does not require authentication. Now it's using the public flickr feed which does not require authentication: http://www.flickr.com/services/feeds/docs/photos_public/
 - Added a controller to edit photos using Aviary
+- Facebook 
 
 TBD:
 
