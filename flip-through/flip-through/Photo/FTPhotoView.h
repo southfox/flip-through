@@ -17,6 +17,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView *fullImage;
 @property (nonatomic, strong) IBOutlet UIButton *aviaryButton;
 @property (nonatomic, strong) IBOutlet UIButton *facebookButton;
+@property (nonatomic, strong) IBOutlet UIButton *twitterButton;
 @property (nonatomic, strong) IBOutlet UIButton *linkedInButton;
 @property (nonatomic, strong) IBOutlet UIButton *closeButton;
 

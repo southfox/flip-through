@@ -212,6 +212,10 @@ static CGPoint kToolbarViewHidden;
     {
         [self facebookPopover];
     }
+    else if (sender == self.twitterButton)
+    {
+        [self sharePhotoUsingService:SLServiceTypeTwitter];
+    }
     else if (sender == self.linkedInButton)
     {
         [self linkedInShare];
@@ -282,7 +286,7 @@ static CGPoint kToolbarViewHidden;
     }
     else if (buttonIndex == 1)
     {
-        [self sharePhoto];
+        [self sharePhotoUsingService:SLServiceTypeFacebook];
     }
 }
 
@@ -302,21 +306,25 @@ static CGPoint kToolbarViewHidden;
         }
         wself.facebookButton.enabled = YES;
     }];
-
-}
-
-- (void)sharePhoto;
-{
+    
     //        [[FTFacebookService sharedInstance] post:@"Image from flickr" description:@"I want to share this image" image:[self.fullImage.image thumbnailBySize:self.fullImage.image.size] url:@"http://www.google.com" finishBlock:^(BOOL succeeded, NSError *error) {
     //        }];
     
+
+
+}
+
+- (void)sharePhotoUsingService:(NSString *)serviceType;
+{
     __weak typeof(self) wself = self;
     
     self.facebookButton.enabled = NO;
+    self.twitterButton.enabled = NO;
+    self.linkedInButton.enabled = NO;
     
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    if ([SLComposeViewController isAvailableForServiceType:serviceType])
     {
-        SLComposeViewController *fbComposer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        SLComposeViewController *fbComposer = [SLComposeViewController composeViewControllerForServiceType:serviceType];
         
         [fbComposer setInitialText:@"Image from flickr"];
         
@@ -324,6 +332,8 @@ static CGPoint kToolbarViewHidden;
         
         [self.parentViewController presentViewController:fbComposer animated:YES completion:^{
             wself.facebookButton.enabled = YES;
+            wself.twitterButton.enabled = NO;
+            wself.linkedInButton.enabled = NO;
         }];
     }
 }
