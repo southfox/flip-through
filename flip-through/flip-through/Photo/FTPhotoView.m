@@ -21,6 +21,7 @@
 #import "FTFacebookService.h"
 #import "NSError+FT.h"
 #import <Social/Social.h>
+#import "FTLinkedInService.h"
 
 static CGPoint kToolbarViewVisible;
 static CGPoint kToolbarViewHidden;
@@ -214,7 +215,7 @@ static CGPoint kToolbarViewHidden;
     }
     else if (sender == self.twitterButton)
     {
-        [self sharePhotoUsingService:SLServiceTypeTwitter];
+        [self sharePhotoUsingTwitter];
     }
     else if (sender == self.linkedInButton)
     {
@@ -275,7 +276,7 @@ static CGPoint kToolbarViewHidden;
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"upload", @"share", nil];
     
-    [actionSheet showFromRect:self.facebookButton.frame inView:self.facebookButton animated:YES];
+    [actionSheet showFromRect:self.facebookButton.frame inView:self animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -286,7 +287,7 @@ static CGPoint kToolbarViewHidden;
     }
     else if (buttonIndex == 1)
     {
-        [self sharePhotoUsingService:SLServiceTypeFacebook];
+        [self sharePhotoUsingFacebook];
     }
 }
 
@@ -314,32 +315,48 @@ static CGPoint kToolbarViewHidden;
 
 }
 
+- (void)sharePhotoUsingTwitter;
+{
+    self.twitterButton.enabled = NO;
+    [self sharePhotoUsingService:SLServiceTypeTwitter];
+}
+
+- (void)sharePhotoUsingFacebook;
+{
+    self.facebookButton.enabled = NO;
+    [self sharePhotoUsingService:SLServiceTypeFacebook];
+}
+
 - (void)sharePhotoUsingService:(NSString *)serviceType;
 {
     __weak typeof(self) wself = self;
-    
-    self.facebookButton.enabled = NO;
-    self.twitterButton.enabled = NO;
-    self.linkedInButton.enabled = NO;
     
     if ([SLComposeViewController isAvailableForServiceType:serviceType])
     {
         SLComposeViewController *fbComposer = [SLComposeViewController composeViewControllerForServiceType:serviceType];
         
+        fbComposer.completionHandler = ^(SLComposeViewControllerResult result) {
+            wself.facebookButton.enabled = YES;
+            wself.twitterButton.enabled = YES;
+        };
+
         [fbComposer setInitialText:@"Image from flickr"];
         
         [fbComposer addImage:self.fullImage.image];
         
         [self.parentViewController presentViewController:fbComposer animated:YES completion:^{
             wself.facebookButton.enabled = YES;
-            wself.twitterButton.enabled = NO;
-            wself.linkedInButton.enabled = NO;
+            wself.twitterButton.enabled = YES;
         }];
     }
 }
 
 - (void)linkedInShare;
 {
+    [[FTLinkedInService sharedInstance] configure];
+    [[FTLinkedInService sharedInstance] connect:^(BOOL succeeded, NSError *error) {
+        FTLog(@"error = %@", error);
+    }];
 }
 
 @end

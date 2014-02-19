@@ -56,6 +56,16 @@
         FTAssert(_testFlightEnabled);
         _testFlightApplicationToken = [object objectForKey:@"testFlightApplicationToken"];
         FTAssert(_testFlightApplicationToken);
+        _linkedInEnabled = [object objectForKey:@"linkedInEnabled"];
+        FTAssert(_linkedInEnabled);
+        _linkedInApiKey = [object objectForKey:@"linkedInApiKey"];
+        FTAssert(_linkedInApiKey);
+        _linkedInStateAntiCrossSiteRequestForgery = [object objectForKey:@"linkedInStateAntiCrossSiteRequestForgery"];
+        FTAssert(_linkedInStateAntiCrossSiteRequestForgery);
+        _linkedInOAuthUserSecret = [object objectForKey:@"linkedInOAuthUserSecret"];
+        FTAssert(_linkedInOAuthUserSecret);
+        _linkedInOAuthUserToken = [object objectForKey:@"linkedInOAuthUserToken"];
+        FTAssert(_linkedInOAuthUserToken);
     }
     return self;
 }
@@ -63,7 +73,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@", self.flickrFeedUrl, self.flickrFeedPath, self.flickrFeedParam, self.aviaryAPIKey, self.facebookAppId, self.flurryAppKey, self.flurryEnabled, self.googleAnalyticsEnabled, self.googleAnalyticsTrackingId, self.parseLogEnabled, self.crittercismEnabled, self.crittercismAppId, self.crashlyticsEnabled, self.crashlyticsAppId, self.testFlightEnabled, self.testFlightApplicationToken];
+    return [NSString stringWithFormat:@"%@, %@, %@, %@, %@, %@, %@, %@", self.flurryEnabled, self.googleAnalyticsEnabled, self.parseLogEnabled, self.crittercismEnabled, self.crashlyticsEnabled, self.testFlightEnabled, self.linkedInEnabled, self.linkedInApiKey];
 }
 
 - (BOOL)isAviaryInAppPurchasesEnabled;
@@ -106,5 +116,11 @@
 {
     return [self.testFlightEnabled boolValue];
 }
+
+- (BOOL)isLinkedInEnabled;
+{
+    return [self.linkedInEnabled boolValue];
+}
+
 @end
 

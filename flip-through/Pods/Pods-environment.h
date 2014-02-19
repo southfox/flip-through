@@ -42,12 +42,6 @@
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 0
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 3
 
-// IOSLinkedInAPI
-#define COCOAPODS_POD_AVAILABLE_IOSLinkedInAPI
-#define COCOAPODS_VERSION_MAJOR_IOSLinkedInAPI 1
-#define COCOAPODS_VERSION_MINOR_IOSLinkedInAPI 0
-#define COCOAPODS_VERSION_PATCH_IOSLinkedInAPI 0
-
 // ISO8601DateFormatterValueTransformer
 #define COCOAPODS_POD_AVAILABLE_ISO8601DateFormatterValueTransformer
 #define COCOAPODS_VERSION_MAJOR_ISO8601DateFormatterValueTransformer 0

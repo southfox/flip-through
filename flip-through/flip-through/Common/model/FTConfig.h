@@ -30,6 +30,12 @@
 @property (nonatomic, copy) NSString *crashlyticsAppId;
 @property (nonatomic, copy) NSNumber *testFlightEnabled;
 @property (nonatomic, copy) NSString *testFlightApplicationToken;
+@property (nonatomic, copy) NSNumber *linkedInEnabled;
+@property (nonatomic, copy) NSString *linkedInApiKey;
+@property (nonatomic, copy) NSString *linkedInSecretKey;
+@property (nonatomic, copy) NSString *linkedInStateAntiCrossSiteRequestForgery;
+@property (nonatomic, copy) NSString *linkedInOAuthUserToken;
+@property (nonatomic, copy) NSString *linkedInOAuthUserSecret;
 
 - (id)initWithPFObject:(PFObject *)object;
 
@@ -48,5 +54,7 @@
 - (BOOL)isCrashlyticsEnabled;
 
 - (BOOL)isTestFlightEnabled;
+
+- (BOOL)isLinkedInEnabled;
 
 @end

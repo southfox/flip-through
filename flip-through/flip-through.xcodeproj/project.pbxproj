@@ -16,6 +16,7 @@
 		984320F118B4595100119AC1 /* Button-LinkedIn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320EF18B4595100119AC1 /* Button-LinkedIn@2x.png */; };
 		984320F418B45F8500119AC1 /* Button-Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320F218B45F8500119AC1 /* Button-Twitter.png */; };
 		984320F518B45F8500119AC1 /* Button-Twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320F318B45F8500119AC1 /* Button-Twitter@2x.png */; };
+		984320F918B5070000119AC1 /* FTLinkedInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 984320F818B5070000119AC1 /* FTLinkedInService.m */; };
 		9856E2C118A5093900999247 /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2BE18A5093900999247 /* FTConfig.m */; };
 		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
@@ -92,6 +93,8 @@
 		984320EF18B4595100119AC1 /* Button-LinkedIn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-LinkedIn@2x.png"; path = "../../assets/Button-LinkedIn@2x.png"; sourceTree = "<group>"; };
 		984320F218B45F8500119AC1 /* Button-Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Twitter.png"; path = "../../assets/Button-Twitter.png"; sourceTree = "<group>"; };
 		984320F318B45F8500119AC1 /* Button-Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Twitter@2x.png"; path = "../../assets/Button-Twitter@2x.png"; sourceTree = "<group>"; };
+		984320F718B5070000119AC1 /* FTLinkedInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLinkedInService.h; sourceTree = "<group>"; };
+		984320F818B5070000119AC1 /* FTLinkedInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLinkedInService.m; sourceTree = "<group>"; };
 		9856E2BD18A5093900999247 /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
 		9856E2BE18A5093900999247 /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
 		9856E2BF18A5093900999247 /* FTPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPFObject.h; sourceTree = "<group>"; };
@@ -200,6 +203,15 @@
 				984320E518B39D2A00119AC1 /* FTFacebookService.m */,
 			);
 			path = Facebook;
+			sourceTree = "<group>";
+		};
+		984320F618B5070000119AC1 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+				984320F718B5070000119AC1 /* FTLinkedInService.h */,
+				984320F818B5070000119AC1 /* FTLinkedInService.m */,
+			);
+			path = LinkedIn;
 			sourceTree = "<group>";
 		};
 		9856E2C618A50CDD00999247 /* Analytics */ = {
@@ -317,6 +329,7 @@
 				9856E2C618A50CDD00999247 /* Analytics */,
 				9856E30018AD030000999247 /* Crash */,
 				984320E318B39D2A00119AC1 /* Facebook */,
+				984320F618B5070000119AC1 /* LinkedIn */,
 				988699C318A31109006F1196 /* Parse */,
 				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
@@ -371,9 +384,9 @@
 				9856E2D218AA488300999247 /* big-image-placeholder.png */,
 				9856E2D318AA488300999247 /* big-image-placeholder@2x.png */,
 				985D31F018A1C71C00320F87 /* image-placeholder.png */,
+				985D31F218A1C7DB00320F87 /* image-placeholder@2x.png */,
 				984320DF18B28E4200119AC1 /* Button-Facebook.png */,
 				984320E018B28E4200119AC1 /* Button-Facebook@2x.png */,
-				985D31F218A1C7DB00320F87 /* image-placeholder@2x.png */,
 				988699BF18A30370006F1196 /* Button-Aviary.png */,
 				988699C018A30370006F1196 /* Button-Aviary@2x.png */,
 				985D31F318A1C7DB00320F87 /* Button-Close-icon@2x.png */,
@@ -654,6 +667,7 @@
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				9856E2D118A98CC200999247 /* FTAviaryController.m in Sources */,
 				984320E918B3A30400119AC1 /* FTFacebookUser.m in Sources */,
+				984320F918B5070000119AC1 /* FTLinkedInService.m in Sources */,
 				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
