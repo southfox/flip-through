@@ -13,6 +13,8 @@
 #import "FTFacebookUser.h"
 #import "PFObject.h"
 #import "NSError+FT.h"
+#import <Social/Social.h>
+
 
 @interface FTFacebookService ()
 @end
@@ -107,6 +109,26 @@
     }];
 
 }
+
+- (void)post:(UIImage *)image title:(NSString *)title viewController:(UIViewController *)viewController completion:(void (^)())completion;
+{
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+//        fbComposer.completionHandler = ^(SLComposeViewControllerResult result) {
+//            wself.facebookButton.enabled = YES;
+//            wself.twitterButton.enabled = YES;
+//        };
+        
+        [composer setInitialText:title];
+        
+        [composer addImage:image];
+        
+        [viewController presentViewController:composer animated:YES completion:completion];
+    }
+}
+
 
 - (void)post:(NSString *)title description:(NSString *)description image:(UIImage *)image url:(NSString *)url finishBlock:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 {

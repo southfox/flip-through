@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class FBSession;
-
 @interface FTLinkedInService : NSObject
 
 + (FTLinkedInService *)sharedInstance;

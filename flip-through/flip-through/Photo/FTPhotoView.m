@@ -18,10 +18,11 @@
 #import "FTAnalyticsService.h"
 #import "FTAviaryController.h"
 #import "UIImage+FT.h"
-#import "FTFacebookService.h"
 #import "NSError+FT.h"
-#import <Social/Social.h>
+#import "FTTwitterService.h"
+#import "FTFacebookService.h"
 #import "FTLinkedInService.h"
+#import "FTMailControler.h"
 
 static CGPoint kToolbarViewVisible;
 static CGPoint kToolbarViewHidden;
@@ -221,6 +222,10 @@ static CGPoint kToolbarViewHidden;
     {
         [self linkedInShare];
     }
+    else if (sender == self.mailButton)
+    {
+        [self mailShare];
+    }
     else
     {
         FTAssert(NO);
@@ -308,54 +313,41 @@ static CGPoint kToolbarViewHidden;
         wself.facebookButton.enabled = YES;
     }];
     
-    //        [[FTFacebookService sharedInstance] post:@"Image from flickr" description:@"I want to share this image" image:[self.fullImage.image thumbnailBySize:self.fullImage.image.size] url:@"http://www.google.com" finishBlock:^(BOOL succeeded, NSError *error) {
-    //        }];
-    
-
-
 }
 
 - (void)sharePhotoUsingTwitter;
 {
+    __weak typeof(self) wself = self;
     self.twitterButton.enabled = NO;
-    [self sharePhotoUsingService:SLServiceTypeTwitter];
+    [[FTTwitterService sharedInstance] post:self.fullImage.image title:@"Image from flickr" viewController:self.parentViewController completion:^{
+        wself.twitterButton.enabled = YES;
+    }];
 }
 
 - (void)sharePhotoUsingFacebook;
 {
-    self.facebookButton.enabled = NO;
-    [self sharePhotoUsingService:SLServiceTypeFacebook];
-}
-
-- (void)sharePhotoUsingService:(NSString *)serviceType;
-{
     __weak typeof(self) wself = self;
-    
-    if ([SLComposeViewController isAvailableForServiceType:serviceType])
-    {
-        SLComposeViewController *fbComposer = [SLComposeViewController composeViewControllerForServiceType:serviceType];
-        
-        fbComposer.completionHandler = ^(SLComposeViewControllerResult result) {
-            wself.facebookButton.enabled = YES;
-            wself.twitterButton.enabled = YES;
-        };
-
-        [fbComposer setInitialText:@"Image from flickr"];
-        
-        [fbComposer addImage:self.fullImage.image];
-        
-        [self.parentViewController presentViewController:fbComposer animated:YES completion:^{
-            wself.facebookButton.enabled = YES;
-            wself.twitterButton.enabled = YES;
-        }];
-    }
+    self.facebookButton.enabled = NO;
+    [[FTFacebookService sharedInstance] post:self.fullImage.image title:@"Image from flickr" viewController:self.parentViewController completion:^{
+        wself.facebookButton.enabled = YES;
+    }];
 }
+
 
 - (void)linkedInShare;
 {
     [[FTLinkedInService sharedInstance] configure];
     [[FTLinkedInService sharedInstance] connect:^(BOOL succeeded, NSError *error) {
         FTLog(@"error = %@", error);
+    }];
+}
+
+- (void)mailShare;
+{
+    __weak typeof(self) wself = self;
+    self.mailButton.enabled = NO;
+    [[FTMailControler sharedInstance] show:@"Image from flickr" message:@"This is flip-through application sharing an image" image:self.fullImage.image viewController:self.parentViewController completion:^{
+        wself.mailButton.enabled = YES;
     }];
 }
 

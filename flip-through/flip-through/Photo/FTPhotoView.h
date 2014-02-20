@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *facebookButton;
 @property (nonatomic, strong) IBOutlet UIButton *twitterButton;
 @property (nonatomic, strong) IBOutlet UIButton *linkedInButton;
+@property (nonatomic, strong) IBOutlet UIButton *mailButton;
 @property (nonatomic, strong) IBOutlet UIButton *closeButton;
 
 - (void)showFullScreenItem:(FTItem *)item;

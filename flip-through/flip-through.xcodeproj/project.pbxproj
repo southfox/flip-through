@@ -65,6 +65,10 @@
 		98BF6C8518A105A000C2EDF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF6C6718A105A000C2EDF7 /* UIKit.framework */; };
 		98BF6C8D18A105A000C2EDF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98BF6C8B18A105A000C2EDF7 /* InfoPlist.strings */; };
 		98BF6C8F18A105A000C2EDF7 /* flip_throughTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF6C8E18A105A000C2EDF7 /* flip_throughTests.m */; };
+		98E674D618B58F8700527296 /* FTTwitterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E674D518B58F8700527296 /* FTTwitterService.m */; };
+		98EDDC2A18B57952002E7525 /* button-mailicon-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EDDC2818B57952002E7525 /* button-mailicon-12.png */; };
+		98EDDC2B18B57952002E7525 /* button-mailicon-12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EDDC2918B57952002E7525 /* button-mailicon-12@2x.png */; };
+		98EDDC2F18B57BAD002E7525 /* FTMailControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EDDC2E18B57BAD002E7525 /* FTMailControler.m */; };
 		CE53B4F31F81415FB7A93F3B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEC53D510FE4B89BB8A40C7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +172,12 @@
 		98BF6C8A18A105A000C2EDF7 /* flip-throughTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "flip-throughTests-Info.plist"; sourceTree = "<group>"; };
 		98BF6C8C18A105A000C2EDF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		98BF6C8E18A105A000C2EDF7 /* flip_throughTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = flip_throughTests.m; sourceTree = "<group>"; };
+		98E674D418B58F8700527296 /* FTTwitterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTwitterService.h; sourceTree = "<group>"; };
+		98E674D518B58F8700527296 /* FTTwitterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTTwitterService.m; sourceTree = "<group>"; };
+		98EDDC2818B57952002E7525 /* button-mailicon-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-mailicon-12.png"; path = "../../assets/button-mailicon-12.png"; sourceTree = "<group>"; };
+		98EDDC2918B57952002E7525 /* button-mailicon-12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-mailicon-12@2x.png"; path = "../../assets/button-mailicon-12@2x.png"; sourceTree = "<group>"; };
+		98EDDC2D18B57BAD002E7525 /* FTMailControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTMailControler.h; sourceTree = "<group>"; };
+		98EDDC2E18B57BAD002E7525 /* FTMailControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTMailControler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,14 +335,16 @@
 		985D31A618A12F7300320F87 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E2C618A50CDD00999247 /* Analytics */,
+				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E30018AD030000999247 /* Crash */,
-				984320E318B39D2A00119AC1 /* Facebook */,
-				984320F618B5070000119AC1 /* LinkedIn */,
-				988699C318A31109006F1196 /* Parse */,
-				985D31CF18A1765F00320F87 /* Flickr */,
 				985D31B418A12F7300320F87 /* Data */,
+				984320E318B39D2A00119AC1 /* Facebook */,
+				985D31CF18A1765F00320F87 /* Flickr */,
+				984320F618B5070000119AC1 /* LinkedIn */,
+				98EDDC2C18B57BAD002E7525 /* Mail */,
+				988699C318A31109006F1196 /* Parse */,
+				98E674D318B58F8700527296 /* Twitter */,
 			);
 			path = libs;
 			sourceTree = "<group>";
@@ -377,6 +389,8 @@
 		985D31EF18A1BFEE00320F87 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				98EDDC2818B57952002E7525 /* button-mailicon-12.png */,
+				98EDDC2918B57952002E7525 /* button-mailicon-12@2x.png */,
 				984320F218B45F8500119AC1 /* Button-Twitter.png */,
 				984320F318B45F8500119AC1 /* Button-Twitter@2x.png */,
 				984320EE18B4595100119AC1 /* Button-LinkedIn.png */,
@@ -484,6 +498,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		98E674D318B58F8700527296 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				98E674D418B58F8700527296 /* FTTwitterService.h */,
+				98E674D518B58F8700527296 /* FTTwitterService.m */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		98EDDC2C18B57BAD002E7525 /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				98EDDC2D18B57BAD002E7525 /* FTMailControler.h */,
+				98EDDC2E18B57BAD002E7525 /* FTMailControler.m */,
+			);
+			path = Mail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -577,7 +609,9 @@
 				985D31EE18A1BFE500320F87 /* Button-Reload-icon.png in Resources */,
 				985D31ED18A1BFE500320F87 /* Button-Refresh-icon.png in Resources */,
 				9856E2E318AB994000999247 /* InfoPlist.strings in Resources */,
+				98EDDC2B18B57952002E7525 /* button-mailicon-12@2x.png in Resources */,
 				9856E2ED18AB9AC600999247 /* FTPhotoView.xib in Resources */,
+				98EDDC2A18B57952002E7525 /* button-mailicon-12.png in Resources */,
 				988699C218A30370006F1196 /* Button-Aviary@2x.png in Resources */,
 				984320E218B28E4200119AC1 /* Button-Facebook@2x.png in Resources */,
 				9856E2E118AB994000999247 /* FTGridCell.xib in Resources */,
@@ -658,6 +692,7 @@
 				985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
+				98EDDC2F18B57BAD002E7525 /* FTMailControler.m in Sources */,
 				9856E2EE18AB9AC600999247 /* FTPhotoView.m in Sources */,
 				988699CA18A31109006F1196 /* FTParseService.m in Sources */,
 				9856E2C218A5093900999247 /* FTPFObject.m in Sources */,
@@ -670,6 +705,7 @@
 				984320F918B5070000119AC1 /* FTLinkedInService.m in Sources */,
 				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,
+				98E674D618B58F8700527296 /* FTTwitterService.m in Sources */,
 				985D319B18A11FC200320F87 /* FTAlert.m in Sources */,
 				985D31CD18A171E200320F87 /* FTFeed.m in Sources */,
 				9856E2E518AB994000999247 /* FTGridViewController.m in Sources */,

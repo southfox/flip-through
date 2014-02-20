@@ -20,6 +20,8 @@
 
 - (void)uploadImage:(UIImage *)image finishBlock:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 
+- (void)post:(UIImage *)image title:(NSString *)title viewController:(UIViewController *)viewController completion:(void (^)())completion;
+
 - (void)post:(NSString *)title description:(NSString *)description image:(UIImage *)image url:(NSString *)url finishBlock:(void (^)(BOOL succeeded, NSError *error))finishBlock;
 
 + (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication withSession:(FBSession *)session;

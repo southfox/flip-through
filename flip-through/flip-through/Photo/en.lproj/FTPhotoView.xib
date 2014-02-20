@@ -60,6 +60,16 @@
                                 <action selector="actionButton:" destination="1" eventType="touchUpInside" id="Osv-8l-XOJ"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="smj-Sy-gEK" userLabel="Button - mail">
+                            <rect key="frame" x="320" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="button-mailicon-12.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButton:" destination="1" eventType="touchUpInside" id="aP5-LY-gku"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ulp-iK-KVY" userLabel="Button - close">
                             <rect key="frame" x="946" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -84,6 +94,7 @@
                 <outlet property="facebookButton" destination="hTD-1f-luo" id="VGQ-ab-W6N"/>
                 <outlet property="fullImage" destination="lnN-XU-3WP" id="40s-Oc-imF"/>
                 <outlet property="imageContainerView" destination="eEM-6g-RSh" id="r8u-1N-DRu"/>
+                <outlet property="mailButton" destination="smj-Sy-gEK" id="w8i-Tx-7TI"/>
                 <outlet property="toolbarView" destination="83k-MV-zhf" id="MiY-j2-qNQ"/>
                 <outlet property="twitterButton" destination="4jN-3M-FRK" id="m4L-DO-Rrh"/>
             </connections>
@@ -94,5 +105,6 @@
         <image name="Button-Close-icon.png" width="64" height="64"/>
         <image name="Button-Facebook.png" width="128" height="128"/>
         <image name="Button-Twitter.png" width="128" height="128"/>
+        <image name="button-mailicon-12.png" width="58" height="64"/>
     </resources>
 </document>
