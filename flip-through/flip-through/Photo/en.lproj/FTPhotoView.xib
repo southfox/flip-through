@@ -30,8 +30,32 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YNt-Gb-0Xx" userLabel="Button - aviary">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U2u-0L-JIB" userLabel="Button - trash">
+                            <rect key="frame" x="1020" y="43" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Trash_Empty.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="Trash_Full.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2TF-sz-bzd" userLabel="Button - format">
+                            <rect key="frame" x="1120" y="43" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="FormatJPEG.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="j3y-1m-azh" userLabel="Button - my pictures">
                             <rect key="frame" x="20" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="Folder_GenericWhite.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="Folder_MyPictures.png"/>
+                            <state key="highlighted" backgroundImage="Folder_GenericGray.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YNt-Gb-0Xx" userLabel="Button - aviary">
+                            <rect key="frame" x="120" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="Button-Aviary.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +65,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hTD-1f-luo" userLabel="Button - facebook">
-                            <rect key="frame" x="120" y="20" width="70" height="70"/>
+                            <rect key="frame" x="220" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="Button-Facebook.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,7 +75,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4jN-3M-FRK" userLabel="Button - twitter">
-                            <rect key="frame" x="220" y="20" width="70" height="70"/>
+                            <rect key="frame" x="320" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="Button-Twitter.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,17 +85,57 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="smj-Sy-gEK" userLabel="Button - mail">
-                            <rect key="frame" x="320" y="20" width="70" height="70"/>
+                            <rect key="frame" x="420" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="button-mailicon-12.png">
+                            <state key="normal" image="Button_Mail.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="actionButton:" destination="1" eventType="touchUpInside" id="aP5-LY-gku"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eO3-Sc-dUv" userLabel="Button - prev">
+                            <rect key="frame" x="520" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Button_Previous.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButton:" destination="1" eventType="touchUpInside" id="2Jw-Eh-cqH"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fXS-zH-Tll" userLabel="Button - info">
+                            <rect key="frame" x="620" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Button_Info.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButton:" destination="1" eventType="touchUpInside" id="oYK-dA-vfa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WIE-a0-ucM" userLabel="Button - next">
+                            <rect key="frame" x="720" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Button_Next.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButton:" destination="1" eventType="touchUpInside" id="Xjm-nc-61Z"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Bi-gB-Fpd" userLabel="Button - help">
+                            <rect key="frame" x="820" y="20" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Button_Help.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButton:" destination="1" eventType="touchUpInside" id="StS-Q2-leJ"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ulp-iK-KVY" userLabel="Button - close">
-                            <rect key="frame" x="946" y="20" width="70" height="70"/>
+                            <rect key="frame" x="920" y="20" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="Button-Close-icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,8 +157,12 @@
                 <outlet property="closeButton" destination="Ulp-iK-KVY" id="lpN-aS-Ddv"/>
                 <outlet property="facebookButton" destination="hTD-1f-luo" id="VGQ-ab-W6N"/>
                 <outlet property="fullImage" destination="lnN-XU-3WP" id="40s-Oc-imF"/>
+                <outlet property="helpButton" destination="4Bi-gB-Fpd" id="pZV-uL-gKB"/>
                 <outlet property="imageContainerView" destination="eEM-6g-RSh" id="r8u-1N-DRu"/>
+                <outlet property="infoButton" destination="fXS-zH-Tll" id="6sO-VJ-Uuk"/>
                 <outlet property="mailButton" destination="smj-Sy-gEK" id="w8i-Tx-7TI"/>
+                <outlet property="nextButton" destination="WIE-a0-ucM" id="MG6-UK-rPI"/>
+                <outlet property="prevButton" destination="eO3-Sc-dUv" id="06x-6h-wQm"/>
                 <outlet property="toolbarView" destination="83k-MV-zhf" id="MiY-j2-qNQ"/>
                 <outlet property="twitterButton" destination="4jN-3M-FRK" id="m4L-DO-Rrh"/>
             </connections>
@@ -105,6 +173,16 @@
         <image name="Button-Close-icon.png" width="64" height="64"/>
         <image name="Button-Facebook.png" width="128" height="128"/>
         <image name="Button-Twitter.png" width="128" height="128"/>
-        <image name="button-mailicon-12.png" width="58" height="64"/>
+        <image name="Button_Help.png" width="150" height="150"/>
+        <image name="Button_Info.png" width="150" height="150"/>
+        <image name="Button_Mail.png" width="150" height="150"/>
+        <image name="Button_Next.png" width="150" height="150"/>
+        <image name="Button_Previous.png" width="150" height="150"/>
+        <image name="Folder_GenericGray.png" width="150" height="150"/>
+        <image name="Folder_GenericWhite.png" width="150" height="150"/>
+        <image name="Folder_MyPictures.png" width="150" height="150"/>
+        <image name="FormatJPEG.png" width="150" height="150"/>
+        <image name="Trash_Empty.png" width="150" height="150"/>
+        <image name="Trash_Full.png" width="150" height="150"/>
     </resources>
 </document>
