@@ -14,4 +14,16 @@
 
 @property (nonatomic, strong) IBOutlet UIView *footerView;
 
+@property (nonatomic, strong) IBOutlet UIView *toolbarView;
+
+@property (nonatomic, strong) IBOutlet UIButton *folderButton;
+@property (nonatomic, strong) IBOutlet UIButton *trashButton;
+@property (nonatomic, strong) IBOutlet UIButton *formatButton;
+@property (nonatomic, strong) IBOutlet UIButton *firstButton;
+@property (nonatomic, strong) IBOutlet UIButton *prefButton;
+@property (nonatomic, strong) IBOutlet UIButton *infoButton;
+@property (nonatomic, strong) IBOutlet UIButton *nextButton;
+@property (nonatomic, strong) IBOutlet UIButton *lastButton;
+@property (nonatomic, strong) IBOutlet UIButton *helpButton;
+
 @end

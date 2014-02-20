@@ -30,6 +30,7 @@ static CGPoint kFooterViewHidden;
 @property (nonatomic, strong) NSMutableArray *feeds;
 @property (nonatomic, strong) FTPhotoView *photoView;
 @property (nonatomic) BOOL isShowingFooter;
+@property (nonatomic) BOOL willShowFooter;
 @property (nonatomic) BOOL isRequestingOffset;
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 @end
@@ -295,14 +296,24 @@ static CGPoint kFooterViewHidden;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
     int h = scrollView.contentOffset.y + scrollView.h - (self.feeds.count * 4 * kCellHeight + 144);
-    if (h >= 0)
+    if (h >= 0 && !self.willShowFooter)
     {
-        [self showFooter:^{
-            
-        }];
+        self.willShowFooter = YES;
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self.willShowFooter)
+    {
+        __weak typeof(self) wself = self;
+
+        [self showFooter:^{
+            wself.willShowFooter = NO;
+        }];
+
+    }
+}
 
 #pragma mark footer
 
