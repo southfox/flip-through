@@ -11,14 +11,14 @@
 #import "NSError+FT.h"
 #import "FTAlert.h"
 #import "FTGridViewController.h"
-
 // services
 #import "FTFlickrPublicFeedService.h"
 #import "FTParseService.h"
 #import "FTAnalyticsService.h"
 #import "FTCrashService.h"
 #import "FTFacebookService.h"
-
+#import "FTTwitterService.h"
+#import "FTSerializationService.h"
 
 @implementation FTAppDelegate
 {
@@ -46,11 +46,13 @@
                 // flickr feed
                 [wself configureFlikrPublicFeedService];
                 
-                // configure data
-                [wself configureDataService];
+                [wself configureSocial];
+                
+                // configure serialization
+                [wself configureSerializationService];
 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                               [wself configureWindow];
+                    [wself configureWindow];
                 });
                 
             }
@@ -213,9 +215,15 @@
 #pragma mark -
 #pragma mark data
 
-- (void)configureDataService;
+- (void)configureSerializationService;
 {
+    [[FTSerializationService sharedInstance] configure];
+}
 
+- (void)configureSocial;
+{
+    [[FTFacebookService sharedInstance] configure];
+    [[FTTwitterService sharedInstance] configure];
 }
 
 

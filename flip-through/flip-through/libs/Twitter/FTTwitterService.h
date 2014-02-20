@@ -12,6 +12,8 @@
 
 + (FTTwitterService *)sharedInstance;
 
+- (void)configure;
+
 - (void)post:(UIImage *)image title:(NSString *)title viewController:(UIViewController *)viewController completion:(void (^)())completion;
 
 @end

@@ -37,7 +37,7 @@
 		985D31A318A1200600320F87 /* NSArray+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D319E18A1200600320F87 /* NSArray+FT.m */; };
 		985D31A418A1200600320F87 /* Reachability+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A018A1200600320F87 /* Reachability+FT.m */; };
 		985D31A518A1200600320F87 /* UIView+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31A218A1200600320F87 /* UIView+FT.m */; };
-		985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTSerializeService.m */; };
+		985D31C018A12F7300320F87 /* FTSerializationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31B818A12F7300320F87 /* FTSerializationService.m */; };
 		985D31CD18A171E200320F87 /* FTFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C718A171E200320F87 /* FTFeed.m */; };
 		985D31CE18A171E200320F87 /* FTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31C918A171E200320F87 /* FTItem.m */; };
 		985D31D618A1765F00320F87 /* FTFlickrPublicFeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D31D318A1765F00320F87 /* FTFlickrPublicFeedService.m */; };
@@ -133,8 +133,8 @@
 		985D31A018A1200600320F87 /* Reachability+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reachability+FT.m"; sourceTree = "<group>"; };
 		985D31A118A1200600320F87 /* UIView+FT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FT.h"; sourceTree = "<group>"; };
 		985D31A218A1200600320F87 /* UIView+FT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FT.m"; sourceTree = "<group>"; };
-		985D31B718A12F7300320F87 /* FTSerializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSerializeService.h; sourceTree = "<group>"; };
-		985D31B818A12F7300320F87 /* FTSerializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTSerializeService.m; sourceTree = "<group>"; };
+		985D31B718A12F7300320F87 /* FTSerializationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSerializationService.h; sourceTree = "<group>"; };
+		985D31B818A12F7300320F87 /* FTSerializationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTSerializationService.m; sourceTree = "<group>"; };
 		985D31C618A171E200320F87 /* FTFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFeed.h; sourceTree = "<group>"; };
 		985D31C718A171E200320F87 /* FTFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTFeed.m; sourceTree = "<group>"; };
 		985D31C818A171E200320F87 /* FTItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTItem.h; sourceTree = "<group>"; };
@@ -352,8 +352,8 @@
 		985D31B418A12F7300320F87 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				985D31B718A12F7300320F87 /* FTSerializeService.h */,
-				985D31B818A12F7300320F87 /* FTSerializeService.m */,
+				985D31B718A12F7300320F87 /* FTSerializationService.h */,
+				985D31B818A12F7300320F87 /* FTSerializationService.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -689,7 +689,7 @@
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
 				9878EAC918B1F6F400A98977 /* UIImage+FT.m in Sources */,
 				9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */,
-				985D31C018A12F7300320F87 /* FTSerializeService.m in Sources */,
+				985D31C018A12F7300320F87 /* FTSerializationService.m in Sources */,
 				985D31A518A1200600320F87 /* UIView+FT.m in Sources */,
 				98BF6C7018A105A000C2EDF7 /* main.m in Sources */,
 				98EDDC2F18B57BAD002E7525 /* FTMailControler.m in Sources */,

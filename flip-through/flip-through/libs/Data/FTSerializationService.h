@@ -1,5 +1,5 @@
 //
-//  FTSerializeService.h
+//  FTSerializationService.h
 //  flip-through
 //
 //  Created by Javier Fuchs on 2/4/14.
@@ -10,11 +10,11 @@
 
 @class FTFeed;
 
-@interface FTSerializeService : NSObject
+@interface FTSerializationService : NSObject
 
-+ (FTSerializeService *)sharedInstance;
++ (FTSerializationService *)sharedInstance;
 
-- (void)setup;
+- (void)configure;
 - (NSArray *)getAllFeeds;
 - (void)createFeed:(FTFeed *)feed;
 - (void)saveFeed:(FTFeed *)feed;

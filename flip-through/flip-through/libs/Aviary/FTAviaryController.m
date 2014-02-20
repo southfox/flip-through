@@ -17,7 +17,7 @@
 @property (nonatomic, strong) AFPhotoEditorSession *currentSession;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, strong) UIView *currentView;
-@property (nonatomic,copy) void (^saveBlock)(UIImage *image);
+@property (nonatomic, copy) void (^saveBlock)(UIImage *image);
 @end
 
 @implementation FTAviaryController
