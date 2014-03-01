@@ -17,6 +17,8 @@
 		984320F418B45F8500119AC1 /* Button-Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320F218B45F8500119AC1 /* Button-Twitter.png */; };
 		984320F518B45F8500119AC1 /* Button-Twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984320F318B45F8500119AC1 /* Button-Twitter@2x.png */; };
 		984320F918B5070000119AC1 /* FTLinkedInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 984320F818B5070000119AC1 /* FTLinkedInService.m */; };
+		984B743218C21C25008A4CE1 /* FTLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 984B743118C21C25008A4CE1 /* FTLocationService.m */; };
+		984B743518C21C41008A4CE1 /* CLLocation (Strings).m in Sources */ = {isa = PBXBuildFile; fileRef = 984B743418C21C41008A4CE1 /* CLLocation (Strings).m */; };
 		9856E2C118A5093900999247 /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2BE18A5093900999247 /* FTConfig.m */; };
 		9856E2C218A5093900999247 /* FTPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C018A5093900999247 /* FTPFObject.m */; };
 		9856E2C518A50B9900999247 /* NSError+FT.m in Sources */ = {isa = PBXBuildFile; fileRef = 9856E2C418A50B9900999247 /* NSError+FT.m */; };
@@ -147,6 +149,10 @@
 		984320F318B45F8500119AC1 /* Button-Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Twitter@2x.png"; path = "../../assets/Button-Twitter@2x.png"; sourceTree = "<group>"; };
 		984320F718B5070000119AC1 /* FTLinkedInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLinkedInService.h; sourceTree = "<group>"; };
 		984320F818B5070000119AC1 /* FTLinkedInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLinkedInService.m; sourceTree = "<group>"; };
+		984B743018C21C25008A4CE1 /* FTLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLocationService.h; sourceTree = "<group>"; };
+		984B743118C21C25008A4CE1 /* FTLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLocationService.m; sourceTree = "<group>"; };
+		984B743318C21C39008A4CE1 /* CLLocation (Strings).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation (Strings).h"; sourceTree = "<group>"; };
+		984B743418C21C41008A4CE1 /* CLLocation (Strings).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation (Strings).m"; sourceTree = "<group>"; };
 		9856E2BD18A5093900999247 /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
 		9856E2BE18A5093900999247 /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
 		9856E2BF18A5093900999247 /* FTPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPFObject.h; sourceTree = "<group>"; };
@@ -320,6 +326,15 @@
 			path = LinkedIn;
 			sourceTree = "<group>";
 		};
+		984B742F18C21C25008A4CE1 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				984B743018C21C25008A4CE1 /* FTLocationService.h */,
+				984B743118C21C25008A4CE1 /* FTLocationService.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		9856E2C618A50CDD00999247 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +427,8 @@
 		985D319C18A1200600320F87 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				984B743418C21C41008A4CE1 /* CLLocation (Strings).m */,
+				984B743318C21C39008A4CE1 /* CLLocation (Strings).h */,
 				985D319D18A1200600320F87 /* NSArray+FT.h */,
 				985D319E18A1200600320F87 /* NSArray+FT.m */,
 				984320EB18B3E6B100119AC1 /* NSDate+FT.h */,
@@ -431,6 +448,7 @@
 		985D31A618A12F7300320F87 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				984B742F18C21C25008A4CE1 /* Location */,
 				9856E2C618A50CDD00999247 /* Analytics */,
 				9856E2CE18A98CC200999247 /* Aviary */,
 				9856E30018AD030000999247 /* Crash */,
@@ -878,6 +896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984B743518C21C41008A4CE1 /* CLLocation (Strings).m in Sources */,
 				98BF6C7418A105A000C2EDF7 /* FTAppDelegate.m in Sources */,
 				9878EAC918B1F6F400A98977 /* UIImage+FT.m in Sources */,
 				9856E2CD18A50CDD00999247 /* FTAnalyticsService.m in Sources */,
@@ -894,6 +913,7 @@
 				985D31A418A1200600320F87 /* Reachability+FT.m in Sources */,
 				9856E2D118A98CC200999247 /* FTAviaryController.m in Sources */,
 				984320E918B3A30400119AC1 /* FTFacebookUser.m in Sources */,
+				984B743218C21C25008A4CE1 /* FTLocationService.m in Sources */,
 				984320F918B5070000119AC1 /* FTLinkedInService.m in Sources */,
 				9856E2E418AB994000999247 /* FTGridCell.m in Sources */,
 				985D31CE18A171E200320F87 /* FTItem.m in Sources */,

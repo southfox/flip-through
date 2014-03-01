@@ -103,7 +103,7 @@ static BOOL configured = NO;
 
 //+ (void)sendLocation
 //{
-//    CLLocation *location = [[FTLocationManager sharedInstance] currentLocation];
+//    CLLocation *location = [[FTLocationService sharedInstance] currentLocation];
 //    [Flurry  setLatitude:location.coordinate.latitude
 //               longitude:location.coordinate.longitude
 //      horizontalAccuracy:location.horizontalAccuracy
